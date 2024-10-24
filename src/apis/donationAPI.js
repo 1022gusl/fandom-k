@@ -4,7 +4,7 @@ const headers = {
 };
 
 // 도네이션 추가 및 수정 API
-async function putDonations(donationId, amount) {
+export async function putDonations(donationId, amount) {
   const donationURL = `${BASE_URL}/donations/${donationId}/contribute`;
 
   try {
@@ -32,7 +32,7 @@ async function putDonations(donationId, amount) {
 }
 
 // 도네이션 조회 API
-async function getDonations(params = {}) {
+export async function getDonations(params = {}) {
   const query = new URLSearchParams(params).toString();
   const donationURL = `${BASE_URL}/donations/?${query}`;
 
@@ -50,5 +50,3 @@ async function getDonations(params = {}) {
     throw error;
   }
 }
-
-export { putDonations, getDonations };
