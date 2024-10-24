@@ -15,7 +15,8 @@ async function putDonations(donationId, amount) {
     });
 
     if (response.status === 404) {
-      response = await fetch(donationURL, {
+      const createDonationURL = `${BASE_URL}/donations`;
+      response = await fetch(createDonationURL, {
         method: 'POST',
         headers,
         body: JSON.stringify({ amount }),
@@ -31,8 +32,9 @@ async function putDonations(donationId, amount) {
 }
 
 // 도네이션 조회 API
-async function getDonations(donationId) {
-  const donationURL = `${BASE_URL}/donations/${donationId}/contribute`;
+async function getDonations(params = {}) {
+  const query = new URLSearchParams(params).toString();
+  const donationURL = `${BASE_URL}/donations/?${query}`;
 
   try {
     const response = await fetch(donationURL);
