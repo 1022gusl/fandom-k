@@ -34,8 +34,8 @@ export async function putDonations(donationId, amount) {
 }
 
 // 도네이션 조회 API
-export async function getDonations(params = {}) {
-  const query = new URLSearchParams(params).toString();
+export async function getDonations(cursor = null, pageSize = 10) {
+  const query = `${cursor ? `cursor=${cursor}&` : ''}pageSize=${pageSize}`;
   const donationURL = `${BASE_URL}/donations?${query}`;
 
   try {
