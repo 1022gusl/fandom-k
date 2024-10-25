@@ -1,4 +1,4 @@
-const BASE_URL = 'https://fandom-k-api.vercel.app/11-1';
+import { BASE_URL } from '../constants/apiBaseUrl';
 
 async function postVote(id) {
   const voteURL = `${BASE_URL}/votes`;

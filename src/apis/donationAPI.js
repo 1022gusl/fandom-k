@@ -1,4 +1,5 @@
-const BASE_URL = 'https://fandom-k-api.vercel.app/11-1';
+import { BASE_URL } from '../constants/apiBaseUrl';
+
 const headers = {
   'Content-Type': 'application/json',
 };
@@ -35,7 +36,7 @@ export async function putDonations(donationId, amount) {
 // 도네이션 조회 API
 export async function getDonations(params = {}) {
   const query = new URLSearchParams(params).toString();
-  const donationURL = `${BASE_URL}/donations/?${query}`;
+  const donationURL = `${BASE_URL}/donations?${query}`;
 
   try {
     const response = await fetch(donationURL);

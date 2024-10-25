@@ -1,4 +1,4 @@
-const BASE_URL = 'https://fandom-k-api.vercel.app/11-1';
+import { BASE_URL } from '../constants/apiBaseUrl';
 
 export const getIdolList = async ({ offset = 0, limit = 50 }) => {
   try {
