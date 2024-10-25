@@ -1,0 +1,15 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
+
+$font-family-pretendard: "Pretendard Variable", sans-serif;
+
+@mixin font-style(
+  $weight,
+  $size,
+  $line-height: normal,
+  $letter-spacing: normal
+) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}

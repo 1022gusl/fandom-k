@@ -1,0 +1,14 @@
+@use "./font" as fonts;
+@use "./color" as colors;
+
+body {
+  font-family: fonts.$font-family-pretendard;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
