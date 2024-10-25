@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import TabMenu from "./components/TabMenu";
-//import IdolList from "./components/IdolList"; 임시 주석처리
-import LoadMoreButton from "./components/LoadMoreButton";
+import TabMenu from "./components/TabMenu/TabMenu";
+import IdolList from "./components/IdolList/IdolList";
+import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../../constants/tabGenderTypes";
+import { mockIdolData } from "./mockData"; // 임시 Mock 데이터 import
 import styles from "./ChartPage.module.css";
 
 /*차트페이지는 이달의 차트의 메인페이지(메인컴포넌트)로 
@@ -11,9 +12,20 @@ import styles from "./ChartPage.module.css";
 
 const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
+  const [idolList, setIdolList] = useState([]);
+
+  const fetchIdolData = (tab) => {
+    // 여기서는 단순히 mock 데이터를 사용하지만, 실제로는 API 호출을 수행할 부분
+    if (tab === FEMALE) {
+      setIdolList(mockIdolData); // 예시로 여성 아이돌 리스트를 보여주는 부분
+    } else {
+      setIdolList([]); // 남성 Mock 데이터를 추가하지 않아 빈 배열
+    }
+  };
 
   useEffect(() => {
-    //선택된 탭에 따라서 아이돌 데이터를 받아올 예정
+    // API 호출 전 임시로 Mock 데이터 사용
+    fetchIdolData(selectedTab);
   }, [selectedTab]);
 
   const handleTabChange = (tab) => {
@@ -29,10 +41,11 @@ const ChartPage = () => {
       <div className={styles.header}>
         <h2>이달의 차트</h2>
         <button>차트 투표하기</button>
-        {/* 차트 투표하기 버튼 클릭 시 모달창 불러올 예정 */}
+        {/* 차트 투표하기 버튼은 재사용 가능한 버튼 스타일 추가 후 적용 예정
+         버튼 클릭 시 모달창 불러올 예정 */}
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
-      {/*<IdolList /> 현재 데이터가 없어서 map 오류가 뜨기 때문에 임시로 주석 처리*/}
+      <IdolList idols={idolList} /> {/* 임시 Mock 데이터 호출 중 */}
       <LoadMoreButton onClick={handleLoadMore} />
     </div>
   );

@@ -1,9 +1,35 @@
+/* 
+현재 기능을 아직 다 구현한게 아니라서 반응형 디자인은 고려하지 않았습니다.
+mock 데이터나 api가 연동이 되어 코드가 의도대로 작동하는게 확인이 되면 반응형을 고려하겠습니다.
+*/
+
 .container {
   max-width: 1200px;
   margin-top: 80px;
+  padding: 0 130px;
+  background-color: #02000e;
+  /* 임시로 마진과 패딩, bg-color를 줬습니다. 차후에 list페이지에 컨테이너를 입힐 때 수정 및 삭제하면 됩니다. */
 }
 
 .header {
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  width: 100%;
+}
+
+.header button {
+  width: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h2 {
+  font-size: 24px;
+  margin: 0;
+  color: #ffffff;
+  /* 임시로 마진과 폰트 관련 속성을 줬습니다. 차후에 공통 컴포넌트 및 스타일을 지정할 때 수정 및 삭제하면 됩니다.*/
 }
