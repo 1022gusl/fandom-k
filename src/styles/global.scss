@@ -1,5 +1,5 @@
-@use "./font" as fonts;
-@use "./color" as colors;
+@import "./font";
+@import "./color";
 
 *,
 *::before,
@@ -16,6 +16,6 @@ body {
 }
 
 body {
-  font-family: fonts.$font-family-pretendard;
-  color: colors.$color-white-1;
+  font-family: $font-family-pretendard;
+  color: $color-white-1;
 }
