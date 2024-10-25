@@ -26,6 +26,7 @@ export async function putDonations(donationId, amount) {
     if (!response.ok) {
       throw new Error('후원에 실패했어요.');
     }
+    return await response.json();
   } catch (error) {
     console.error('후원 요청 중 오류가 발생했어요:', error);
   }
