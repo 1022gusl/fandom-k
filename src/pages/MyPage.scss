@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #02000e;
+}
+
+.pageContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.designImage {
+  position: absolute;
+  top: -49px;
+  left: -114px;
+}
