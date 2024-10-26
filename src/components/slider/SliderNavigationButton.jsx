@@ -11,6 +11,7 @@ const SlidernavigationButton = ({ onClick, direction, disabled }) => (
     }}
   >
     <img
+      className="arrowIcon"
       src={direction === "prevButton" ? prevButton : nextButton}
       alt={direction}
     />
