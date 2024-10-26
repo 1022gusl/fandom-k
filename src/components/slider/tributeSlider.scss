@@ -1,10 +1,11 @@
 .sliderContainer {
   display: flex;
   align-items: center;
+  gap: 0 40px;
 }
 .slick-track {
   display: flex !important;
-  gap: 10px;
+  gap: 9px;
 }
 .slick-list {
   overflow: hidden;
@@ -19,7 +20,7 @@
 }
 
 .sliderBox {
-  width: 1168px;
+  width: 1165px;
 }
 
 .slick-slide {
@@ -35,7 +36,7 @@
   width: 40px;
   height: 78.33px;
   border: none;
-  background-color: $color-black-1;
+  background-color: rgba(27, 27, 27, 0.8);
   cursor: pointer;
 }
 .sliderItem {
