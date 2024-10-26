@@ -15,7 +15,7 @@
   justify-content: center; /* 슬라이드를 중앙 정렬 */
   align-items: center;
   font-family: "pretendard", sans-serif;
-  color: white;
+  color: $color-white-1;
 }
 
 .sliderBox {
@@ -28,14 +28,14 @@
   justify-content: center; /* 슬라이드를 중앙 정렬 */
   align-items: center;
   font-family: "pretendard", sans-serif;
-  color: white;
+  color: $color-white-1;
 }
 
 .arrowButton {
   width: 40px;
   height: 78.33px;
   border: none;
-  background-color: black;
+  background-color: $color-black-1;
   cursor: pointer;
 }
 .sliderItem {
@@ -63,9 +63,9 @@
   top: 233px; /* 이미지의 하단에 배치 */
   left: 50%; /* 수평 중앙 정렬 */
   transform: translateX(-50%);
-  background: linear-gradient(90deg, #f86f65 0%, #fe5493 100%);
+  background: linear-gradient(90deg, #f86f65 0%, $color-brand-pink 100%);
   /* 반투명한 배경색 */
-  color: white;
+  color: $color-white-1;
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -150,7 +150,7 @@
     width: 142px;
     height: 31px;
     top: 167px;
-    color: white;
+    color: $color-white-1;
     border: none;
     padding: 2px 16px 3px 16px;
     cursor: pointer;
