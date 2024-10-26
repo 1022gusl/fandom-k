@@ -5,9 +5,11 @@ const Button = ({
   width = "234px",
   color = "#fff",
   background = "linear-gradient(90deg, #f86f65 0%, #fe5493 100%)",
+  border = "none",
+  borderRadius = "3px", // 기본 borderRadius 설정
   onClick,
   children,
-  className, // className을 props로 받아서
+  className,
 }) => {
   return (
     <button
@@ -17,8 +19,10 @@ const Button = ({
         width,
         color,
         background,
+        border,
+        borderRadius,
       }}
-      className={className} // button과 전달받은 className 적용
+      className={className}
     >
       {children}
     </button>
