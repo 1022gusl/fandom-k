@@ -24,7 +24,7 @@ const TributeSlider = () => {
 
   const slidesToShow = 4; // 한 번에 보여줄 슬라이드 개수
   const settings = {
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow,
     slidesToScroll: 1,
