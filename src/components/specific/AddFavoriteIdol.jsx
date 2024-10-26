@@ -6,6 +6,7 @@ import "./AddFavoriteIdol.scss";
 
 const AddFavoriteIdol = () => {
   const [idolList, setIdolList] = useState([]);
+  const [fullIdolList, setFullIdolList] = useState([]); // 전체 아이돌 목록
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [cursor, setCursor] = useState(0);
@@ -31,6 +32,28 @@ const AddFavoriteIdol = () => {
   useEffect(() => {
     fetchIdols(cursor);
   }, [cursor]);
+
+  useEffect(() => {
+    const fetchAllIdols = async () => {
+      const pageSize = 100;
+      try {
+        setLoading(true);
+        // cursor가 없을 때 API 호출
+        const result = await getIdolList(
+          cursor ? { cursor, pageSize } : { pageSize }
+        );
+        setFullIdolList(result.list); // 전체 목록 상태에 저장
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAllIdols(); // 컴포넌트 마운트 시 전체 아이돌 목록 가져오기
+  }, [cursor]);
+
+  console.log(fullIdolList);
 
   useEffect(() => {
     // 로컬 스토리지에서 선택된 아이돌을 가져와 상태 업데이트
@@ -71,17 +94,13 @@ const AddFavoriteIdol = () => {
   const handleSaveToLocalStorage = () => {
     // 기존의 favoriteIdols를 가져옴
     const storedIdols = JSON.parse(localStorage.getItem("selectedIdols")) || [];
-
     // 기존 아이돌과 새로운 선택된 아이돌 결합
     const updatedFavoriteIdols = [
       ...new Set([...storedIdols, ...selectedIdols]),
     ];
-
     // 업데이트된 favoriteIdols를 로컬 스토리지에 저장
     localStorage.setItem("selectedIdols", JSON.stringify(updatedFavoriteIdols));
-
     alert("선택한 아이돌이 로컬 스토리지에 저장되었습니다!");
-
     // 상태 업데이트
     setFavoriteIdols(updatedFavoriteIdols);
     setSelectedIdols([]); // 선택된 아이돌 초기화
@@ -98,13 +117,14 @@ const AddFavoriteIdol = () => {
 
   if (error) return <p>Error: {error}</p>;
 
+  console.log(favoriteIdols);
   return (
     <>
       <div className="favoriteContainer">
         <p>내가 관심있는 아이돌</p>
         <section>
           {favoriteIdols.map((idolId) => {
-            const idol = idolList.find((i) => i.id === idolId);
+            const idol = fullIdolList.find((i) => i.id === idolId); // 전체 목록에서 검색
             return idol ? (
               <div key={idol.id}>
                 <div>
@@ -119,7 +139,14 @@ const AddFavoriteIdol = () => {
                 <h3>{idol.name}</h3>
                 <p>{idol.group}</p>
               </div>
-            ) : null;
+            ) : (
+              <div>
+                <div>
+                  <img src={checkImage} alt="선택없을때" />
+                </div>
+                <h3>추가 해주세요</h3>
+              </div>
+            );
           })}
         </section>
       </div>

@@ -13,9 +13,13 @@ async function fetchApi(url, options = {}) {
   }
 }
 
-export async function getIdolList({ cursor = "", pageSize = "" }) {
-  const params = new URLSearchParams({ cursor, pageSize });
-  const url = `${BASE_URL}/idols?${params}`;
+export async function getIdolList({ cursor, pageSize } = {}) {
+  const params = new URLSearchParams();
+
+  if (pageSize) params.append("pageSize", pageSize); // pageSize가 있을 경우에만 추가
+  if (cursor) params.append("cursor", cursor); // cursor가 있을 경우에만 추가
+
+  const url = `${BASE_URL}/idols?${params.toString()}`; // URL 쿼리 문자열 생성
 
   return fetchApi(url);
 }

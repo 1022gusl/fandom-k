@@ -70,25 +70,6 @@
       }
     }
   }
-  .pagination-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-
-    button {
-      background-color: #f96d69;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-
-      &:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-      }
-    }
-  }
 }
 
 .addFavoriteContainer {
