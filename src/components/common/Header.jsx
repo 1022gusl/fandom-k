@@ -1,4 +1,4 @@
-import styles from './Header.module.css';
+import styles from './Header.module.scss';
 import logo from '../../assets/images/logo.png';
 import ProfileIcon from '../../assets/icons/profileIcon.svg';
 
