@@ -3,7 +3,7 @@
 .creditWrapper {
   max-width: 1200px;
   margin: 50px auto 50px;
-  padding: 20px 78px;
+  padding: 30px 78px 41px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +14,6 @@
 
 .creditBox {
   width: 100%;
-  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,7 +47,7 @@
 .rechargeButton {
   background: none;
   border: none;
-  color: rgba($color-brand-peach, 0.8);
+  color: rgba($color-brand-peach, 0.7);
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 0.05em; // 자간 조정
@@ -56,5 +55,19 @@
 
   &:hover {
     color: $color-brand-peach;
+  }
+}
+
+@media (max-width: 1199px) {
+  .creditWrapper {
+    margin: 0 24px 64px;
+    padding: 35px 64px 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .creditWrapper {
+    margin: 16px 24px 40px;
+    padding: 20px;
   }
 }
