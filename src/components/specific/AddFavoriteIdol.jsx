@@ -1,27 +1,65 @@
 import React, { useEffect, useState } from "react";
 import { getIdolList } from "../../apis/IdolList";
-import deleteButton from "../../assets/images/Vector (1).png";
+import FavoriteIdols from "./FavoriteIdols";
 import checkImage from "../../assets/images/Check.png";
+import leftButton from "../../assets/images/Vector left.png";
+import rightButton from "../../assets/images/Vector right.png";
 import "./AddFavoriteIdol.scss";
+import IdolCard from "./IdolCard";
 
 const AddFavoriteIdol = () => {
   const [idolList, setIdolList] = useState([]);
-  const [fullIdolList, setFullIdolList] = useState([]); // 전체 아이돌 목록
+  const [fullIdolList, setFullIdolList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [cursor, setCursor] = useState(0);
-  const [nextCursor, setNextCursor] = useState(null); // 다음 cursor 상태
-  const [prevCursor, setPrevCursor] = useState([]); // 이전 cursor 상태
-  const [selectedIdols, setSelectedIdols] = useState([]); // 선택된 아이돌 상태
+  const [nextCursor, setNextCursor] = useState(null);
+  const [prevCursor, setPrevCursor] = useState([]);
+  const [selectedIdols, setSelectedIdols] = useState([]);
   const [favoriteIdols, setFavoriteIdols] = useState([]);
-  const pageSize = 16; // 한 페이지당 표시할 아이돌 수
+  const pageSize = 16;
 
   const fetchIdols = async (cursor) => {
     try {
       setLoading(true);
       const result = await getIdolList({ cursor, pageSize });
-      setIdolList(result.list);
-      setNextCursor(result.nextCursor); // 다음 cursor 설정
+      const storedIdols =
+        JSON.parse(localStorage.getItem("selectedIdols")) || [];
+
+      // 로컬스토리지에 없는 아이돌만 남기고, idolList의 공백을 없앱니다.
+      const filteredIdolList = result.list.filter(
+        (idol) => !storedIdols.includes(idol.id)
+      );
+
+      // 부족한 경우 추가 페이지를 요청하여 idolList를 채움
+      let combinedIdolList = [...filteredIdolList];
+      let tempCursor = result.nextCursor;
+
+      while (combinedIdolList.length < pageSize && tempCursor) {
+        const additionalResult = await getIdolList({
+          cursor: tempCursor,
+          pageSize,
+        });
+        const additionalFiltered = additionalResult.list.filter(
+          (idol) => !storedIdols.includes(idol.id)
+        );
+        combinedIdolList = [...combinedIdolList, ...additionalFiltered];
+        tempCursor = additionalResult.nextCursor;
+      }
+
+      setIdolList(combinedIdolList.slice(0, pageSize));
+
+      // 만약 아이돌 리스트가 없다면, 다음 페이지 커서를 설정
+      if (combinedIdolList.length === 0) {
+        setNextCursor(null);
+      } else if (combinedIdolList.length > 16) {
+        // 다음 페이지 커서를 마지막 아이돌 ID를 기준으로 설정
+        setNextCursor(combinedIdolList[15].id);
+        console.log(nextCursor);
+      } else if (combinedIdolList.length <= 16 && combinedIdolList.length > 0) {
+        setNextCursor(combinedIdolList[combinedIdolList.length - 1].id);
+        console.log(nextCursor);
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -31,16 +69,15 @@ const AddFavoriteIdol = () => {
 
   useEffect(() => {
     fetchIdols(cursor);
-  }, [cursor]);
+  }, [cursor, favoriteIdols]);
 
   useEffect(() => {
     const fetchAllIdols = async () => {
       const pageSize = 100;
       try {
         setLoading(true);
-        // 전체 아이돌 목록 가져오기
         const result = await getIdolList({ pageSize });
-        setFullIdolList(result.list); // 전체 목록 상태에 저장
+        setFullIdolList(result.list);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -48,35 +85,34 @@ const AddFavoriteIdol = () => {
       }
     };
 
-    fetchAllIdols(); // 컴포넌트 마운트 시 전체 아이돌 목록 가져오기
+    fetchAllIdols();
   }, []);
 
   useEffect(() => {
-    // 로컬 스토리지에서 선택된 아이돌을 가져와 상태 업데이트
     const storedIdols = JSON.parse(localStorage.getItem("selectedIdols")) || [];
     setFavoriteIdols(storedIdols);
   }, []);
 
   const handleNextPage = () => {
     if (nextCursor) {
-      setPrevCursor((prev) => [...prev, cursor]); // 현재 cursor를 이전 cursor 스택에 추가
-      setCursor(nextCursor); // 다음 cursor로 이동
+      setPrevCursor((prev) => [...prev, cursor]);
+      setCursor(nextCursor);
     }
   };
 
   const handlePrevPage = () => {
     if (prevCursor.length > 0) {
-      setCursor(prevCursor[prevCursor.length - 1]); // 스택의 마지막 값을 cursor로 설정
-      setPrevCursor((prev) => prev.slice(0, prev.length - 1)); // 스택에서 마지막 값을 제거
+      setCursor(prevCursor[prevCursor.length - 1]);
+      setPrevCursor((prev) => prev.slice(0, prev.length - 1));
     }
   };
 
   const handleSelectIdol = (idol) => {
     setSelectedIdols((prev) => {
       if (prev.includes(idol.id)) {
-        return prev.filter((id) => id !== idol.id); // 이미 선택된 경우 선택 해제
+        return prev.filter((id) => id !== idol.id);
       } else {
-        return [...prev, idol.id]; // 선택되지 않은 경우 선택
+        return [...prev, idol.id];
       }
     });
   };
@@ -89,82 +125,64 @@ const AddFavoriteIdol = () => {
     localStorage.setItem("selectedIdols", JSON.stringify(updatedFavoriteIdols));
     alert("선택한 아이돌이 로컬 스토리지에 저장되었습니다!");
     setFavoriteIdols(updatedFavoriteIdols);
-    setSelectedIdols([]); // 선택된 아이돌 초기화
+    setSelectedIdols([]);
   };
 
   const handleRemoveToLocalStorage = (idolId) => {
     const updatedFavoriteIdols = favoriteIdols.filter((id) => id !== idolId);
     localStorage.setItem("selectedIdols", JSON.stringify(updatedFavoriteIdols));
     setFavoriteIdols(updatedFavoriteIdols);
+
+    // 삭제한 아이돌을 idolList에 추가
+    const removedIdol = fullIdolList.find((idol) => idol.id === idolId);
+    if (removedIdol) {
+      setIdolList((prev) => [...prev, removedIdol].slice(0, pageSize));
+    }
+
     alert("선택한 아이돌이 로컬 스토리지에서 삭제되었습니다!");
   };
 
   if (loading) return <p>Loading...</p>;
 
   if (error) return <p>Error: {error}</p>;
-
+  console.log(cursor);
+  console.log(nextCursor);
   return (
     <>
-      <div className="favoriteContainer">
-        <p>내가 관심있는 아이돌</p>
-        <section>
-          {favoriteIdols.map((idolId) => {
-            const idol = fullIdolList.find((i) => i.id === idolId); // 전체 목록에서 검색
-            return idol ? (
-              <div key={idol.id}>
-                <div>
-                  <img
-                    src={idol.profilePicture}
-                    alt={`${idol.name}'s profile`}
-                  />
-                  <button onClick={() => handleRemoveToLocalStorage(idol.id)}>
-                    <img src={deleteButton} alt="관심있는 아이돌 삭제 버튼" />
-                  </button>
-                </div>
-                <h3>{idol.name}</h3>
-                <p>{idol.group}</p>
-              </div>
-            ) : (
-              <div>
-                <div>
-                  <img src={checkImage} alt="선택없을때" />
-                </div>
-                <h3>추가 해주세요</h3>
-              </div>
-            );
-          })}
-        </section>
-      </div>
+      <FavoriteIdols
+        favoriteIdols={favoriteIdols}
+        fullIdolList={fullIdolList}
+        handleRemoveToLocalStorage={handleRemoveToLocalStorage}
+      />
       <br />
       <div className="addFavoriteContainer">
-        <p>관심 있는 아이돌을 추가해보세요.</p>
-        <section>
-          {idolList.map((idol) => (
-            <div key={idol.id} onClick={() => handleSelectIdol(idol)}>
-              <div>
-                <img src={idol.profilePicture} alt={`${idol.name}'s profile`} />
-                {selectedIdols.includes(idol.id) && (
-                  <div className="overlay">
-                    <img src={checkImage} alt="체크 이미지" />
-                  </div>
-                )}
-              </div>
-              <h3>{idol.name}</h3>
-              <p>{idol.group}</p>
-            </div>
-          ))}
-        </section>
-        <div className="pagination-buttons">
-          <button onClick={handlePrevPage} disabled={prevCursor.length === 0}>
-            이전
-          </button>
-          <button onClick={handleNextPage} disabled={!nextCursor}>
-            다음
-          </button>
+        <p className="addTitle">관심 있는 아이돌을 추가해보세요.</p>
+        <div className="buttonWrapper">
+          <div className="paginationButtons">
+            <button
+              onClick={handlePrevPage}
+              disabled={prevCursor.length === 0}
+              className="paginationButton left"
+            >
+              <img src={leftButton} alt="아이돌 리스트 이전 버튼" />
+            </button>
+          </div>
+          <IdolCard
+            idolList={idolList}
+            selectedIdols={selectedIdols}
+            handleSelectIdol={handleSelectIdol}
+          />
+          <div className="paginationButtons">
+            <button
+              onClick={handleNextPage}
+              disabled={!nextCursor}
+              className="paginationButton right"
+            >
+              <img src={rightButton} alt="아이돌 리스트 다음 버튼" />
+            </button>
+          </div>
         </div>
-        <button onClick={handleSaveToLocalStorage} className="save-button">
-          추가하기
-        </button>
+        <button onClick={handleSaveToLocalStorage}>추가하기</button>
       </div>
     </>
   );
