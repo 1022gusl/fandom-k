@@ -1,11 +1,10 @@
-import Header from './components/common/Header';
-import ChartPage from './pages/List/ChartOfTheMonth/ChartPage';
+import ListPage from "./pages/ListPage/ListPage";
+import "./styles/global.scss";
 
 function App() {
   return (
     <div>
-      <Header />
-      <ChartPage />
+      <ListPage />
     </div>
   );
 }

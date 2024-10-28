@@ -1,4 +1,4 @@
-import { FEMALE, MALE } from "../../../../../constants/tabGenderTypes";
+import { FEMALE, MALE } from "../../../../constants/tabGenderTypes";
 import styles from "./TabMenu.module.css";
 
 const TabMenu = ({ selectedTab, onTabChange }) => {
