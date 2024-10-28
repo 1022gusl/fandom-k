@@ -10,6 +10,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
     "react-scripts": "^5.0.1",
+    "sass": "^1.80.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -45,7 +46,6 @@
     "eslint-plugin-react": "^7.37.2",
     "globals": "^15.11.0",
     "prettier": "^3.3.3",
-    "sass": "^1.80.4",
     "sass-loader": "^16.0.2"
   }
 }
