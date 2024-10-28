@@ -1,11 +1,14 @@
 import TributeSlider from "../../components/slider/TributeSlider";
 import ChartPage from "../../components/ChartOfTheMonth/ChartPage";
+import Header from "../../components/common/Header";
 import styles from "./ListPage.module.scss";
 
 const ListPage = () => {
   return (
     <div>
-      <h1>임시 헤더</h1> {/* 임시 헤더와 임시 크레딧은 후에 추가할 예정  */}
+      <Header />
+      {/* 임시 헤더 현재 머지 후 넣어두긴 했는데 네 잘 돌아가고 있는지 확인을 못했어요
+       임시 크레딧은 후에 추가할 예정  */}
       <div className={styles.mainContainer}>
         <h1 className={styles.helloCredit}>임시 크레딧</h1>
         <h2>요 왼쪽 부분에 후원을 기다리는 조공 텍스트(타이틀) 추가하기</h2>
