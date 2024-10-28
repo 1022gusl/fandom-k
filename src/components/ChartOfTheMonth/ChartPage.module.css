@@ -4,10 +4,8 @@ mock 데이터나 api가 연동이 되어 코드가 의도대로 작동하는게
 */
 
 .container {
-  max-width: 1200px;
+  width: 1200px;
   margin-top: 80px;
-  padding: 0 130px;
-  background-color: #02000e;
   /* 임시로 마진과 패딩, bg-color를 줬습니다. 차후에 list페이지에 컨테이너를 입힐 때 수정 및 삭제하면 됩니다. */
 }
 
