@@ -1,22 +1,25 @@
 @import '../../styles/global.scss';
 
+@mixin flex-style($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
 .creditWrapper {
+  @include flex-style(column);
   max-width: 1200px;
   margin: 50px auto 50px;
   padding: 30px 78px 41px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: $color-black-1;
   border: 1px solid rgba($color-white-3, 0.8);
   border-radius: 8px;
 }
 
 .creditBox {
+  @include flex-style(row, space-between);
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-radius: 8px;
 }
 
