@@ -1,0 +1,60 @@
+@import '../../styles/global.scss';
+
+.creditWrapper {
+  max-width: 1200px;
+  margin: 50px auto 50px;
+  padding: 20px 78px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-black-1;
+  border: 1px solid rgba($color-white-3, 0.8);
+  border-radius: 8px;
+}
+
+.creditBox {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.creditInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.creditTitle {
+  color: rgba($color-white-1, 0.6);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.creditAmount {
+  display: flex;
+  align-items: center;
+  color: rgba($color-white-1, 0.87);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.creditIcon {
+  margin-right: 5px;
+}
+
+.rechargeButton {
+  background: none;
+  border: none;
+  color: rgba($color-brand-peach, 0.8);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em; // 자간 조정
+  cursor: pointer;
+
+  &:hover {
+    color: $color-brand-peach;
+  }
+}
