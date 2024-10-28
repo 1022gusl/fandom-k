@@ -28,7 +28,7 @@ function LandingPage() {
 
         <div className={styles.textBox1}>
           <h2 className={styles.heading}>내가 좋아하는 아이돌을<br />가장 <span className={styles.highlight}>쉽게 덕질 </span>하는 방법</h2>
-          <img src={fandomKLogo} className={styles.logo} alt="Fandom-K logo" />
+          <img src={fandomKLogo} className={styles.logo} alt="Fandom-K logo" onClick={moveToList}/>
           <button className={styles.startText} onClick={moveToList}>지금 시작하기</button>
         </div>
       </div>
