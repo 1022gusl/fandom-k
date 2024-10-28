@@ -5,12 +5,20 @@ const IdolElement = ({ rank, idol }) => {
     <li>
       <div className={styles.idolInfo}>
         <div className={styles.imgBorder}>
-          <img src={idol.imageUrl} alt={idol.name} className={styles.idolImg} />
+          <img
+            src={idol.profilePicture}
+            alt={idol.name}
+            className={styles.idolImg}
+          />
         </div>
         <span>{rank}</span>
-        <p>{idol.name}</p>
+        <p>
+          {idol.group} {idol.name}
+        </p>
       </div>
-      <p className={styles.voteInfo}>{idol.voteCount.toLocaleString()}표</p>
+      <p className={styles.voteInfo}>
+        {idol.voteCount ? idol.voteCount.toLocaleString() : "0"}표
+      </p>
     </li>
   );
 };
