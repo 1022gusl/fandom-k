@@ -21,7 +21,6 @@ const ChartPage = () => {
     }
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
       const data = await getCharts({ gender: tab, cursor: currentCursor });
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
