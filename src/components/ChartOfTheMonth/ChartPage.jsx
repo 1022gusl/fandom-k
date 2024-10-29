@@ -5,6 +5,8 @@ import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
+import Button from "../../components/common/Button";
+import chartIcon from "../../assets/icons/chart.png";
 import "./ChartPage.scss";
 
 const ChartPage = () => {
@@ -22,7 +24,7 @@ const ChartPage = () => {
     }
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 2000)); //임시로 로딩 시간을 주었습니다
       const data = await getCharts({ gender: tab, cursor: currentCursor });
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
@@ -59,7 +61,14 @@ const ChartPage = () => {
     <div className="chartContainer">
       <div className="chartHeader">
         <h2 className="chartName">이달의 차트</h2>
-        <button>차트 투표하기</button>
+        <Button
+          /*모달 추가 시 구현 onClick={}*/ className="voteButton"
+          width="128px"
+          height="32px"
+        >
+          <img src={chartIcon} alt="차트 이미지" className="chartIcon" /> 차트
+          투표하기
+        </Button>
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
       {isLoading && idolList.length === 0 ? (

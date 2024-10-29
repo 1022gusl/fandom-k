@@ -22,14 +22,18 @@
   color: $color-white-1;
 }
 
-.chartheader button {
-  width: 128px;
+.voteButton {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 5px;
+  @include font-style(700, 13px, 26px, 0.26px);
 }
 
-/* 버튼은 공통 버튼으로 변경하기 */
+.chartIcon {
+  width: 24px;
+  height: 24px;
+}
 
 @media (max-width: 1199px) {
   .chartContainer {
