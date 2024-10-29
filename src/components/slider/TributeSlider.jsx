@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { getIdolList } from "../../apis/IdolList";
 import SlidernavigationButton from "./SliderNavigationButton";
 import SliderItem from "./SliderItem";
+import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 
 const TributeSlider = () => {
   const sliderRef = useRef(null);
@@ -59,34 +60,35 @@ const TributeSlider = () => {
     fetchIdolData();
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="sliderContainer">
-      {/* 왼쪽 화살표 버튼: currentIndex가 0이면 투명도와 클릭 비활성화 */}
-      <SlidernavigationButton
-        onClick={prevSlide}
-        direction="prevButton"
-        disabled={currentIndex === 0}
-      />
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <>
+          <SlidernavigationButton
+            onClick={prevSlide}
+            direction="prevButton"
+            disabled={currentIndex === 0}
+          />
 
-      <div className="sliderBox">
-        <div className="tributeSupport">후원을 기다리는 조공</div>
-        <Slider ref={sliderRef} {...settings}>
-          {idolList.map((idol, index) => (
-            <SliderItem key={idol.id || index} idol={idol} />
-          ))}
-        </Slider>
-      </div>
+          <div className="sliderBox">
+            <div className="tributeSupport">후원을 기다리는 조공</div>
+            <Slider ref={sliderRef} {...settings}>
+              {idolList.map((idol, index) => (
+                <SliderItem key={idol.id || index} idol={idol} />
+              ))}
+            </Slider>
+          </div>
 
-      {/* 오른쪽 화살표 버튼: currentIndex가 maxIndex보다 작으면 활성화 */}
-      <SlidernavigationButton
-        onClick={nextSlide}
-        direction="nextButton"
-        disabled={currentIndex >= maxIndex}
-      />
+          {/* 오른쪽 화살표 버튼: currentIndex가 maxIndex보다 작으면 활성화 */}
+          <SlidernavigationButton
+            onClick={nextSlide}
+            direction="nextButton"
+            disabled={currentIndex >= maxIndex}
+          />
+        </>
+      )}
     </div>
   );
 };

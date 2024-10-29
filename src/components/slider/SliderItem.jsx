@@ -12,6 +12,7 @@ const SliderItem = ({ idol }) => (
         src={idol.profilePicture || "defaultImage.jpg"}
         alt={idol.name}
       />
+
       <Button className="tributeButton">후원하기</Button>
     </div>
     <AdInfo adLocation={idol.adLocation} name={idol.name} />

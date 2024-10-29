@@ -1,0 +1,24 @@
+.spinner {
+  width: 100px;
+  height: 100px;
+  box-sizing: border-box;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff; /* $color-white-1 값을 #ffffff로 대체 */
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+
+  /* 화면 중앙 고정과 배경 설정 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8); /* 투명한 검정 배경 */
+
+  z-index: 10;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
