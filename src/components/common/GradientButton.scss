@@ -1,0 +1,78 @@
+// Button.scss
+$color-white-1: #ffffff;
+$color-brand-pink: #fe5493;
+
+.gradientButton {
+  height: 40px;
+  width: 234px;
+  padding: 2px 16px 3px 16px;
+  border-radius: 3px;
+  position: absolute;
+  top: 233px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, #f86f65 0%, $color-brand-pink 100%);
+  color: $color-white-1;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+
+  @media (max-width: 374px) {
+    height: 31px;
+    width: 142px;
+    font-size: 13px;
+  }
+
+  // .chartVoteButton 변형
+  &.chartVoteButton {
+    height: 32px;
+    width: 128px;
+    top: 2px;
+    border-radius: 3px;
+    gap: 4px;
+  }
+
+  // .chargeButton 변형
+  &.chargeButton {
+    height: 42px;
+    width: 295px;
+    top: 298px;
+  }
+
+  // .supportButton 변형
+  &.supportButton {
+    height: 42px;
+    width: 295px;
+    top: 2px;
+  }
+
+  // .voteButton 변형
+  &.voteButton {
+    height: 42px;
+    width: 477px;
+    top: 601px;
+    @media (max-width: 374px) {
+      width: 327px;
+      top: 16px;
+    }
+  }
+  &.confirmButton {
+    height: 42px;
+    width: 295px;
+    top: 201px;
+  }
+  // .addButton 변형
+  &.addButton {
+    height: 48px;
+    width: 255px;
+    top: 951px;
+
+    @media (max-width: 744px) {
+      top: 876px;
+    }
+
+    @media (max-width: 374px) {
+      top: 24px;
+    }
+  }
+}
