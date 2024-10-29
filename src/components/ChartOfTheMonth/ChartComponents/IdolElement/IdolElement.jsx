@@ -1,17 +1,17 @@
 import IdolImage from "../../../common/IdolImage/IdolImage";
-import styles from "./IdolElement.module.scss";
+import "./IdolElement.scss";
 
 const IdolElement = ({ rank, idol }) => {
   return (
     <li>
-      <div className={styles.idolInfo}>
-        <IdolImage src={idol.profilePicture} alt={idol.name || undefined} />
+      <div className="idolInfo">
+        <IdolImage src={idol.profilePicture} alt={idol.name} />
         <span>{rank}</span>
         <p>
           {idol.group} {idol.name}
         </p>
       </div>
-      <p className={styles.voteInfo}>
+      <p className="voteInfo">
         {idol.voteCount ? idol.voteCount.toLocaleString() : "0"}표
       </p>
     </li>

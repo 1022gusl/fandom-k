@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import TabMenu from "./components/TabMenu/TabMenu";
-import IdolList from "./components/IdolList/IdolList";
-import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
+import TabMenu from "./ChartComponents/TabMenu/TabMenu";
+import IdolList from "./ChartComponents/IdolList/IdolList";
+import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
 import styles from "./ChartPage.module.css";
@@ -16,6 +16,7 @@ const ChartPage = () => {
     setIsLoading(true);
     try {
       const data = await getCharts({ gender: tab, cursor: currentCursor });
+      console.log("API 응답 데이터:", data);
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
       );

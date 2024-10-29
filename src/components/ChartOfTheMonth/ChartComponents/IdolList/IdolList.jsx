@@ -1,11 +1,11 @@
-import IdolElement from '../IdolElement/IdolElement';
-import styles from './IdolList.module.css';
+import IdolElement from "../IdolElement/IdolElement";
+import "./IdolList.scss";
 
 const IdolList = ({ idols }) => {
   const sortedVoteIdols = [...idols].sort((a, b) => b.voteCount - a.voteCount);
 
   return (
-    <ul className={styles.idolListUl}>
+    <ul className="idolListUl">
       {sortedVoteIdols.map((idol, index) => (
         <IdolElement key={idol.id} rank={index + 1} idol={idol} />
       ))}
