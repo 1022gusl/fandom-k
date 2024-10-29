@@ -1,5 +1,5 @@
-import nextButton from "../../assets/icon/nextButton.png";
-import prevButton from "../../assets/icon/prevButton.png";
+import nextButton from "../../assets/icons/nextButton.png";
+import prevButton from "../../assets/icons/prevButton.png";
 const SlidernavigationButton = ({ onClick, direction, disabled }) => (
   <button
     className={`arrowButton ${direction}`}
