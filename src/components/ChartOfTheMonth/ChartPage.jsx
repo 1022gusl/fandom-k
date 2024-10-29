@@ -4,6 +4,7 @@ import IdolList from "./ChartComponents/IdolList/IdolList";
 import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 import "./ChartPage.scss";
 
 const ChartPage = () => {
@@ -21,6 +22,7 @@ const ChartPage = () => {
     }
 
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const data = await getCharts({ gender: tab, cursor: currentCursor });
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
@@ -61,12 +63,12 @@ const ChartPage = () => {
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
       {isLoading && idolList.length === 0 ? (
-        <p>데이터를 불러오는 중입니다...</p>
+        <LoadingSpinner />
       ) : (
         <IdolList idols={idolList} />
       )}
       {cursor && !isMoreLoading && <LoadMoreButton onClick={handleLoadMore} />}
-      {isMoreLoading && <p>더 불러오는 중...</p>}
+      {isMoreLoading && <LoadingSpinner />}
     </div>
   );
 };
