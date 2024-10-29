@@ -5,8 +5,10 @@
 @import "../../styles/global.scss";
 
 .chartContainer {
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   margin-top: 80px;
+  padding: 0 20px;
 }
 
 .chartHeader {
@@ -31,3 +33,15 @@
 }
 
 /* 버튼은 공통 버튼으로 변경하기 */
+
+@media (max-width: 1199px) {
+  .chartContainer {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chartContainer {
+    min-width: 327px;
+  }
+}

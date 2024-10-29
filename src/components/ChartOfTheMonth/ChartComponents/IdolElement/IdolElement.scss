@@ -27,3 +27,15 @@
 .voteInfo {
   color: rgba($color-white-1, 0.6);
 }
+
+@media (max-width: 1199px) {
+  .chartLi {
+    @include font-style(400, 14px, 17px);
+  }
+}
+
+@media (max-width: 768px) {
+  .chartLi {
+    margin-top: 10px;
+  }
+}
