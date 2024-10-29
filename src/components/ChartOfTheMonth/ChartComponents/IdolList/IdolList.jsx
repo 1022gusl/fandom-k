@@ -2,7 +2,9 @@ import IdolElement from "../IdolElement/IdolElement";
 import "./IdolList.scss";
 
 const IdolList = ({ idols }) => {
-  const sortedVoteIdols = [...idols].sort((a, b) => b.voteCount - a.voteCount);
+  const sortedVoteIdols = [...idols].sort(
+    (a, b) => b.totalVotes - a.totalVotes
+  );
 
   return (
     <ul className="idolListUl">

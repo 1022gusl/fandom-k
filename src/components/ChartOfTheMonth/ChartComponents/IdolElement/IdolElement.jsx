@@ -12,7 +12,7 @@ const IdolElement = ({ rank, idol }) => {
         </p>
       </div>
       <p className="voteInfo">
-        {idol.voteCount ? idol.voteCount.toLocaleString() : "0"}표
+        {idol.voteCount ? idol.totalVotes.toLocaleString() : "0"}표
       </p>
     </li>
   );
