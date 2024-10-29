@@ -16,27 +16,10 @@ async function fetchApi(url, options = {}) {
 export async function getIdolList({ cursor, pageSize } = {}) {
   const params = new URLSearchParams();
 
-  if (pageSize) params.append("pageSize", pageSize); // pageSize가 있을 경우에만 추가
-  if (cursor) params.append("cursor", cursor); // cursor가 있을 경우에만 추가
+  if (pageSize) params.append("pageSize", pageSize);
+  if (cursor) params.append("cursor", cursor);
 
-  const url = `${BASE_URL}/idols?${params.toString()}`; // URL 쿼리 문자열 생성
+  const url = `${BASE_URL}/idols?${params.toString()}`;
 
   return fetchApi(url);
 }
-
-// export const getIdolList = async ({ cursor = null, limit = 50 }) => {
-//   try {
-//     const url = `${BASE_URL}/idols?${cursor ? `cursor=${cursor}&` : ""}limit=${limit}`;
-//     const response = await fetch(url);
-
-//     if (!response.ok) {
-//       throw new Error("아이돌 데이터를 가져오는 데 실패했어요.");
-//     }
-
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("아이돌 데이터를 불러오는 중 오류가 발생했어요:", error);
-//     throw error;
-//   }
-// };

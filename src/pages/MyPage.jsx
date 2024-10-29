@@ -1,5 +1,5 @@
 import React from "react";
-import AddFavoriteIdol from "../components/specific/AddFavoriteIdol";
+import AddFavoriteIdol from "../components/myPage/AddFavoriteIdol";
 import "./MyPage.scss";
 
 const MyPage = () => {

@@ -1,0 +1,29 @@
+.idolSection {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 24px;
+  max-height: calc(179px * 2 + 24px);
+  overflow: hidden;
+}
+
+/* 반응형 - Tablet */
+@media screen and (max-width: 1199px) and (min-width: 745px) {
+  .idolSection {
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+  }
+}
+
+/* 반응형 - Mobile */
+@media screen and (max-width: 744px) {
+  .idolSection {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    overflow-x: hidden;
+    gap: 17px;
+    max-height: calc(151px * 2 + 17px);
+  }
+}
