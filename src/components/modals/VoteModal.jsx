@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useCredit } from "../../hooks/useCredit";
 import CommonModal from "./CommonModal";
 import { FEMALE } from "../../constants/tabGenderTypes";
-import { mockIdolData } from "../../pages/List/ChartOfTheMonth/mockData";
+import { mockIdolData } from "../ChartOfTheMonth/mockData";
 import VoteIdolList from "./VoteIdolList";
-import Button from "../../pages/List/ChartOfTheMonth/components/common/Button";
+import Button from "../common/Button.jsx";
 import "./VoteModal.scss";
 
 const VoteModal = ({ isOpen, onClose, selectedTab }) => {
-  // const [selectedTab, setSelectedTab] = useState(FEMALE); //chartpage와 연결 후 삭제 예정
   const [idolList, setIdolList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState(null);
   const { totalCredits, dispatch } = useCredit();
@@ -41,18 +40,11 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
     setIdolList(selectedTab === FEMALE ? mockIdolData : []);
   }, [selectedTab, isOpen]);
 
-  // const fetchIdolData = () => {
-  //   setIdolList(mockIdolData);
-  // };
-
-  // useEffect(() => {
-  //   fetchIdolData(selectedTab);
-  // }, [selectedTab]);
-
   const handleIdolClick = (idolId) => {
-    setSelectedIdol(idolId);
+    setSelectedIdol(idolId); // 선택된 아이돌 ID 상태 업데이트
   };
 
+  // 모달 닫기 함수
   const handleClose = () => {
     setSelectedIdol(null);
     onClose();

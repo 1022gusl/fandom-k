@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TabMenu from "./components/TabMenu/TabMenu";
 import IdolList from "./components/IdolList/IdolList";
-import VoteModal from "../../../components/modals/VoteModal";
-import { CreditProvider } from "../../../hooks/useCredit";
+import VoteModal from "../modals/VoteModal";
+import { CreditProvider } from "../../hooks/useCredit";
 import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { mockIdolData } from "./mockData"; // 임시 Mock 데이터 import
