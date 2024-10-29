@@ -1,6 +1,6 @@
 // TributeInfo.js
 import React from "react";
-import gem from "../../assets/icon/gem.png";
+import gem from "../../assets/icons/gem.png";
 
 const TributeInfo = () => (
   <div className="tributeInfo">

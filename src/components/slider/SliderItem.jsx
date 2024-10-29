@@ -1,6 +1,5 @@
 // SliderItem.js
-import React from "react";
-import Button from "../common/Button";
+
 import AdInfo from "./AdInfo";
 import TributeInfo from "./TributeInfo";
 
@@ -12,7 +11,8 @@ const SliderItem = ({ idol }) => (
         src={idol.profilePicture || "defaultImage.jpg"}
         alt={idol.name}
       />
-      <Button className="tributeButton">후원하기</Button>
+
+      <button className="tributeButton">후원하기</button>
     </div>
     <AdInfo adLocation={idol.adLocation} name={idol.name} />
     <TributeInfo />
