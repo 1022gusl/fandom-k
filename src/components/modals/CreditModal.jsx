@@ -5,7 +5,7 @@ import clickIconChecked from "../../assets/icons/Radio/Checked=True.svg";
 import clickIconUnchecked from "../../assets/icons/Radio/Checked=False.svg";
 import styles from "./CreditModal.module.scss";
 
-function CreditModal({ isOpen, onClose }) {
+function CreditModal({ isOpen, onClose, onCreditUpdate }) {
   const [activeBox, setActiveBox] = useState(null); //활성화된 크레딧 박스 인덱스
   const [totalCredits, setTotalCredits] = useState(0); //총 크레딧
 
@@ -31,6 +31,7 @@ function CreditModal({ isOpen, onClose }) {
       const newTotal = totalCredits + credits; // 새로운 총 크레딧 계산
       localStorage.setItem("credit", newTotal); // LocalStorage에 새로운 총 크레딧 저장
       setTotalCredits(newTotal); // 상태 업데이트
+      onCreditUpdate(newTotal); // 부모 요소로 newTotal 전달하여 totalCredit 상태 업데이트
     }
   };
 
