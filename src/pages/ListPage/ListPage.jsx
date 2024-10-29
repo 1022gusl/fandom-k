@@ -14,7 +14,7 @@ const ListPage = () => {
         <h2>요 왼쪽 부분에 후원을 기다리는 조공 텍스트(타이틀) 추가하기</h2>
 
         <TributeSlider />
-        <ChartPage />
+        {/* <ChartPage /> */}
       </div>
     </div>
   );

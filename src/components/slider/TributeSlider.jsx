@@ -68,6 +68,7 @@ const TributeSlider = () => {
         disabled={currentIndex === 0}
       />
       <div className="sliderBox">
+        {isLoading ? <LoadingSpinner /> : null}
         <div className="tributeSupport">후원을 기다리는 조공</div>
         <Slider ref={sliderRef} {...settings}>
           {idolList.map((idol, index) => (
@@ -75,8 +76,7 @@ const TributeSlider = () => {
           ))}
         </Slider>
       </div>
-      ``
-      {/* 오른쪽 화살표 버튼: currentIndex가 maxIndex보다 작으면 활성화 */}
+
       <SlidernavigationButton
         onClick={nextSlide}
         direction="nextButton"
