@@ -17,23 +17,6 @@ li {
   gap: 8px;
 }
 
-.imgBorder {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  border: 3px solid rgba(249, 109, 105, 1); /* 후에 colors에서 전역컬러로 바꾸기 */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.idolImg {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 span {
   color: rgba(249, 109, 105, 1); /* 후에 colors에서 전역컬러로 바꾸기 */
 }
