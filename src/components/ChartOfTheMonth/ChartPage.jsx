@@ -6,16 +6,22 @@ import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
 import "./ChartPage.scss";
 
-// 구현해야 할 것 ismoreloading, useeffect사용 x, resize
 const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
   const [idolList, setIdolList] = useState([]);
   const [cursor, setCursor] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
+  const [isLoading, setIsLoading] = useState(false);
+  const [isMoreLoading, setIsMoreLoading] = useState(false);
 
   const fetchIdolData = async (tab, currentCursor = null) => {
-    setIsLoading(true);
+    if (currentCursor) {
+      setIsMoreLoading(true);
+    } else {
+      setIsLoading(true);
+    }
+
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000));
       const data = await getCharts({ gender: tab, cursor: currentCursor });
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
@@ -24,7 +30,11 @@ const ChartPage = () => {
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     } finally {
-      setIsLoading(false);
+      if (currentCursor) {
+        setIsMoreLoading(false);
+      } else {
+        setIsLoading(false);
+      }
     }
   };
 
@@ -39,7 +49,9 @@ const ChartPage = () => {
   };
 
   const handleLoadMore = () => {
-    fetchIdolData(selectedTab, cursor);
+    if (!isMoreLoading) {
+      fetchIdolData(selectedTab, cursor);
+    }
   };
 
   return (
@@ -49,13 +61,13 @@ const ChartPage = () => {
         <button>차트 투표하기</button>
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
-      {isLoading && idolList.length === 0 ? ( // api 반영으로 로딩 기능을 추가했는데 차후 로딩스피너가 추가되면 이부분 코드는 바꾸겠습니다.
+      {isLoading && idolList.length === 0 ? (
         <p>데이터를 불러오는 중입니다...</p>
       ) : (
         <IdolList idols={idolList} />
       )}
-      {cursor && !isLoading && <LoadMoreButton onClick={handleLoadMore} />}
-      {isLoading && idolList.length > 0 && <p>더 불러오는 중...</p>}
+      {cursor && !isMoreLoading && <LoadMoreButton onClick={handleLoadMore} />}
+      {isMoreLoading && <p>더 불러오는 중...</p>}
     </div>
   );
 };
