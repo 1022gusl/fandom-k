@@ -3,22 +3,8 @@ import "./IdolImage.scss";
 
 const IdolImage = ({ src, size = "70px" }) => {
   return (
-    <div
-      className="imgBorder"
-      style={{
-        width: size,
-        height: size,
-      }}
-    >
-      <img
-        src={src}
-        alt="Idol"
-        className="idolImg"
-        style={{
-          width: `calc(${size} - 10px)`,
-          height: `calc(${size} - 10px)`,
-        }}
-      />
+    <div className="imgBorder" style={{ "--size": size }}>
+      <img src={src} alt="Idol" className="idolImg" />
     </div>
   );
 };

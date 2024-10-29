@@ -1,6 +1,8 @@
 @import "../../../styles/color.scss";
 
 .imgBorder {
+  width: var(--size);
+  height: var(--size);
   border-radius: 50%;
   border: 3px solid $color-brand-peach;
   display: flex;
@@ -10,6 +12,8 @@
 }
 
 .idolImg {
+  width: calc(var(--size) - 10px);
+  height: calc(var(--size) - 10px);
   border-radius: 50%;
   object-fit: cover;
 }

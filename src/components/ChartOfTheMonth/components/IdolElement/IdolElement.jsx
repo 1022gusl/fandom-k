@@ -6,7 +6,7 @@ const IdolElement = ({ rank, idol }) => {
     <li>
       <div className={styles.idolInfo}>
         <div className={styles.imgBorder}>
-          <IdolImage src={idol.imageUrl} size="70px" />
+          <IdolImage src={idol.imageUrl} />
         </div>
         <span>{rank}</span>
         <p>{idol.name}</p>
