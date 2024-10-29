@@ -9,6 +9,7 @@ import Button from "../../components/common/Button";
 import chartIcon from "../../assets/icons/chart.png";
 import "./ChartPage.scss";
 
+//현재 고려할 내용: resize?, useEffect 사용 안 해 보기
 const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
   const [idolList, setIdolList] = useState([]);
@@ -24,7 +25,7 @@ const ChartPage = () => {
     }
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000)); //임시로 로딩 시간을 주었습니다
+      await new Promise((resolve) => setTimeout(resolve, 2000)); //로딩스피너 확인을 위해 임시로 로딩 시간을 주고 있습니다
       const data = await getCharts({ gender: tab, cursor: currentCursor });
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
