@@ -1,0 +1,15 @@
+@import "../../styles/color.scss";
+
+.imgBorder {
+  border-radius: 50%;
+  border: 3px solid $color-brand-peach;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.idolImg {
+  border-radius: 50%;
+  object-fit: cover;
+}
