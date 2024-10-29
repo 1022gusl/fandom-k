@@ -1,7 +1,19 @@
+import { useState } from 'react';
+import CreditModal from '../modals/CreditModal';
 import styles from '../credit/MyCredit.module.scss';
 import CreditIcon from '../../assets/icons/credit.svg';
 
 const MyCredit = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <section className={styles.creditWrapper}>
       <div className={styles.creditBox}>
@@ -12,8 +24,11 @@ const MyCredit = () => {
             36,000 {/* 스타일 확인차 임의 값 넣어두었습니다. */}
           </div>
         </div>
-        <div className={styles.rechargeButton}>충전하기</div>
+        <button className={styles.rechargeButton} onClick={openModal}>
+          충전하기
+        </button>
       </div>
+      {isModalOpen && <CreditModal isOpen={isModalOpen} onClose={closeModal} />}
     </section>
   );
 };
