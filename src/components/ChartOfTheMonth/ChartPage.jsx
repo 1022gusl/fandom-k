@@ -6,6 +6,7 @@ import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
 import "./ChartPage.scss";
 
+// 구현해야 할 것 ismoreloading, useeffect사용 x, resize
 const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
   const [idolList, setIdolList] = useState([]);
