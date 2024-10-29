@@ -1,9 +1,10 @@
-import ChartPage from "./pages/List/ChartOfTheMonth/ChartPage";
+import ListPage from "./pages/ListPage/ListPage";
+import "./styles/global.scss";
 
 function App() {
   return (
     <div>
-      <ChartPage />
+      <ListPage />
     </div>
   );
 }

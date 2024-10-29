@@ -4,7 +4,7 @@ import IdolList from "./components/IdolList/IdolList";
 import VoteModal from "../../../components/modals/VoteModal";
 import { CreditProvider } from "../../../hooks/useCredit";
 import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
-import { FEMALE } from "../../../constants/tabGenderTypes";
+import { FEMALE } from "../../constants/tabGenderTypes";
 import { mockIdolData } from "./mockData"; // 임시 Mock 데이터 import
 import styles from "./ChartPage.module.css";
 

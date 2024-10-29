@@ -73,6 +73,7 @@ const TributeSlider = () => {
       />
 
       <div className="sliderBox">
+        <div className="tributeSupport">후원을 기다리는 조공</div>
         <Slider ref={sliderRef} {...settings}>
           {idolList.map((idol, index) => (
             <SliderItem key={idol.id || index} idol={idol} />

@@ -22,7 +22,10 @@
 .sliderBox {
   width: 1165px;
 }
-
+.tributeSupport {
+  padding: 20px 9px;
+  font-size: 24px;
+}
 .slick-slide {
   width: 282px !important;
   display: flex;
@@ -125,6 +128,10 @@
   .sliderBox {
     width: 744px;
   }
+  .tributeSupport {
+    padding: 20px 9px;
+    font-size: 18px;
+  }
   .arrowButton {
     display: none;
   }
@@ -133,6 +140,10 @@
 @media (max-width: 374px) {
   .sliderBox {
     width: 374px;
+  }
+  .tributeSupport {
+    padding: 20px 9px;
+    font-size: 16px;
   }
   .sliderItem {
     width: 158px !important;
