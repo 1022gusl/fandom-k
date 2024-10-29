@@ -3,11 +3,11 @@ import "./IdolElement.scss";
 
 const IdolElement = ({ rank, idol }) => {
   return (
-    <li>
+    <li className="chartLi">
       <div className="idolInfo">
         <IdolImage src={idol.profilePicture} alt={idol.name} />
-        <span>{rank}</span>
-        <p>
+        <span className="idolRank">{rank}</span>
+        <p className="idolName">
           {idol.group} {idol.name}
         </p>
       </div>

@@ -1,0 +1,33 @@
+/* 
+현재 기능을 아직 다 구현한게 아니라서 반응형 디자인은 고려하지 않았습니다.
+*/
+
+@import "../../styles/global.scss";
+
+.chartContainer {
+  width: 1200px;
+  margin-top: 80px;
+}
+
+.chartHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  margin-bottom: 24px;
+}
+
+.chartName {
+  @include font-style(700, 24px, 26px);
+  color: $color-white-1;
+}
+
+.chartheader button {
+  width: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 버튼은 공통 버튼으로 변경하기 */

@@ -4,7 +4,7 @@ import IdolList from "./ChartComponents/IdolList/IdolList";
 import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
-import styles from "./ChartPage.module.css";
+import "./ChartPage.scss";
 
 const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
@@ -16,7 +16,6 @@ const ChartPage = () => {
     setIsLoading(true);
     try {
       const data = await getCharts({ gender: tab, cursor: currentCursor });
-      console.log("API 응답 데이터:", data);
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
       );
@@ -43,9 +42,9 @@ const ChartPage = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h2>이달의 차트</h2>
+    <div className="chartContainer">
+      <div className="chartHeader">
+        <h2 className="chartName">이달의 차트</h2>
         <button>차트 투표하기</button>
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
