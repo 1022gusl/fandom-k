@@ -20,7 +20,6 @@ const Button = ({
         background,
         borderRadius,
         cursor: "pointer",
-        fontFamily: "Pretendard",
       }}
       className={className} // button과 전달받은 className 적용
     >
