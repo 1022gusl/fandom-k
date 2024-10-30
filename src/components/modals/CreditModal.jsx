@@ -4,10 +4,10 @@ import CommonModal from "./CommonModal";
 import creditIcon from "../../assets/icons/credit.svg";
 import clickIconChecked from "../../assets/icons/Radio/Checked=True.svg";
 import clickIconUnchecked from "../../assets/icons/Radio/Checked=False.svg";
-import Button from "../../pages/List/ChartOfTheMonth/components/common/Button";
+import Button from "../common/GradientButton";
 import "./CreditModal.scss";
 
-function CreditModal({ isOpen, onClose, onCreditUpdate }) {
+function CreditModal({ isOpen, onClose }) {
   const [activeBox, setActiveBox] = useState(null); //활성화된 크레딧 박스 인덱스
   const { totalCredits, dispatch } = useCredit(); //총 크레딧
 

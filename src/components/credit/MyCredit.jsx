@@ -1,23 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useCredit } from "../../hooks/useCredit";
 import CreditModal from "../modals/CreditModal";
 import "../credit/MyCredit.scss";
 import CreditIcon from "../../assets/icons/credit.svg";
 
 const MyCredit = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [totalCredits, setTotalCredits] = useState(0); // 총 크레딧 state
-
-  useEffect(() => {
-    const storedCredits = localStorage.getItem("credit");
-    if (storedCredits) {
-      setTotalCredits(Number(storedCredits));
-    }
-  }, []);
-
-  // 총 크레딧 상태 업데이트 핸들러
-  const handleCreditUpdate = (newTotal) => {
-    setTotalCredits(newTotal);
-  };
+  const { totalCredits } = useCredit();
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -36,13 +25,7 @@ const MyCredit = () => {
           충전하기
         </button>
       </div>
-      {isModalOpen && (
-        <CreditModal
-          isOpen={isModalOpen}
-          onClose={closeModal}
-          onCreditUpdate={handleCreditUpdate}
-        />
-      )}
+      {isModalOpen && <CreditModal isOpen={isModalOpen} onClose={closeModal} />}
     </section>
   );
 };
