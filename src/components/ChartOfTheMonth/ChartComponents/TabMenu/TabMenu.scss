@@ -1,0 +1,29 @@
+@import "../../../../styles/global.scss";
+
+.tabMenu {
+  display: flex;
+  height: 42px;
+  max-width: 1200px;
+}
+
+.tabMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  cursor: pointer;
+  border: none;
+  background-color: $color-black-2;
+  color: $color-gray-2;
+}
+
+.active {
+  background-color: rgba($color-white-1, 0.15);
+  color: $color-white-1;
+  border-bottom: 1px solid $color-white-1;
+}
+
+.tabMenuButton:hover {
+  color: $color-white-1;
+  border: 1px solid $color-white-1;
+}
