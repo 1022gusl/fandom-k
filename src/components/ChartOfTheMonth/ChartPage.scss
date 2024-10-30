@@ -22,14 +22,6 @@
   color: $color-white-1;
 }
 
-.voteButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  @include font-style(700, 13px, 26px, 0.26px);
-}
-
 .chartIcon {
   width: 24px;
   height: 24px;

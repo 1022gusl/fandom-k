@@ -1,0 +1,20 @@
+.adLayout {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+
+  position: relative;
+}
+.addContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px 0px;
+}
+.adHeading {
+  opacity: 40%;
+}
+.adTitle {
+  font-size: 18px;
+}

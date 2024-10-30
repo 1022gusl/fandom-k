@@ -1,0 +1,65 @@
+.gradientButton {
+  padding: 2px 16px 3px 16px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f86f65 0%, $color-brand-pink 100%);
+  color: $color-white-1;
+  border: none;
+  cursor: pointer;
+
+  &.tributeButton {
+    height: 40px;
+    width: 234px;
+
+    @media (max-width: 374px) {
+      height: 31px;
+      width: 142px;
+      font-size: 13px;
+    }
+  }
+
+  &.chartVoteButton {
+    //차트 투표하기
+    height: 32px;
+    width: 128px;
+    gap: 4px;
+    padding: 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.chargeButton, // 충전하기
+  &.supportButton, // 후원하기
+  &.confirmButton {
+    // 확인하기
+    height: 42px;
+    width: 295px;
+    padding: 0;
+  }
+  &.supportButton {
+    &:disabled {
+      // 후원하기버튼이 disabled일시
+      background: gray !important;
+      cursor: not-allowed;
+    }
+  }
+
+  &.voteButton {
+    // 투표하기
+    height: 42px;
+    width: 477px;
+    padding: 0;
+
+    @media (max-width: 374px) {
+      width: 327px;
+    }
+  }
+
+  &.addButton {
+    // 추가하기
+    height: 48px;
+    width: 255px;
+    border-radius: 24px;
+    padding: 0;
+  }
+}

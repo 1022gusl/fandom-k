@@ -5,7 +5,7 @@ import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
-import Button from "../../components/common/Button";
+import GradientButton from "../../components/common/GradientButton";
 import chartIcon from "../../assets/icons/chart.png";
 import "./ChartPage.scss";
 
@@ -62,14 +62,9 @@ const ChartPage = () => {
     <div className="chartContainer">
       <div className="chartHeader">
         <h2 className="chartName">이달의 차트</h2>
-        <Button
-          /*모달 추가 시 구현 onClick={}*/ className="voteButton"
-          width="128px"
-          height="32px"
-        >
-          <img src={chartIcon} alt="차트 이미지" className="chartIcon" /> 차트
-          투표하기
-        </Button>
+        <GradientButton variant="chartVoteButton" disabled={true}>
+          <img src={chartIcon} alt="차트" className="chartIcon" /> 차트 투표하기
+        </GradientButton>
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
       {isLoading && idolList.length === 0 ? (
