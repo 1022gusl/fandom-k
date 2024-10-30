@@ -1,5 +1,8 @@
+@import "../../styles/color.scss";
+
 .totalCredit {
   text-align: right;
+  margin-bottom: 10px;
 }
 
 .creditBox {
@@ -10,19 +13,29 @@
   width: 360px;
   height: 50px;
   padding: 10px 20px;
-  border: 1px solid #f7f7f8;
+  border: 1px solid $color-white-2;
   border-radius: 8px;
-  background-color: #02000e;
+  background-color: $color-black-1;
   font-size: 24px;
   cursor: pointer;
 
   &:hover,
   &.active {
-    border-color: #f96d69;
+    border-color: $color-brand-peach;
   }
 }
 
 .credit {
   display: flex;
   align-items: center;
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.creditIcon {
+  width: 24px;
+  height: 28px;
 }

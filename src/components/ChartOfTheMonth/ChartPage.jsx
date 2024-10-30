@@ -4,12 +4,13 @@ import IdolList from "./ChartComponents/IdolList/IdolList";
 import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
+// import VoteModal from "../modals/VoteModal";
+// import { CreditProvider } from "../../hooks/useCredit";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
 import GradientButton from "../../components/common/GradientButton";
 import chartIcon from "../../assets/icons/chart.png";
 import "./ChartPage.scss";
 
-//현재 고려할 내용: resize?, useEffect 사용 안 해 보기
 const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
   const [idolList, setIdolList] = useState([]);
@@ -17,6 +18,16 @@ const ChartPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isMoreLoading, setIsMoreLoading] = useState(false);
 
+  /*const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+*/
   const fetchIdolData = async (tab, currentCursor = null) => {
     if (currentCursor) {
       setIsMoreLoading(true);
@@ -29,7 +40,14 @@ const ChartPage = () => {
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
       );
-      setCursor(data.nextCursor);
+
+      console.log("불러온 idols 수:", data.idols.length);
+      console.log("현재 cursor 값:", data.nextCursor);
+      if (!data.nextCursor || data.idols.length === 0) {
+        setCursor(null);
+      } else {
+        setCursor(data.nextCursor);
+      }
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     } finally {
@@ -52,7 +70,7 @@ const ChartPage = () => {
   };
 
   const handleLoadMore = () => {
-    if (!isMoreLoading) {
+    if (!isMoreLoading && cursor) {
       fetchIdolData(selectedTab, cursor);
     }
   };
@@ -61,17 +79,32 @@ const ChartPage = () => {
     <div className="chartContainer">
       <div className="chartHeader">
         <h2 className="chartName">이달의 차트</h2>
-        <GradientButton variant="chartVoteButton" disabled={true}>
-          <img src={chartIcon} alt="차트" className="chartIcon" /> 차트 투표하기
+        <GradientButton
+          //onClick={openModal}
+          variant="chartVoteButton"
+          disabled={true}
+        >
+          <img src={chartIcon} alt="차트" className="chartIcon" />
+          차트 투표하기
         </GradientButton>
+        {/*<CreditProvider>
+          <VoteModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            selectedTab={selectedTab}
+          />
+        </CreditProvider>*/}
       </div>
+
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
       {isLoading && idolList.length === 0 ? (
         <LoadingSpinner />
       ) : (
         <IdolList idols={idolList} />
       )}
-      {cursor && !isMoreLoading && <LoadMoreButton onClick={handleLoadMore} />}
+      {cursor && idolList.length && !isMoreLoading && (
+        <LoadMoreButton onClick={handleLoadMore} />
+      )}
       {isMoreLoading && <LoadingSpinner />}
     </div>
   );
