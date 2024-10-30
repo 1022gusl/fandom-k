@@ -1,0 +1,27 @@
+.imgBox {
+  height: 293px;
+  width: 282px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  position: relative;
+}
+.cardImg {
+  height: 293px;
+  width: 282px;
+  border-radius: 8px;
+}
+
+.tributeButtonContainer {
+  position: absolute;
+  transform: translateX(-50%);
+  top: 233px;
+  left: 50%;
+}
+
+@media (max-width: 374px) {
+  .tributeButtonContainer {
+    height: 31px;
+    width: 142px;
+    top: 167px;
+  }
+}

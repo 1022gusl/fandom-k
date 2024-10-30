@@ -1,0 +1,22 @@
+@import "../../styles/color.scss";
+
+.idolListUl {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.idolBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  border-bottom: 1px solid $color-gray-1;
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+}

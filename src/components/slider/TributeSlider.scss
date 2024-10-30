@@ -1,0 +1,90 @@
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+  position: relative;
+  height: 470.57px;
+}
+.sliderBox {
+  width: 1165px;
+}
+.slick-track {
+  display: flex !important;
+  gap: 9px;
+}
+.slick-list {
+  display: flex;
+  align-items: center;
+}
+.slick-slide {
+  width: 282px !important;
+  display: flex;
+  justify-content: center; /* 슬라이드를 중앙 정렬 */
+  align-items: center;
+  color: $color-white-1;
+}
+
+.tributeSupport {
+  padding: 20px 9px;
+  font-size: 24px;
+}
+
+.sliderItem {
+  width: 282px !important; /* 카드의 고정 너비 */
+  height: 402px; /* 카드의 고정 높이 */
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 수직 배치 */
+  gap: 8px 0px;
+}
+
+@media (max-width: 744px) {
+  .sliderBox {
+    width: 744px;
+  }
+  .tributeSupport {
+    padding: 20px 9px;
+    font-size: 18px;
+  }
+  .arrowButton {
+    display: none;
+  }
+}
+
+@media (max-width: 374px) {
+  .sliderContainer {
+    height: 430px !important;
+  }
+  .sliderBox {
+    height: 100%;
+    width: 374px;
+  }
+  .tributeSupport {
+    padding: 20px 9px;
+    font-size: 16px;
+  }
+  .sliderItem {
+    width: 158px !important;
+    height: 303px !important;
+    gap: 10px 0px;
+  }
+  .imgBox {
+    width: 158px !important;
+    height: 206px !important;
+  }
+  .cardImg {
+    width: 158px;
+    height: 206px !important;
+    border-radius: 8px;
+  }
+  .arrowButton {
+    display: none;
+  }
+  .adHeading {
+    font-size: 12px;
+  }
+  .adTitle {
+    font-size: 14px;
+  }
+}
