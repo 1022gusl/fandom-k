@@ -4,7 +4,7 @@ import CommonModal from "./CommonModal";
 import creditIcon from "../../assets/icons/credit.svg";
 import clickIconChecked from "../../assets/icons/Radio/Checked=True.svg";
 import clickIconUnchecked from "../../assets/icons/Radio/Checked=False.svg";
-import Button from "../common/GradientButton";
+import GradientButton from "../common/GradientButton";
 import "./CreditModal.scss";
 
 function CreditModal({ isOpen, onClose }) {
@@ -23,7 +23,7 @@ function CreditModal({ isOpen, onClose }) {
   const handleChargeCredit = () => {
     if (activeBox !== null) {
       const credits = [100, 500, 1000][activeBox];
-      dispatch({ type: "addCredits", amount: credits });
+      dispatch({ type: "addCredits", amount: credits }); // 설정된 credit값을 추가하는 액션을 dispatch에 전달
     }
   };
 
@@ -33,13 +33,17 @@ function CreditModal({ isOpen, onClose }) {
       {[100, 500, 1000].map((credit, index) => (
         <div
           key={index}
-          className={`creditBox ${activeBox === index ? "active" : ""}`}
+          className={`modalCreditBox ${activeBox === index ? "active" : ""}`}
           onClick={() => handleBoxClick(index)}
         >
           {" "}
           {/*크레딧 박스 렌더링*/}
           <div className="credit">
-            <img src={creditIcon} className="creditIcon" alt="크레딧아이콘" />
+            <img
+              src={creditIcon}
+              className="modalCreditIcon"
+              alt="크레딧아이콘"
+            />
             {credit} {/* 크레딧 금액 표시*/}
           </div>
           <img
@@ -49,9 +53,9 @@ function CreditModal({ isOpen, onClose }) {
           />
         </div>
       ))}
-      <Button onClick={handleChargeCredit} width="100%">
+      <GradientButton variant="chargeButton" onClick={handleChargeCredit}>
         충전하기
-      </Button>{" "}
+      </GradientButton>{" "}
       {/*충전 버튼*/}
     </CommonModal>
   );

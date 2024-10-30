@@ -1,20 +1,7 @@
-import { useEffect } from "react";
 import "./CommonModal.scss";
 import deleteIcon from "../../assets/icons/delete.svg";
 
 const CommonModal = ({ isOpen, onClose, title, children }) => {
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = ""; // 컴포넌트 언마운트 시 스크롤 복구
-    };
-  }, [isOpen]);
-
   if (!isOpen) return null; // 모달창이 열려 있지 않으면 렌더링 중지
 
   return (
