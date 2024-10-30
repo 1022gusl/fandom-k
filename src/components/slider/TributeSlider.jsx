@@ -8,12 +8,21 @@ import { getIdolList } from "../../apis/IdolList";
 import SlidernavigationButton from "./SliderNavigationButton";
 import SliderItem from "./SliderItem";
 import LoadingSpinner from "../common/LoadingSpinner";
+import SupportModal from "../modals/SupportModal";
 
 const TributeSlider = () => {
   const sliderRef = useRef(null);
   const [idolList, setIdolList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0); // 현재 인덱스 상태 추가
+  const [selectedIdol, setSelectedIdol] = useState(null);
+
+  const openDonateModal = (idol) => {
+    setSelectedIdol(idol);
+  };
+  const closeDonateModal = () => {
+    setSelectedIdol(null);
+  };
 
   // 슬라이더를 오른쪽(다음)으로 이동시키는 함수
   // sliderRef가 정의되어 있을 경우 slickNext() 메서드를 호출해 슬라이더를 다음 슬라이드로 이동
@@ -70,7 +79,11 @@ const TributeSlider = () => {
         <div className="tributeSupport">후원을 기다리는 조공</div>
         <Slider ref={sliderRef} {...settings}>
           {idolList.map((idol, index) => (
-            <SliderItem key={idol.id || index} idol={idol} />
+            <SliderItem
+              key={idol.id || index}
+              idol={idol}
+              openDonateModal={() => openDonateModal(idol)}
+            />
           ))}
         </Slider>
       </div>
@@ -80,6 +93,14 @@ const TributeSlider = () => {
         direction="nextButton"
         disabled={currentIndex >= maxIndex}
       />
+
+      {selectedIdol && (
+        <SupportModal
+          isOpen={!!selectedIdol}
+          onClose={closeDonateModal}
+          idol={selectedIdol}
+        />
+      )}
     </section>
   );
 };

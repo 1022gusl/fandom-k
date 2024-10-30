@@ -4,7 +4,7 @@ import GradientButton from "../common/GradientButton";
 import AdInfo from "./AdInfo";
 import TributeInfo from "./TributeInfo";
 
-const SliderItem = ({ idol }) => (
+const SliderItem = ({ idol, openDonateModal }) => (
   <div className="sliderItem">
     <div className="imgBox">
       <img
@@ -13,7 +13,12 @@ const SliderItem = ({ idol }) => (
         alt={idol.name}
       />
       <div className="tributeButtonContainer">
-        <GradientButton variant="tributeButton">후원하기</GradientButton>
+        <GradientButton
+          variant="tributeButton"
+          onClick={() => openDonateModal(idol)}
+        >
+          후원하기
+        </GradientButton>
       </div>
     </div>
     <AdInfo adLocation={idol.adLocation} name={idol.name} />
