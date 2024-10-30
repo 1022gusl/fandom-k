@@ -7,6 +7,7 @@ import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { mockIdolData } from "./mockData"; // 임시 Mock 데이터 import
 import styles from "./ChartPage.module.css";
+import GradientButton from "../common/GradientButton";
 
 /*차트페이지는 이달의 차트의 메인페이지(메인컴포넌트)로 
 탭 메뉴, 아이돌리스트, 아이돌 정보, 더보기 버튼 등을 컴포넌트로 불러와 만들 계획입니다. 
