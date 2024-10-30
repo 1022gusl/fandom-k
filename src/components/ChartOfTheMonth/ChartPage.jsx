@@ -74,7 +74,7 @@ const ChartPage = () => {
   };
 
   return (
-    <div className="chartContainer">
+    <section className="chartContainer">
       <div className="chartHeader">
         <h2 className="chartName">이달의 차트</h2>
         <GradientButton
@@ -104,7 +104,7 @@ const ChartPage = () => {
         <LoadMoreButton onClick={handleLoadMore} />
       )}
       {isMoreLoading && <LoadingSpinner />}
-    </div>
+    </section>
   );
 };
 
