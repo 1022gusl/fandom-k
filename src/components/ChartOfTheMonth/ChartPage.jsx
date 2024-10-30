@@ -25,7 +25,6 @@ const ChartPage = () => {
     }
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000)); //로딩스피너 확인을 위해 임시로 로딩 시간을 주고 있습니다
       const data = await getCharts({ gender: tab, cursor: currentCursor });
       setIdolList((prevList) =>
         currentCursor ? [...prevList, ...data.idols] : data.idols
