@@ -1,0 +1,82 @@
+@import "../../styles/color.scss";
+
+* {
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  height: 70px;
+  margin: 10px;
+}
+
+.idolInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.imgBorder {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 3px solid $color-brand-peach; /* 후에 colors에서 전역컬러로 바꾸기 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+span {
+  color: $color-brand-peach; /* 후에 colors에서 전역컬러로 바꾸기 */
+}
+
+p {
+  color: $color-white-2;
+}
+
+.voteInfo {
+  color: $color-gray-3;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparentize($color-brand-peach, 0.6); /* 분홍색 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.idolImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.imageContainer {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.checkedIcon {
+  width: 30px;
+  height: 30px;
+}
