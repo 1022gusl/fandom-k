@@ -26,10 +26,11 @@ const TributeSlider = () => {
   const slidesToShow = 4; // 한 번에 보여줄 슬라이드 개수
   const settings = {
     infinite: false,
-    speed: 500,
+
     slidesToShow,
     slidesToScroll: 1,
     arrows: false,
+    swipeToSlide: true,
     afterChange: (index) => setCurrentIndex(index), // 슬라이드 변경 후 현재 인덱스 업데이트
   };
 
@@ -65,7 +66,7 @@ const TributeSlider = () => {
         disabled={currentIndex === 0}
       />
       <div className="sliderBox">
-        {isLoading ? <LoadingSpinner /> : null}
+        {isLoading && <LoadingSpinner />}
         <div className="tributeSupport">후원을 기다리는 조공</div>
         <Slider ref={sliderRef} {...settings}>
           {idolList.map((idol, index) => (
