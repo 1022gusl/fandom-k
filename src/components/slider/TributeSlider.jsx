@@ -30,6 +30,7 @@ const TributeSlider = () => {
     slidesToShow,
     slidesToScroll: 1,
     arrows: false,
+    swipeToSlide: true,
     afterChange: (index) => setCurrentIndex(index), // 슬라이드 변경 후 현재 인덱스 업데이트
   };
 
