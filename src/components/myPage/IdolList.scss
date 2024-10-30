@@ -1,0 +1,122 @@
+@import "../../styles/color.scss";
+.addFavoriteContainer {
+  .addTitle {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 26px;
+    color: #f6f6f8;
+    margin-top: 40px;
+    margin-bottom: 32px;
+  }
+
+  .buttonWrapper {
+    display: flex;
+    align-items: center;
+    .paginationButtons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      position: relative;
+
+      .left {
+        position: absolute;
+        left: -60px;
+        top: -90px;
+      }
+
+      .right {
+        position: absolute;
+        left: 30px;
+        top: -90px;
+      }
+    }
+    .idolSection {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 24px;
+      max-height: calc(179px * 2 + 24px);
+      overflow: hidden;
+    }
+  }
+}
+
+/* 반응형 - Tablet */
+@media screen and (max-width: 1199px) and (min-width: 745px) {
+  .addFavoriteContainer {
+    width: 100%;
+
+    .addTitle {
+      font-size: 20px;
+      margin-top: 32px;
+      margin-bottom: 57px;
+    }
+    .buttonWrapper {
+      .paginationButtons {
+        .left {
+          position: static;
+        }
+
+        .right {
+          position: static;
+        }
+      }
+      .idolSection {
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* 반응형 - Mobile */
+@media screen and (max-width: 744px) {
+  .addFavoriteContainer {
+    .addTitle {
+      font-size: 16px;
+      margin-top: 32px;
+      margin-bottom: 16px;
+    }
+
+    .buttonWrapper {
+      .paginationButtons {
+        .left {
+          position: static;
+          display: none;
+        }
+
+        .right {
+          position: static;
+          display: none;
+        }
+      }
+      .idolSection {
+        grid-template-columns: repeat(3, 1fr);
+        white-space: nowrap;
+        overflow-y: auto;
+        margin-bottom: 24px;
+        cursor: pointer;
+        width: 100%;
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #02000e;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: $color-brand-peach;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(
+            90deg,
+            $color-brand-peach 0%,
+            $color-brand-pink 100%
+          );
+        }
+      }
+    }
+  }
+}

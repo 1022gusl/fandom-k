@@ -1,0 +1,51 @@
+.left {
+  position: absolute;
+  left: -60px;
+  top: -90px;
+}
+
+.right {
+  position: absolute;
+  left: 30px;
+  top: -90px;
+}
+
+.paginationButton {
+  background-color: #1b1b1b;
+  border: none;
+  width: 29px;
+  height: 135px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 80%;
+  }
+
+  &:disabled {
+    background-color: #6b6b6b;
+    opacity: 20%;
+    cursor: not-allowed;
+  }
+}
+
+@media screen and (max-width: 1199px) and (min-width: 745px) {
+  .left {
+    position: static;
+  }
+
+  .right {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .left {
+    position: static;
+    display: none;
+  }
+
+  .right {
+    position: static;
+    display: none;
+  }
+}

@@ -1,25 +1,23 @@
-const BASE_URL = "https://fandom-k-api.vercel.app/11-1";
+import { BASE_URL } from "../constants/apiBaseUrl";
 
-async function fetchApi(url, options = {}) {
+export const getIdolList = async ({
+  cursor = null,
+  pageSize = 10,
+  keyword = "",
+}) => {
   try {
-    const response = await fetch(url, options);
+    const query = `${cursor ? `cursor=${cursor}&` : ""}pageSize=${pageSize}${keyword ? `&keyword=${keyword}` : ""}`;
+    const url = `${BASE_URL}/idols?${query}`;
+    const response = await fetch(url);
+
     if (!response.ok) {
-      throw new Error("서버에서 오류 응답을 받았습니다.");
+      throw new Error("아이돌 데이터를 가져오는 데 실패했어요.");
     }
-    return await response.json();
+
+    const data = await response.json();
+    return data;
   } catch (error) {
-    console.error("에러 발생:", error);
-    throw new Error(error.message || "데이터를 불러오는데 실패했습니다.");
+    console.error("아이돌 데이터를 불러오는 중 오류가 발생했어요:", error);
+    throw error;
   }
-}
-
-export async function getIdolList({ cursor, pageSize } = {}) {
-  const params = new URLSearchParams();
-
-  if (pageSize) params.append("pageSize", pageSize);
-  if (cursor) params.append("cursor", cursor);
-
-  const url = `${BASE_URL}/idols?${params.toString()}`;
-
-  return fetchApi(url);
-}
+};

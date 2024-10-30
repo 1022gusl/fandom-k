@@ -1,0 +1,29 @@
+.tabMenu {
+  height: 42px;
+  max-width: 1200px;
+  display: flex;
+}
+
+.tabMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  cursor: pointer;
+  border: none;
+  background-color: #181d26;
+  color: #828282;
+}
+
+/* 전체적인 컬러는 차후에 colors.css 파일로 공통으로 묶어 관리!!! */
+
+.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+.tabMenuButton:hover {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}

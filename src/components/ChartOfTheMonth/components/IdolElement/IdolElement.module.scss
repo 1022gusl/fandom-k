@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  font-size: 16px;
+  height: 70px;
+}
+
+.idolInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.imgBorder {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid rgba(249, 109, 105, 1); /* 후에 colors에서 전역컬러로 바꾸기 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.idolImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+span {
+  color: rgba(249, 109, 105, 1); /* 후에 colors에서 전역컬러로 바꾸기 */
+}
+
+p {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.voteInfo {
+  color: rgba(255, 255, 255, 0.6);
+}

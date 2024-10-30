@@ -1,34 +1,27 @@
-// 전체 아이돌 카드 컴포넌트
-// 페이지 크기에 따라 다른 컴포넌트를 렌더링
-
-// Props
-// idolList: 렌더링할 아이돌 배열
-// selectedIdols: 선택된 아이돌의 id 배열
-// handleSelectIdol: 아이돌 선택하면 호출되는 함수
-// pagsSize: 현재 페이지에 표시할 아이템 수
-
 import React from "react";
-import "./IdolCard.scss";
-import IdolCardMobile from "./IdolCardMobile";
-import IdolCardSection from "./IdolCardSection";
+// import "./IdolCard.scss";
 
-const IdolCard = ({ idolList, selectedIdols, handleSelectIdol, pageSize }) => {
-  if (pageSize <= 6) {
-    return (
-      <IdolCardMobile
-        idolList={idolList}
-        selectedIdols={selectedIdols}
-        handleSelectIdol={handleSelectIdol}
-      />
-    );
-  }
-
+const IdolCard = ({ idol, isSelected, onSelect, isFavorite, checkImage }) => {
   return (
-    <IdolCardSection
-      idolList={idolList}
-      selectedIdols={selectedIdols}
-      handleSelectIdol={handleSelectIdol}
-    />
+    <div
+      className={`idolCard ${isFavorite ? "lowOpacity" : ""}`}
+      onClick={onSelect}
+    >
+      <div className="idolImageWrapper">
+        <img
+          src={idol.profilePicture}
+          alt={`${idol.name}'s profile`}
+          className="idolImage"
+        />
+        {isSelected && (
+          <div className="overlay">
+            <img src={checkImage} alt="체크 이미지" />
+          </div>
+        )}
+      </div>
+      <h3 className="idolName">{idol.name}</h3>
+      <p className="idolGroup">{idol.group}</p>
+    </div>
   );
 };
 
