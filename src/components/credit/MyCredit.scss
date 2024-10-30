@@ -1,0 +1,74 @@
+@import "../../styles/global.scss";
+
+@mixin flex-style($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+.creditWrapper {
+  @include flex-style(column);
+  max-width: 1200px;
+  width: 100%;
+  margin: 50px auto 50px;
+  padding: 30px 78px 41px;
+  background-color: $color-black-1;
+  border: 1px solid rgba($color-white-3, 0.8);
+  border-radius: 8px;
+}
+
+.creditBox {
+  @include flex-style(row, space-between);
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.creditInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.creditTitle {
+  @include font-style(400, 16px, 19px);
+  color: rgba($color-white-1, 0.6);
+}
+
+.creditAmount {
+  @include font-style(700, 24px, 26px);
+  color: rgba($color-white-1, 0.87);
+  display: flex;
+  align-items: center;
+}
+
+.creditIcon {
+  margin-right: 5px;
+}
+
+.rechargeButton {
+  @include font-style(700, 20px, 26px, 0.05em);
+  color: rgba($color-brand-peach, 0.7);
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-brand-peach;
+  }
+}
+
+@media (max-width: 1199px) {
+  .creditWrapper {
+    margin: 0 24px 64px;
+    padding: 35px 64px 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .creditWrapper {
+    margin: 16px 24px 40px;
+    padding: 20px;
+  }
+}

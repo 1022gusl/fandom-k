@@ -41,8 +41,6 @@ const ChartPage = () => {
         currentCursor ? [...prevList, ...data.idols] : data.idols
       );
 
-      console.log("불러온 idols 수:", data.idols.length);
-      console.log("현재 cursor 값:", data.nextCursor);
       if (!data.nextCursor || data.idols.length === 0) {
         setCursor(null);
       } else {
