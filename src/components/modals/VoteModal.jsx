@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import { useCredit } from "../../hooks/useCredit";
 import CommonModal from "./CommonModal";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { mockIdolData } from "../ChartOfTheMonth/mockData";
 import VoteIdolList from "./VoteIdolList";
-import Button from "../common/Button.jsx";
+import GradientButton from "../common/GradientButton.jsx";
 import "./VoteModal.scss";
 
 const VoteModal = ({ isOpen, onClose, selectedTab }) => {
@@ -61,9 +61,9 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
       <div className="modalContent">
         <VoteIdolList idols={idolList} onIdolClick={handleIdolClick} />
       </div>
-      <Button width="100%" className="voteBtn" onClick={handleVoteIdol}>
+      <GradientButton onClick={handleVoteIdol} varient="voteButton">
         투표하기
-      </Button>
+      </GradientButton>
       <div className="description">
         투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
       </div>
@@ -72,3 +72,4 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
 };
 
 export default VoteModal;
+*/

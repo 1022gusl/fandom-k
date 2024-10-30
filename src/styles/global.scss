@@ -8,8 +8,11 @@
 @import "../components/slider/TributeInfo.scss";
 @import "../components/slider/TributeSlider.scss";
 
-///GradientButton
+/// GradientButton
 @import "../components/common/GradientButton.scss";
+
+/// LoadingSpinner
+@import "../components/common/LoadingSpinner.scss";
 
 *,
 *::before,
@@ -28,4 +31,10 @@ body {
 body {
   font-family: $font-family-pretendard;
   color: $color-white-1;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  font-family: $font-family-pretendard;
 }

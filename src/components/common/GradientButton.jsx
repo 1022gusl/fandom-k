@@ -1,9 +1,9 @@
 import React from "react";
 
-const GradientButton = ({ varient, disabled = false, onClick, children }) => {
+const GradientButton = ({ variant, disabled = false, onClick, children }) => {
   return (
     <button
-      className={`gradientButton ${varient}`}
+      className={`gradientButton ${variant}`}
       onClick={onClick}
       disabled={disabled}
     >
