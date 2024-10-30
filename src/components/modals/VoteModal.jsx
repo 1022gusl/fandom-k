@@ -76,11 +76,7 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
       <Button width="100%" className="voteBtn" onClick={handleVoteIdol}>
         투표하기
       </Button>
-      <AlertModal
-        isOpen={isAlertOpen}
-        onClose={closeAlert}
-        onClick={closeAlert}
-      />
+      <AlertModal isOpen={isAlertOpen} onClose={closeAlert} />
       <div className="description">
         투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
       </div>

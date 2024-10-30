@@ -3,7 +3,7 @@ import CreditIcon from "../../assets/icons/credit.svg";
 import Button from "../common/Button";
 import "./AlertModal.scss";
 
-const AlertModal = ({ isOpen, onClose, onClick }) => {
+const AlertModal = ({ isOpen, onClose }) => {
   return (
     <CommonModal isOpen={isOpen} onClose={onClose}>
       <div className="alertModal">
