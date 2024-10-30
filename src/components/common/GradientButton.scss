@@ -35,6 +35,7 @@ $color-brand-pink: #fe5493;
     // 확인하기
     height: 42px;
     width: 295px;
+    padding: 0;
   }
   &.supportButton {
     &:disabled {
@@ -48,6 +49,7 @@ $color-brand-pink: #fe5493;
     // 투표하기
     height: 42px;
     width: 477px;
+    padding: 0;
 
     @media (max-width: 374px) {
       width: 327px;
@@ -58,5 +60,6 @@ $color-brand-pink: #fe5493;
     // 추가하기
     height: 48px;
     width: 255px;
+    border-radius: 24px;
   }
 }
