@@ -1,4 +1,4 @@
-export const updatePageSize = (setPageSize) => {
+export const updatePageSize = (setCursor, setPageSize) => {
   const handleResize = () => {
     if (window.innerWidth >= 1200) {
       setPageSize(16);
@@ -6,10 +6,10 @@ export const updatePageSize = (setPageSize) => {
       setPageSize(8);
     } else {
       setPageSize(1000);
+      setCursor(0);
     }
   };
-
-  handleResize(); // 초기 설정
+  handleResize();
   window.addEventListener("resize", handleResize);
   return () => window.removeEventListener("resize", handleResize);
 };

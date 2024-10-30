@@ -1,5 +1,5 @@
 import React from "react";
-// import "./IdolCard.scss";
+import "./IdolCard.scss";
 
 const IdolCard = ({ idol, isSelected, onSelect, isFavorite, checkImage }) => {
   return (

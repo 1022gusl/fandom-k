@@ -6,7 +6,7 @@ import topImage from "../../assets/images/Img_top design.svg";
 
 const MyPage = () => {
   return (
-    <>
+    <div className="container">
       <img
         className="topImage"
         src={topImage}
@@ -16,7 +16,7 @@ const MyPage = () => {
       <div className="pageContainer">
         <AddFavoriteIdol />
       </div>
-    </>
+    </div>
   );
 };
 

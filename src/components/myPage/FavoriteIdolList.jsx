@@ -2,7 +2,7 @@
 import React from "react";
 import FavoriteIdolCard from "./FavoriteIdolCard";
 import deleteButton from "../../assets/images/Vector (1).png";
-// import "./FavoriteIdolList.scss";
+import "./FavoriteIdolList.scss";
 
 const FavoriteIdolList = ({
   favoriteIdols,

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { getIdolList } from "../../apis/IdolList";
 import "./AddFavoriteIdol.scss";
 import IdolList from "./IdolList";
@@ -8,7 +8,6 @@ import Button from "../common/Button";
 
 const AddFavoriteIdol = () => {
   const [idolList, setIdolList] = useState([]); // "관심있는 아이돌 추가해보세요" 섹션 아이돌 리스트
-  const [status, setStatus] = useState({ loading: false, error: "" }); // 로딩, 에러 관리 상태
   const [cursor, setCursor] = useState(0); // 페이지네이션 위한 cursor 상태
   const [nextCursor, setNextCursor] = useState(null); // 다음 cursor 상태
   const [prevCursor, setPrevCursor] = useState([]); // 이전 cursor 상태
@@ -18,18 +17,18 @@ const AddFavoriteIdol = () => {
   const [pageSize, setPageSize] = useState(16);
 
   // 아이돌 리스트 가져오기
-  const fetchIdols = async (cursor) => {
-    try {
-      setStatus({ loading: true, error: "" }); // 로딩 시작
-      const result = await getIdolList({ cursor, pageSize });
-      setIdolList(result.list);
-      setNextCursor(result.nextCursor);
-    } catch (err) {
-      setStatus({ loading: false, error: err.message }); // 에러 발생
-    } finally {
-      setStatus((prev) => ({ ...prev, loading: false })); // 로딩 종료
-    }
-  };
+  const fetchIdols = useCallback(
+    async (currentCursor) => {
+      try {
+        const result = await getIdolList({ cursor: currentCursor, pageSize });
+        setIdolList(result.list);
+        setNextCursor(result.nextCursor);
+      } catch (error) {
+        console.error("Error loading idols:", error);
+      }
+    },
+    [pageSize]
+  );
 
   // 로컬 스토리지에 저장된 favoriteIdols의 상세 정보 가져오기
   const fetchFavoriteIdols = async () => {
@@ -59,6 +58,10 @@ const AddFavoriteIdol = () => {
     fetchIdols(cursor);
   }, [cursor, pageSize]);
 
+  useEffect(() => {
+    fetchFavoriteIdols();
+  }, [favoriteIdols]);
+
   // 로컬 스토리지에서 선택된 아이돌을 가져와 상태 업데이트
   useEffect(() => {
     const storedIdols = JSON.parse(localStorage.getItem("selectedIdols")) || [];
@@ -66,16 +69,34 @@ const AddFavoriteIdol = () => {
   }, []);
 
   useEffect(() => {
-    fetchFavoriteIdols();
-  }, [favoriteIdols]);
-
-  useEffect(() => {
-    const resize = updatePageSize(setPageSize);
+    const resize = updatePageSize(setCursor, setPageSize);
     return () => resize(); // 컴포넌트 언마운트 시 함수 호출
   }, []);
 
-  if (status.loading) return <p>Loading...</p>;
-  if (status.error) return <p>Error: {status.error}</p>;
+  const handlePrevPage = () => {
+    if (prevCursor.length > 0) {
+      setCursor(prevCursor[prevCursor.length - 1]);
+      setPrevCursor((prev) => prev.slice(0, -1));
+    }
+  };
+
+  const handleNextPage = () => {
+    if (nextCursor) {
+      setPrevCursor((prev) => [...prev, cursor]);
+      setCursor(nextCursor);
+    }
+  };
+
+  const handleSelectIdol = (idol) => {
+    // 선택 토글
+    setSelectedIdols((prev) => {
+      if (prev.includes(idol.id)) {
+        return prev.filter((id) => id !== idol.id); // 이미 선택된 경우 선택 해제
+      } else {
+        return [...prev, idol.id]; // 선택되지 않은 경우 선택
+      }
+    });
+  };
 
   return (
     <>
@@ -88,15 +109,13 @@ const AddFavoriteIdol = () => {
       <IdolList
         idolList={idolList}
         selectedIdols={selectedIdols}
-        setSelectedIdols={setSelectedIdols}
-        loading={status.loading}
-        error={status.error}
         prevCursor={prevCursor}
         nextCursor={nextCursor}
-        setCursor={setCursor}
-        setPrevCursor={setPrevCursor}
-        cursor={cursor}
+        handlePrevPage={handlePrevPage}
+        handleNextPage={handleNextPage}
+        handleSelectIdol={handleSelectIdol}
         favoriteIdols={favoriteIdols}
+        pageSize={pageSize}
       />
       <Button onClick={handleSaveToLocalStorage} className="save-button">
         추가하기

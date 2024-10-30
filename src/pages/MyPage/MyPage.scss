@@ -8,10 +8,16 @@ body {
   background-color: #02000e;
 }
 
+.container {
+  width: 100%;
+}
+
 .topImage {
-  position: absolute;
+  position: fixed;
   top: -20px;
-  left: -70px;
+  left: -40px;
+
+  max-width: 1200px;
 }
 
 .pageContainer {

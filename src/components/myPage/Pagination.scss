@@ -1,0 +1,5 @@
+.paginationContainer {
+  display: flex;
+  justify-content: space-between; // 버튼을 양쪽 끝으로 배치
+  z-index: 2;
+}
