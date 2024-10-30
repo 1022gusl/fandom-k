@@ -1,4 +1,4 @@
-import IdolImage from "../../../common/IdolImage/IdolImage";
+import IdolImage from "../../../common/IdolImage";
 import "./IdolElement.scss";
 
 const IdolElement = ({ rank, idol }) => {

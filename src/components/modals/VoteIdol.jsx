@@ -1,5 +1,5 @@
 import checkIcon from "../../assets/icons/check.svg";
-import IdolImage from "../common/IdolImage/IdolImage";
+import IdolImage from "../common/IdolImage";
 import "./VoteIdol.scss";
 
 const VoteIdol = ({ rank, idol, isActive }) => {
