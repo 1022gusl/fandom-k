@@ -31,11 +31,8 @@ const TributeSlider = () => {
     slidesToScroll: 1,
     arrows: false,
     afterChange: (index) => setCurrentIndex(index), // 슬라이드 변경 후 현재 인덱스 업데이트
-    responsive: [
-      { breakpoint: 744, settings: { slidesToShow: 2.5 } },
-      { breakpoint: 374, settings: { slidesToShow: 2.3 } },
-    ],
   };
+
   // 마지막 인덱스 계산: (전체 슬라이드 길이 - 보여줄 슬라이드 수)
   const maxIndex = idolList.length - slidesToShow;
   useEffect(() => {

@@ -1,4 +1,4 @@
-@import '../../styles/color.scss';
+@import "../../styles/color.scss";
 
 @mixin set-padding($padding-value) {
   padding: 0 $padding-value;
@@ -25,6 +25,7 @@
 .logo {
   grid-column: 2;
   justify-self: center;
+  cursor: pointer;
 }
 
 .profile {
