@@ -56,6 +56,7 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
       try {
         const data = await getCharts({
           gender: selectedTab === FEMALE ? "female" : "male",
+          pageSize: 20,
         });
         setIdolList(data.idols || []);
       } catch (error) {
