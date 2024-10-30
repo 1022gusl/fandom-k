@@ -4,7 +4,7 @@ import CommonModal from "./CommonModal";
 import creditIcon from "../../assets/icons/credit.svg";
 import clickIconChecked from "../../assets/icons/Radio/Checked=True.svg";
 import clickIconUnchecked from "../../assets/icons/Radio/Checked=False.svg";
-import Button from "../../pages/List/ChartOfTheMonth/components/common/Button";
+import GradientButton from "../common/GradientButton";
 import "./CreditModal.scss";
 
 function CreditModal({ isOpen, onClose }) {
@@ -23,7 +23,7 @@ function CreditModal({ isOpen, onClose }) {
   const handleChargeCredit = () => {
     if (activeBox !== null) {
       const credits = [100, 500, 1000][activeBox];
-      dispatch({ type: "addCredits", amount: credits });
+      dispatch({ type: "addCredits", amount: credits }); // 설정된 credit값을 추가하는 액션을 dispatch에 전달
     }
   };
 
@@ -49,9 +49,9 @@ function CreditModal({ isOpen, onClose }) {
           />
         </div>
       ))}
-      <Button onClick={handleChargeCredit} width="100%">
+      <GradientButton onClick={handleChargeCredit} width="100%">
         충전하기
-      </Button>{" "}
+      </GradientButton>{" "}
       {/*충전 버튼*/}
     </CommonModal>
   );

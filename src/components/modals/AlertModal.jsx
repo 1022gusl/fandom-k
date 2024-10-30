@@ -1,6 +1,6 @@
 import CommonModal from "./CommonModal";
 import CreditIcon from "../../assets/icons/credit.svg";
-import Button from "../common/Button";
+import GradientButton from "../common/GradientButton";
 import "./AlertModal.scss";
 
 const AlertModal = ({ isOpen, onClose }) => {
@@ -11,9 +11,9 @@ const AlertModal = ({ isOpen, onClose }) => {
         <div className="alertMsg">
           앗! 투표하기 위한 <span>크레딧</span>이 부족해요
         </div>
-        <Button width="100%" onClick={onClose}>
+        <GradientButton varient="confirmButton" onClick={onClose}>
           확인
-        </Button>
+        </GradientButton>
       </div>
     </CommonModal>
   );
