@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TabMenu from "./ChartComponents/TabMenu/TabMenu";
 import IdolList from "./ChartComponents/IdolList/IdolList";
 import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
+import { MAX_IDOLS } from "../../constants/maxIdol";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
 import VoteModal from "../modals/VoteModal";
@@ -17,7 +18,6 @@ const ChartPage = () => {
   const [cursor, setCursor] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isMoreLoading, setIsMoreLoading] = useState(false);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -100,7 +100,7 @@ const ChartPage = () => {
       ) : (
         <IdolList idols={idolList} />
       )}
-      {cursor && idolList.length && !isMoreLoading && (
+      {!isMoreLoading && idolList.length < MAX_IDOLS && (
         <LoadMoreButton onClick={handleLoadMore} />
       )}
       {isMoreLoading && <LoadingSpinner />}
