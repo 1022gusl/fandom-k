@@ -1,7 +1,3 @@
-.voteBtn {
-  margin-top: 10px;
-}
-
 .description {
   margin-top: 10px;
   text-align: center;
@@ -10,6 +6,9 @@
 .modalContent {
   max-height: 40vh;
   overflow-y: auto;
-  scrollbar-width: none;
   padding: 20px;
+}
+
+.modalContent::-webkit-scrollbar {
+  display: none;
 }

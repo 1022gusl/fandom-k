@@ -4,15 +4,6 @@
   margin: 0;
 }
 
-li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 16px;
-  height: 70px;
-  margin: 10px;
-}
-
 .idolInfo {
   display: flex;
   align-items: center;
@@ -23,7 +14,7 @@ li {
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  border: 3px solid $color-brand-peach; /* 후에 colors에서 전역컬러로 바꾸기 */
+  border: 3px solid $color-brand-peach;
   display: flex;
   align-items: center;
   justify-content: center;
