@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import TabMenu from "./ChartComponents/TabMenu/TabMenu";
 import IdolList from "./ChartComponents/IdolList/IdolList";
 import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
@@ -16,9 +16,10 @@ const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
   const [idolList, setIdolList] = useState([]);
   const [cursor, setCursor] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isMoreLoading, setIsMoreLoading] = useState(false);
+  const [loadingType, setLoadingType] = useState(null); // initial or more로 구분
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const pageSize = window.innerWidth > 1199 ? 10 : 5;
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -28,38 +29,30 @@ const ChartPage = () => {
     setIsModalOpen(false);
   };
 
-  const fetchIdolData = async (tab, currentCursor = null) => {
-    if (currentCursor) {
-      setIsMoreLoading(true);
-    } else {
-      setIsLoading(true);
-    }
+  const fetchIdolData = useCallback(
+    async (tab, currentCursor = null) => {
+      setLoadingType(currentCursor ? "more" : "initial");
 
-    try {
-      const data = await getCharts({ gender: tab, cursor: currentCursor });
-      setIdolList((prevList) =>
-        currentCursor ? [...prevList, ...data.idols] : data.idols
-      );
-
-      if (!data.nextCursor || data.idols.length === 0) {
-        setCursor(null);
-      } else {
-        setCursor(data.nextCursor);
+      try {
+        const { idols, nextCursor } = await getCharts({
+          gender: tab,
+          cursor: currentCursor,
+          pageSize,
+        });
+        setIdolList((prev) => (currentCursor ? [...prev, ...idols] : idols));
+        setCursor(nextCursor || null);
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
+      } finally {
+        setLoadingType(null);
       }
-    } catch (error) {
-      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
-    } finally {
-      if (currentCursor) {
-        setIsMoreLoading(false);
-      } else {
-        setIsLoading(false);
-      }
-    }
-  };
+    },
+    [pageSize]
+  );
 
   useEffect(() => {
     fetchIdolData(selectedTab);
-  }, [selectedTab]);
+  }, [selectedTab, fetchIdolData]);
 
   const handleTabChange = (tab) => {
     setSelectedTab(tab);
@@ -68,9 +61,7 @@ const ChartPage = () => {
   };
 
   const handleLoadMore = () => {
-    if (!isMoreLoading && cursor) {
-      fetchIdolData(selectedTab, cursor);
-    }
+    if (!loadingType && cursor) fetchIdolData(selectedTab, cursor);
   };
 
   return (
@@ -95,15 +86,17 @@ const ChartPage = () => {
       </div>
 
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
-      {isLoading && idolList.length === 0 ? (
+      {loadingType === "initial" && idolList.length === 0 ? (
         <LoadingSpinner />
       ) : (
         <IdolList idols={idolList} />
       )}
-      {!isMoreLoading && idolList.length < MAX_IDOLS && (
-        <LoadMoreButton onClick={handleLoadMore} />
-      )}
-      {isMoreLoading && <LoadingSpinner />}
+      {idolList.length < MAX_IDOLS &&
+        (loadingType === "more" ? (
+          <LoadingSpinner />
+        ) : (
+          <LoadMoreButton onClick={handleLoadMore} />
+        ))}
     </section>
   );
 };
