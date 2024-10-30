@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TabMenu from "./components/TabMenu/TabMenu";
 import IdolList from "./components/IdolList/IdolList";
+import VoteModal from "../modals/VoteModal";
+import { CreditProvider } from "../../hooks/useCredit";
 import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { mockIdolData } from "./mockData"; // 임시 Mock 데이터 import
@@ -14,6 +16,15 @@ import GradientButton from "../common/GradientButton";
 const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
   const [idolList, setIdolList] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const fetchIdolData = (tab) => {
     // 여기서는 단순히 mock 데이터를 사용하지만, 실제로는 API 호출을 수행할 부분
@@ -41,9 +52,14 @@ const ChartPage = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h2>이달의 차트</h2>
-        <GradientButton varient="chartVoteButton" disabled={true}>
-          차트 투표하기
-        </GradientButton>
+        <button onClick={openModal}>차트 투표하기</button>
+        <CreditProvider>
+          <VoteModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            selectedTab={selectedTab}
+          />
+        </CreditProvider>
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
       <IdolList idols={idolList} /> {/* 임시 Mock 데이터 호출 중 */}
