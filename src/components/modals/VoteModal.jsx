@@ -1,9 +1,10 @@
-/*import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useCredit } from "../../hooks/useCredit";
 import CommonModal from "./CommonModal";
 import AlertModal from "./AlertModal.jsx";
 import { FEMALE } from "../../constants/tabGenderTypes";
-import { mockIdolData } from "../ChartOfTheMonth/mockData";
+import postVote from "../../apis/voteAPI";
+import { getCharts } from "../../apis/chartAPI";
 import VoteIdolList from "./VoteIdolList";
 import GradientButton from "../common/GradientButton.jsx";
 import "./VoteModal.scss";
@@ -22,41 +23,56 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
     setIsAlertOpen(false);
   };
 
-  const handleVoteIdol = () => {
+  const handleVoteIdol = async () => {
     console.log("현재 크레딧:", totalCredits);
 
     if (!selectedIdol) {
-      //선택된 아이돌이 없을 때
       alert("아이돌을 선택해 주세요.");
       return;
     }
 
     if (totalCredits >= 1000) {
-      // 내 크레딧이 1000크레딧 이상일때 투표 가능
-      dispatch({ type: "substractCredits", amount: 1000 });
-      setIdolList((prevIdols) =>
-        prevIdols.map((idol) =>
-          idol.id === selectedIdol
-            ? { ...idol, voteCount: idol.voteCount + 1 }
-            : idol
-        )
-      );
-      alert("투표가 완료되었습니다!");
+      try {
+        await postVote(selectedIdol);
+        dispatch({ type: "substractCredits", amount: 1000 });
+        setIdolList((prevIdols) =>
+          prevIdols.map((idol) =>
+            idol.id === selectedIdol
+              ? { ...idol, totalVotes: idol.totalVotes + 1 }
+              : idol
+          )
+        );
+        alert("투표가 완료되었습니다!");
+      } catch (error) {
+        alert("투표에 실패했습니다. 다시 시도해 주세요.");
+      }
     } else {
       openAlert();
     }
   };
 
   useEffect(() => {
-    // 모달이 열릴 때마다 탭에 따라 아이돌 데이터를 설정
-    setIdolList(selectedTab === FEMALE ? mockIdolData : []);
+    const fetchChartData = async () => {
+      try {
+        const data = await getCharts({
+          gender: selectedTab === FEMALE ? "female" : "male",
+        });
+        setIdolList(data.idols || []);
+      } catch (error) {
+        console.error("차트 데이터를 가져오는 중 오류가 발생했습니다:", error);
+        setIdolList([]);
+      }
+    };
+
+    if (isOpen) {
+      fetchChartData();
+    }
   }, [selectedTab, isOpen]);
 
   const handleIdolClick = (idolId) => {
-    setSelectedIdol(idolId); // 선택된 아이돌 ID 상태 업데이트
+    setSelectedIdol(idolId);
   };
 
-  // 모달 닫기 함수
   const handleClose = () => {
     setSelectedIdol(null);
     onClose();
@@ -73,7 +89,7 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
       <div className="modalContent">
         <VoteIdolList idols={idolList} onIdolClick={handleIdolClick} />
       </div>
-      <GradientButton onClick={handleVoteIdol} varient="voteButton">
+      <GradientButton onClick={handleVoteIdol} variant="voteButton">
         투표하기
       </GradientButton>
       <div className="description">
@@ -84,4 +100,3 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
 };
 
 export default VoteModal;
-*/

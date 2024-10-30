@@ -1,43 +1,31 @@
 @import "../../styles/color.scss";
 
-* {
-  margin: 0;
+.modalImageContainer {
+  position: relative;
 }
 
-.idolInfo {
+.modalIdolInfo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 
-.imgBorder {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  border: 3px solid $color-brand-peach;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+.modalIdolRank {
+  color: $color-brand-peach;
 }
 
-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-span {
-  color: $color-brand-peach; /* 후에 colors에서 전역컬러로 바꾸기 */
-}
-
-p {
+.modalIdolName {
   color: $color-white-2;
 }
 
-.voteInfo {
+.modalVoteInfo {
   color: $color-gray-3;
+}
+
+.modalIdolContents {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .overlay {
@@ -50,21 +38,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.idolImage {
-  width: 100%;
-  height: 100%;
   border-radius: 50%;
-  object-fit: cover;
-}
-
-.imageContainer {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
 }
 
 .checkedIcon {

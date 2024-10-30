@@ -4,8 +4,8 @@ import IdolList from "./ChartComponents/IdolList/IdolList";
 import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
-// import VoteModal from "../modals/VoteModal";
-// import { CreditProvider } from "../../hooks/useCredit";
+import VoteModal from "../modals/VoteModal";
+import { CreditProvider } from "../../hooks/useCredit";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
 import GradientButton from "../../components/common/GradientButton";
 import chartIcon from "../../assets/icons/chart.png";
@@ -18,7 +18,7 @@ const ChartPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isMoreLoading, setIsMoreLoading] = useState(false);
 
-  /*const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -27,7 +27,7 @@ const ChartPage = () => {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-*/
+
   const fetchIdolData = async (tab, currentCursor = null) => {
     if (currentCursor) {
       setIsMoreLoading(true);
@@ -78,20 +78,20 @@ const ChartPage = () => {
       <div className="chartHeader">
         <h2 className="chartName">이달의 차트</h2>
         <GradientButton
-          //onClick={openModal}
+          onClick={openModal}
           variant="chartVoteButton"
-          disabled={true}
+          disabled={false}
         >
           <img src={chartIcon} alt="차트" className="chartIcon" />
           차트 투표하기
         </GradientButton>
-        {/*<CreditProvider>
+        <CreditProvider>
           <VoteModal
             isOpen={isModalOpen}
             onClose={closeModal}
             selectedTab={selectedTab}
           />
-        </CreditProvider>*/}
+        </CreditProvider>
       </div>
 
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
