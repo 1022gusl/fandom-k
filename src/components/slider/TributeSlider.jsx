@@ -58,7 +58,7 @@ const TributeSlider = () => {
   }, []);
 
   return (
-    <div className="sliderContainer">
+    <section className="sliderContainer">
       <SlidernavigationButton
         onClick={prevSlide}
         direction="prevButton"
@@ -79,7 +79,7 @@ const TributeSlider = () => {
         direction="nextButton"
         disabled={currentIndex >= maxIndex}
       />
-    </div>
+    </section>
   );
 };
 
