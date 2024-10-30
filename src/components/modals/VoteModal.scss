@@ -10,6 +10,9 @@
 .modalContent {
   max-height: 40vh;
   overflow-y: auto;
-  scrollbar-width: none;
   padding: 20px;
+}
+
+.modalContent::-webkit-scrollbar {
+  display: none;
 }
