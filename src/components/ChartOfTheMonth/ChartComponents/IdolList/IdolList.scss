@@ -1,0 +1,14 @@
+.idolListUl {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1199px) {
+  .idolListUl {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+  }
+}

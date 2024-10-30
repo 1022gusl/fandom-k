@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import { useCredit } from "../../hooks/useCredit";
 import CommonModal from "./CommonModal";
 import AlertModal from "./AlertModal.jsx";
@@ -73,10 +73,9 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
       <div className="modalContent">
         <VoteIdolList idols={idolList} onIdolClick={handleIdolClick} />
       </div>
-      <GradientButton varient="voteButton" onClick={handleVoteIdol}>
+      <GradientButton onClick={handleVoteIdol} varient="voteButton">
         투표하기
       </GradientButton>
-      <AlertModal isOpen={isAlertOpen} onClose={closeAlert} />
       <div className="description">
         투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
       </div>
@@ -85,3 +84,4 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
 };
 
 export default VoteModal;
+*/
