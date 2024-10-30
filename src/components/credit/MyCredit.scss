@@ -1,4 +1,4 @@
-@import '../../styles/global.scss';
+@import "../../styles/global.scss";
 
 @mixin flex-style($direction: row, $justify: center, $align: center) {
   display: flex;
@@ -30,17 +30,15 @@
 }
 
 .creditTitle {
+  @include font-style(400, 16px, 19px);
   color: rgba($color-white-1, 0.6);
-  font-size: 16px;
-  font-weight: 400;
 }
 
 .creditAmount {
+  @include font-style(700, 24px, 26px);
+  color: rgba($color-white-1, 0.87);
   display: flex;
   align-items: center;
-  color: rgba($color-white-1, 0.87);
-  font-size: 24px;
-  font-weight: 700;
 }
 
 .creditIcon {
@@ -48,12 +46,10 @@
 }
 
 .rechargeButton {
+  @include font-style(700, 20px, 26px, 0.05em);
+  color: rgba($color-brand-peach, 0.7);
   background: none;
   border: none;
-  color: rgba($color-brand-peach, 0.7);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.05em; // 자간 조정
   cursor: pointer;
 
   &:hover {
