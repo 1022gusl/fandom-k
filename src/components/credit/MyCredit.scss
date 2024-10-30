@@ -10,6 +10,7 @@
 .creditWrapper {
   @include flex-style(column);
   max-width: 1200px;
+  width: 100%;
   margin: 50px auto 50px;
   padding: 30px 78px 41px;
   background-color: $color-black-1;
@@ -19,6 +20,7 @@
 
 .creditBox {
   @include flex-style(row, space-between);
+  border: none;
   width: 100%;
   border-radius: 8px;
 }
