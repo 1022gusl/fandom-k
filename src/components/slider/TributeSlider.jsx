@@ -31,7 +31,31 @@ const TributeSlider = () => {
     slidesToScroll: 1,
     arrows: false,
     swipeToSlide: true,
+    variableWidth: true, // 슬라이드 너비를 자동으로 조정
+
     afterChange: (index) => setCurrentIndex(index), // 슬라이드 변경 후 현재 인덱스 업데이트
+    responsive: [
+      {
+        breakpoint: 1024, // 1024px 이하일 때 적용할 설정
+        settings: {
+          slidesToShow: 3, // 한 번에 3개의 슬라이드 보여주기
+        },
+      },
+      {
+        breakpoint: 768, // 768px 이하일 때 적용할 설정
+        settings: {
+          slidesToShow: 2, // 한 번에 2개의 슬라이드 보여주기
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 480, // 480px 이하일 때 적용할 설정
+        settings: {
+          slidesToShow: 1, // 한 번에 1개의 슬라이드 보여주기
+          infinite: true,
+        },
+      },
+    ],
   };
 
   // 마지막 인덱스 계산: (전체 슬라이드 길이 - 보여줄 슬라이드 수)

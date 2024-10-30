@@ -34,7 +34,7 @@
 }
 
 .sliderItem {
-  width: 282px !important; /* 카드의 고정 너비 */
+  max-width: 282px !important; /* 카드의 고정 너비 */
   height: 402px; /* 카드의 고정 높이 */
   display: flex !important;
   justify-content: center;
@@ -77,10 +77,11 @@
     font-size: 16px;
   }
   .sliderItem {
-    width: 158px !important;
+    max-width: 158px !important;
     height: 303px !important;
     gap: 10px 0px;
   }
+
   .imgBox {
     width: 158px !important;
     height: 206px !important;
