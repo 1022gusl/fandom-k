@@ -26,7 +26,7 @@ function LandingPage() {
           <img src={main} className={styles.idol} alt="idol background" />
         </div>
 
-        <div className={styles.textBox1}>
+        <div className={styles.mainTitle}>
           <h2 className={styles.heading}>내가 좋아하는 아이돌을<br />가장 <span className={styles.highlight}>쉽게 덕질 </span>하는 방법</h2>
           <img src={fandomKLogo} className={styles.logo} alt="Fandom-K logo" onClick={moveToList}/>
           <button className={styles.startText} onClick={moveToList}>지금 시작하기</button>
@@ -35,7 +35,7 @@ function LandingPage() {
 
       <div className={styles.container2}>
         <div className={styles.background}>
-          <div className={styles.textBox2}>
+          <div className={styles.donateIdol}>
             <span className={styles.nolang}>후원하기</span>
             <h2 className={styles.heading2}>좋아하는 아이돌에게<br />쉽게 조공해 보세요</h2>
           </div>
@@ -52,7 +52,7 @@ function LandingPage() {
 
       <div className={styles.container3}>
         <div className={styles.background}>
-          <div className={styles.textBox3}>
+          <div className={styles.followIdol}>
             <span className={styles.nolang}>이달의 아티스트</span>
             <h2 className={styles.heading2}>내 아티스트에게 1등의 <br />영예를 선물하세요</h2>
           </div>
@@ -69,7 +69,7 @@ function LandingPage() {
 
       <div className={styles.container4}>
         <div className={styles.background}>
-          <div className={styles.textBox4}>
+          <div className={styles.voteIdol}>
             <span className={styles.nolang}>나만의 아티스트</span>
             <h2 className={styles.heading2}>좋아하는 아티스트들의 <br />소식을 모아보세요</h2>
           </div>

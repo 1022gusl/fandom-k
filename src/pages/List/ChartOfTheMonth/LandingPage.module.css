@@ -10,7 +10,7 @@ img {
     height: auto;
 }
 
-.textBox1 {
+.mainTitle {
     position: relative;
     width: 100%;
     color: white;
@@ -84,7 +84,7 @@ img {
     border-radius: 0;  /* 타원 모양 제거 */
 }
 
-.textBox1, .textBox2, .textBox3, .textBox4 {
+.mainTitle, .donateIdol, .followIdol, .voteIdol {
     position: absolute;  
     width: 100%;
     color: white;
