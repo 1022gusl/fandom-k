@@ -12,10 +12,8 @@ const SliderItem = ({ idol }) => (
         src={idol.profilePicture || "defaultImage.jpg"}
         alt={idol.name}
       />
-      <div>
-        <GradientButton className="gradientButton" varient="tributeButton ">
-          후원하기
-        </GradientButton>
+      <div className="tributeButtonContainer">
+        <GradientButton varient="tributeButton ">후원하기</GradientButton>
       </div>
     </div>
     <AdInfo adLocation={idol.adLocation} name={idol.name} />

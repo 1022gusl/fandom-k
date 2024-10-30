@@ -41,11 +41,9 @@ const ChartPage = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h2>이달의 차트</h2>
-        <GradientButton varient="supportButton" disabled={true}>
+        <GradientButton varient="chartVoteButton" disabled={true}>
           차트 투표하기
         </GradientButton>
-        {/* 차트 투표하기 버튼은 재사용 가능한 버튼 스타일 추가 후 적용 예정
-         버튼 클릭 시 모달창 불러올 예정 */}
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
       <IdolList idols={idolList} /> {/* 임시 Mock 데이터 호출 중 */}

@@ -1,3 +1,4 @@
+import IdolImage from "../../../common/IdolImage/IdolImage";
 import styles from "./IdolElement.module.scss";
 
 const IdolElement = ({ rank, idol }) => {
@@ -5,7 +6,7 @@ const IdolElement = ({ rank, idol }) => {
     <li>
       <div className={styles.idolInfo}>
         <div className={styles.imgBorder}>
-          <img src={idol.imageUrl} alt={idol.name} className={styles.idolImg} />
+          <IdolImage src={idol.imageUrl} />
         </div>
         <span>{rank}</span>
         <p>{idol.name}</p>
