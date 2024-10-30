@@ -9,9 +9,7 @@ const Pagination = ({
   handleNextPage,
   rightBtn,
   leftBtn,
-  nextDisabled,
 }) => {
-  console.log(nextDisabled);
   return (
     <div className="paginationContainer">
       <PaginationButton
@@ -23,7 +21,7 @@ const Pagination = ({
       />
       <PaginationButton
         onClick={handleNextPage}
-        disabled={!nextCursor || nextDisabled}
+        disabled={!nextCursor}
         direction="right"
         imgSrc={rightBtn}
         altText="아이돌 리스트 다음 버튼"

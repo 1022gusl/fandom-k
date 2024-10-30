@@ -1,13 +1,13 @@
 // .left {
 //   position: absolute;
-//   left: -60px;
-//   top: -90px;
+//   left: 150px;
+//   bottom: 90px;
 // }
 
 // .right {
 //   position: absolute;
-//   left: 30px;
-//   top: -90px;
+//   right: 150px;
+//   bottom: 90px;
 // }
 
 .paginationButton {
@@ -16,6 +16,7 @@
   width: 29px;
   height: 135px;
   cursor: pointer;
+  white-space: nowrap;
 
   &:hover {
     opacity: 80%;
@@ -29,13 +30,17 @@
 }
 
 @media screen and (max-width: 1199px) and (min-width: 745px) {
-  .left {
-    position: static;
-  }
+  // .left {
+  //   position: absolute;
+  //   left: 150px;
+  //   bottom: 30px;
+  // }
 
-  .right {
-    position: static;
-  }
+  // .right {
+  //   position: absolute;
+  //   right: 150px;
+  //   bottom: 90px;
+  // }
 }
 
 @media screen and (max-width: 744px) {

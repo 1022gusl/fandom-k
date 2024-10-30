@@ -15,6 +15,7 @@ const AddFavoriteIdol = () => {
   const [favoriteIdols, setFavoriteIdols] = useState([]); // 관심있는 아이돌 상태(id)
   const [favoriteIdolDetails, setFavoriteIdolDetails] = useState([]); // cursor:null 인 favoriteIdol 데이터 관리
   const [pageSize, setPageSize] = useState(16);
+  const [totalList, setTotalList] = useState(0);
 
   // 아이돌 리스트 가져오기
   const fetchIdols = useCallback(
@@ -39,6 +40,7 @@ const AddFavoriteIdol = () => {
         favoriteIdols.includes(idol.id)
       );
       setFavoriteIdolDetails(favoriteDetails);
+      setTotalList(result.list);
     } catch (err) {
       console.error("Error loading favorite idols:", err);
     }
@@ -116,6 +118,7 @@ const AddFavoriteIdol = () => {
         handleSelectIdol={handleSelectIdol}
         favoriteIdols={favoriteIdols}
         pageSize={pageSize}
+        totalList={totalList}
       />
       <Button onClick={handleSaveToLocalStorage} className="save-button">
         추가하기
