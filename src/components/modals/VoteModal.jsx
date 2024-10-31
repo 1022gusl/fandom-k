@@ -9,7 +9,7 @@ import VoteIdolList from "./VoteIdolList";
 import GradientButton from "../common/GradientButton.jsx";
 import "./VoteModal.scss";
 
-const VoteModal = ({ isOpen, onClose, selectedTab }) => {
+const VoteModal = ({ isOpen, onClose, selectedTab, onVoteChange }) => {
   const [idolList, setIdolList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState(null);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
@@ -43,6 +43,9 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
           )
         );
         alert("투표가 완료되었습니다!");
+        if (onVoteChange) {
+          onVoteChange();
+        }
       } catch (error) {
         alert("투표에 실패했습니다. 다시 시도해 주세요.");
       }
@@ -93,8 +96,10 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
       <GradientButton onClick={handleVoteIdol} variant="voteButton">
         투표하기
       </GradientButton>
+      <AlertModal isOpen={isAlertOpen} onClose={closeAlert} />
       <div className="description">
-        투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
+        투표하는 데 <span className="creditMessage">1000 크레딧</span>이
+        소모됩니다.
       </div>
     </CommonModal>
   );

@@ -6,7 +6,6 @@ import { MAX_IDOLS } from "../../constants/maxIdol";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
 import VoteModal from "../modals/VoteModal";
-import { CreditProvider } from "../../hooks/useCredit";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
 import GradientButton from "../../components/common/GradientButton";
 import chartIcon from "../../assets/icons/chart.png";
@@ -88,13 +87,12 @@ const ChartPage = () => {
           <img src={chartIcon} alt="차트" className="chartIcon" />
           차트 투표하기
         </GradientButton>
-        <CreditProvider>
-          <VoteModal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            selectedTab={selectedTab}
-          />
-        </CreditProvider>
+        <VoteModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          selectedTab={selectedTab}
+          onVoteChange={() => fetchIdolData(selectedTab)}
+        />
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
       <div className="idolListContainer">
