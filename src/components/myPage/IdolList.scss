@@ -1,11 +1,12 @@
 @import "../../styles/color.scss";
+
 .addFavoriteContainer {
   .addTitle {
     padding: 0 30px;
     font-size: 24px;
     font-weight: 700;
     line-height: 26px;
-    color: #f6f6f8;
+    color: $color-white-4;
     margin-top: 40px;
     margin-bottom: 32px;
   }
@@ -66,7 +67,7 @@
         }
 
         &::-webkit-scrollbar-track {
-          background: #02000e;
+          background: $color-black-1;
         }
 
         &::-webkit-scrollbar-thumb {

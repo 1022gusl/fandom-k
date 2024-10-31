@@ -1,0 +1,114 @@
+@import "../../styles/global.scss";
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 0 30px; //화살표와 sliderbox의 gap
+  padding: 0 30px;
+  position: relative;
+  height: 470.57px;
+
+  width: 100vw;
+  max-width: 1400px;
+}
+.sliderBox {
+  width: 100vw;
+  max-width: 1200px;
+  height: 470.57px;
+}
+.slick-track {
+  display: flex !important;
+  gap: 20px;
+}
+.slick-list {
+  display: flex;
+  align-items: center;
+}
+.slick-slide {
+  width: 282px !important;
+  display: flex;
+  justify-content: center; /* 슬라이드를 중앙 정렬 */
+  align-items: center;
+  color: $color-white-1;
+}
+
+.tributeSupport {
+  padding: 20px 0px;
+  font-size: 24px;
+}
+
+.sliderItem {
+  max-width: 282px !important; /* 카드의 고정 너비 */
+  height: 402px; /* 카드의 고정 높이 */
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 수직 배치 */
+  gap: 8px 0px;
+}
+@media (max-width: 1260px) {
+  .sliderContainer {
+    padding: 0 10px;
+  }
+}
+@media (max-width: 744px) {
+  .sliderContainer {
+    height: 430px !important;
+    width: 100vw !important;
+    max-width: 744px;
+    padding: 0 40px;
+  }
+  .sliderBox {
+    height: 430px;
+    max-width: 100vw;
+  }
+  .tributeSupport {
+    padding: 20px 0px;
+  }
+  .arrowButton {
+    display: none;
+  }
+}
+
+@media (max-width: 374px) {
+  .sliderContainer {
+    height: 303px !important;
+    max-width: 100vw;
+    padding: 0 40px;
+  }
+  .sliderBox {
+    height: 303px;
+    max-width: 100vw;
+  }
+  .slick-slide {
+    height: 303px !important;
+    width: 158px !important;
+  }
+  .tributeSupport {
+    padding: 20px 0px;
+    font-size: 16px;
+  }
+  .sliderItem {
+    width: 158px !important;
+    height: 303px !important;
+    gap: 10px 0px;
+  }
+
+  .imgBox {
+    width: 158px !important;
+    height: 206px !important;
+  }
+  .cardImg {
+    width: 158px;
+    height: 206px !important;
+    border-radius: 8px;
+  }
+  .arrowButton {
+    display: none;
+  }
+  .adHeading {
+    font-size: 12px;
+  }
+  .adTitle {
+    font-size: 14px;
+  }
+}

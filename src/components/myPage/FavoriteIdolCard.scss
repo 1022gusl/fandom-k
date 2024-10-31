@@ -1,3 +1,5 @@
+@import "../../styles/color.scss";
+
 .FavoriteidolCard {
   flex: 0 0 auto;
   text-align: center;
@@ -6,7 +8,7 @@
     margin: 0 auto;
     width: 100px;
     height: 100px;
-    border: 1px solid #f96d69;
+    border: 1px solid $color-brand-peach;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -26,7 +28,7 @@
       left: 70px;
       width: 30px;
       height: 30px;
-      border: 2.87px solid #02000e;
+      border: 2.87px solid $color-black-1;
       border-radius: 100%;
       cursor: pointer;
 
@@ -41,14 +43,14 @@
     font-size: 16px;
     font-weight: 700;
     line-height: 26px;
-    color: #f4efef;
+    color: $color-white-5;
   }
 
   .FavoriteidolGroup {
     font-size: 14px;
     font-weight: 400;
     line-height: 16px;
-    color: #ffffff;
+    color: $color-white-1;
     opacity: 60%;
   }
 }
@@ -62,7 +64,7 @@
       margin: 0 auto;
       width: 70px;
       height: 70px;
-      border: 1px solid #f96d69;
+      border: 1px solid $color-brand-peach;
       border-radius: 100%;
       display: flex;
       justify-content: center;
@@ -82,7 +84,7 @@
         left: 49px;
         width: 22px;
         height: 22px;
-        border: 2px solid #02000e;
+        border: 2px solid $color-black-1;
         border-radius: 100%;
         cursor: pointer;
 

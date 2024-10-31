@@ -1,10 +1,11 @@
 // SliderItem.js
 import React from "react";
-import Button from "../common/Button";
+import GradientButton from "../common/GradientButton";
 import AdInfo from "./AdInfo";
 import TributeInfo from "./TributeInfo";
+import "./SliderItem.scss";
 
-const SliderItem = ({ idol }) => (
+const SliderItem = ({ idol, openDonateModal }) => (
   <div className="sliderItem">
     <div className="imgBox">
       <img
@@ -12,7 +13,14 @@ const SliderItem = ({ idol }) => (
         src={idol.profilePicture || "defaultImage.jpg"}
         alt={idol.name}
       />
-      <Button className="tributeButton">후원하기</Button>
+      <div className="tributeButtonContainer">
+        <GradientButton
+          variant="tributeButton"
+          onClick={() => openDonateModal(idol)}
+        >
+          후원하기
+        </GradientButton>
+      </div>
     </div>
     <AdInfo adLocation={idol.adLocation} name={idol.name} />
     <TributeInfo />

@@ -1,4 +1,5 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+@import "../../styles/color.scss";
 
 * {
   box-sizing: border-box;
@@ -12,7 +13,7 @@
     margin: 0 auto;
     width: 1200px;
     height: 1px;
-    background-color: #ffffff;
+    background-color: $color-white-1;
     opacity: 10%;
   }
 }

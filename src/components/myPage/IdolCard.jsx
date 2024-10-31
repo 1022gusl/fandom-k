@@ -4,7 +4,7 @@ import "./IdolCard.scss";
 const IdolCard = ({ idol, isSelected, onSelect, isFavorite, checkImage }) => {
   return (
     <div
-      className={`idolCard ${isFavorite ? "lowOpacity" : ""}`}
+      className={`idolCard ${isFavorite ? "lowOpacity" : ""}`} //이미 추가한 아이돌은 어둡게
       onClick={onSelect}
     >
       <div className="idolImageWrapper">

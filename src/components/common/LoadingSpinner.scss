@@ -1,0 +1,27 @@
+@import "../../styles/global.scss";
+.spinnerContainer {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+.spinner {
+  margin: calc(50% - 25px) auto;
+  width: 50px;
+  height: 50px;
+  border: 3px solid $color-gray-1;
+  box-sizing: border-box;
+  border-top-color: $color-white-1;
+  border-radius: 100%;
+
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

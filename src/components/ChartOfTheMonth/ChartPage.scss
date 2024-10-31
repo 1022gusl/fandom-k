@@ -1,0 +1,45 @@
+@import "../../styles/global.scss";
+
+.chartContainer {
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  margin-bottom: 24px;
+}
+
+.chartName {
+  @include font-style(700, 24px, 26px);
+  color: $color-white-1;
+}
+
+.chartIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.idolListContainer {
+  min-height: 400px;
+}
+
+@media (max-width: 1199px) {
+  .chartContainer {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chartContainer {
+    min-width: 327px;
+    margin-bottom: 20px;
+  }
+}

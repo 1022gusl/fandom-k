@@ -9,12 +9,14 @@ const FavoriteIdolList = ({
   setFavoriteIdols,
   favoriteIdolDetails,
 }) => {
+  //로컬스토리지에서 삭제하기
   const handleRemoveToLocalStorage = (idolId) => {
     const updatedFavoriteIdols = favoriteIdols.filter((id) => id !== idolId);
     localStorage.setItem("selectedIdols", JSON.stringify(updatedFavoriteIdols));
     setFavoriteIdols(updatedFavoriteIdols);
     alert("선택한 아이돌이 로컬 스토리지에서 삭제되었습니다!");
   };
+
   return (
     <div className="favoriteContainer">
       <p className="favoriteTitle">내가 관심있는 아이돌</p>

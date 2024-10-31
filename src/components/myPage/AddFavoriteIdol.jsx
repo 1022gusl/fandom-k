@@ -4,7 +4,7 @@ import "./AddFavoriteIdol.scss";
 import IdolList from "./IdolList";
 import FavoriteIdolList from "./FavoriteIdolList";
 import { updatePageSize } from "../../util/UpdatePageSize";
-import Button from "../common/Button";
+import GradientButton from "../common/GradientButton";
 
 const AddFavoriteIdol = () => {
   const [idolList, setIdolList] = useState([]); // "관심있는 아이돌 추가해보세요" 섹션 아이돌 리스트
@@ -123,9 +123,12 @@ const AddFavoriteIdol = () => {
         pageSize={pageSize}
         totalList={totalList}
       />
-      <Button onClick={handleSaveToLocalStorage} className="save-button">
+      <GradientButton
+        onClick={handleSaveToLocalStorage}
+        className="save-button"
+      >
         추가하기
-      </Button>
+      </GradientButton>
     </div>
   );
 };

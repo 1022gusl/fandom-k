@@ -1,0 +1,58 @@
+@import "../../styles/color.scss";
+
+@mixin set-padding($padding-value) {
+  padding: 0 $padding-value;
+}
+
+.header {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  background-color: $color-black-1;
+}
+
+.header-contents {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  @include set-padding(24px);
+}
+
+.logo {
+  grid-column: 2;
+  justify-self: center;
+  cursor: pointer;
+}
+
+.profile {
+  grid-column: 3;
+  justify-self: end;
+  cursor: pointer;
+}
+
+@media (max-width: 1199px) {
+  .header {
+    height: 81px;
+  }
+  .logo {
+    width: 120px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    height: 88px;
+  }
+  .header-contents {
+    @include set-padding(23px);
+  }
+  .logo {
+    width: 108px;
+    height: 20px;
+  }
+}

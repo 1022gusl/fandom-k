@@ -1,0 +1,41 @@
+@import "../../styles/color.scss";
+
+.totalCredit {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+.modalCreditBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 295px;
+  height: 65px;
+  padding: 10px 20px;
+  border: 1px solid $color-white-2;
+  border-radius: 8px;
+  background-color: $color-black-1;
+  font-size: 24px;
+  margin-bottom: 8px;
+  cursor: pointer;
+
+  &:hover,
+  &.active {
+    border-color: $color-brand-peach;
+  }
+}
+
+.credit {
+  display: flex;
+  align-items: center;
+}
+
+.checkIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.modalCreditIcon {
+  width: 24px;
+  height: 28px;
+}

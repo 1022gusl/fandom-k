@@ -1,5 +1,7 @@
+@import "../../styles/color.scss";
+
 .paginationButton {
-  background-color: #1b1b1b;
+  background-color: $color-black-3;
   border: none;
   width: 29px;
   height: 135px;
@@ -11,7 +13,7 @@
   }
 
   &:disabled {
-    background-color: #6b6b6b;
+    background-color: $color-gray-5;
     opacity: 20%;
     cursor: not-allowed;
   }

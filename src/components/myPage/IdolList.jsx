@@ -19,8 +19,11 @@ const IdolList = React.memo(
     handlePrevPage,
     handleNextPage,
   }) => {
+    // 전체 아이돌 id가 포함된 배열만들기
     const totalListIds = Object.keys(totalList).map((key) => totalList[key].id);
+    // 리스트업 되는 아이돌 id가 포함된 배열만들기
     const idolListIds = Object.keys(idolList).map((key) => idolList[key].id);
+
     return (
       <div className="addFavoriteContainer">
         <p className="addTitle">관심 있는 아이돌을 추가해보세요.</p>

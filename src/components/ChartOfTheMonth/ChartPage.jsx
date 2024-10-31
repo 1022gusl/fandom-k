@@ -1,53 +1,119 @@
-import React, { useEffect, useState } from "react";
-import TabMenu from "./components/TabMenu/TabMenu";
-import IdolList from "./components/IdolList/IdolList";
-import LoadMoreButton from "./components/LoadMoreButton/LoadMoreButton";
+import React, { useCallback, useEffect, useState } from "react";
+import TabMenu from "./ChartComponents/TabMenu/TabMenu";
+import IdolList from "./ChartComponents/IdolList/IdolList";
+import LoadMoreButton from "./ChartComponents/LoadMoreButton/LoadMoreButton";
+import { MAX_IDOLS } from "../../constants/maxIdol";
 import { FEMALE } from "../../constants/tabGenderTypes";
-import { mockIdolData } from "./mockData"; // 임시 Mock 데이터 import
-import styles from "./ChartPage.module.css";
-
-/*차트페이지는 이달의 차트의 메인페이지(메인컴포넌트)로 
-탭 메뉴, 아이돌리스트, 아이돌 정보, 더보기 버튼 등을 컴포넌트로 불러와 만들 계획입니다. 
- */
+import { getCharts } from "../../apis/chartAPI";
+import VoteModal from "../modals/VoteModal";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
+import GradientButton from "../../components/common/GradientButton";
+import chartIcon from "../../assets/icons/chart.png";
+import "./ChartPage.scss";
 
 const ChartPage = () => {
   const [selectedTab, setSelectedTab] = useState(FEMALE);
   const [idolList, setIdolList] = useState([]);
+  const [cursor, setCursor] = useState(null);
+  const [loadingType, setLoadingType] = useState(null); // initial or more로 구분
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fetchError, setFetchError] = useState(false);
 
-  const fetchIdolData = (tab) => {
-    // 여기서는 단순히 mock 데이터를 사용하지만, 실제로는 API 호출을 수행할 부분
-    if (tab === FEMALE) {
-      setIdolList(mockIdolData); // 예시로 여성 아이돌 리스트를 보여주는 부분
-    } else {
-      setIdolList([]); // 남성 Mock 데이터를 추가하지 않아 빈 배열
+  const pageSize = window.innerWidth > 1199 ? 10 : 5;
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const fetchIdolData = useCallback(
+    async (tab, currentCursor = null) => {
+      setLoadingType(currentCursor ? "more" : "initial");
+      setFetchError(false);
+
+      try {
+        const { idols, nextCursor } = await getCharts({
+          gender: tab,
+          cursor: currentCursor,
+          pageSize,
+        });
+        setIdolList((prev) => (currentCursor ? [...prev, ...idols] : idols));
+        setCursor(nextCursor || null);
+      } catch (error) {
+        console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
+        setFetchError(true);
+      } finally {
+        setLoadingType(null);
+      }
+    },
+    [pageSize]
+  );
+
+  useEffect(() => {
+    fetchIdolData(selectedTab);
+  }, [selectedTab, fetchIdolData]);
+
+  const resetTabData = (tab) => {
+    setSelectedTab(tab);
+    setIdolList([]);
+    setCursor(null);
+  };
+
+  const handleTabChange = (tab) => {
+    if (tab !== selectedTab) {
+      resetTabData(tab);
+      fetchIdolData(tab);
     }
   };
 
-  useEffect(() => {
-    // API 호출 전 임시로 Mock 데이터 사용
-    fetchIdolData(selectedTab);
-  }, [selectedTab]);
-
-  const handleTabChange = (tab) => {
-    setSelectedTab(tab);
-  };
-
   const handleLoadMore = () => {
-    // 더보기 버튼을 클릭하면 데이터를 더 불러올 예정
+    if (!loadingType && cursor) fetchIdolData(selectedTab, cursor);
   };
+
+  const isLoading = loadingType === "initial" && idolList.length === 0;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h2>이달의 차트</h2>
-        <button>차트 투표하기</button>
-        {/* 차트 투표하기 버튼은 재사용 가능한 버튼 스타일 추가 후 적용 예정
-         버튼 클릭 시 모달창 불러올 예정 */}
+    <section className="chartContainer">
+      <div className="chartHeader">
+        <h2 className="chartName">이달의 차트</h2>
+        <GradientButton
+          onClick={openModal}
+          variant="chartVoteButton"
+          disabled={false}
+        >
+          <img src={chartIcon} alt="차트" className="chartIcon" />
+          차트 투표하기
+        </GradientButton>
+        <VoteModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          selectedTab={selectedTab}
+          onVoteChange={() => fetchIdolData(selectedTab)}
+        />
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
-      <IdolList idols={idolList} /> {/* 임시 Mock 데이터 호출 중 */}
-      <LoadMoreButton onClick={handleLoadMore} />
-    </div>
+      <div className="idolListContainer">
+        {fetchError ? (
+          <p className="errorMessage">
+            데이터를 불러오지 못했습니다. 다시 시도해주세요!
+          </p>
+        ) : isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <IdolList idols={idolList} />
+        )}
+      </div>
+      {!fetchError &&
+        idolList.length < MAX_IDOLS &&
+        (loadingType === "more" ? (
+          <LoadingSpinner />
+        ) : (
+          <LoadMoreButton onClick={handleLoadMore} />
+        ))}
+    </section>
   );
 };
 

@@ -1,7 +1,5 @@
 @import "./font";
 @import "./color";
-@import "../components/slider/tributeSlider.scss";
-
 
 *,
 *::before,
@@ -20,4 +18,10 @@ body {
 body {
   font-family: $font-family-pretendard;
   color: $color-white-1;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  font-family: $font-family-pretendard;
 }

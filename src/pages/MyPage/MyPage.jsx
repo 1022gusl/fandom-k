@@ -6,7 +6,7 @@ import topImage from "../../assets/images/Img_top design.svg";
 
 const MyPage = () => {
   return (
-    <div className="container">
+    <div className="myPageContainer">
       <img
         className="topImage"
         src={topImage}
