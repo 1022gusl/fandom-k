@@ -1,29 +1,32 @@
-/* LandingPage.module.css */
 .all {
-    height: 100%;
-    width: 100%;
-    background-color: #02000e;
-}
+  height: 100%;
+  width: 100%;
+  background-color: #02000e;
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.mainTitle {
+  .background {
     position: relative;
     width: 100%;
-    color: white;
-    text-align: center;
-    z-index: 4;
-    margin-top: 80px;
-    display: flex;           
-    flex-direction: column;  
-    align-items: center;     
-    gap: 30px;              
-}
+    height: 100%;
+  }
 
-.heading {
+  .heroSection {
+    height: 1080px;
+    position: relative;
+  }
+
+  .donateIntro, 
+  .artistNewsIntro, 
+  .monthlyArtistIntro {
+    height: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .heading {
     position: relative;
     top: 55px;
     width: 311px;
@@ -33,70 +36,85 @@ img {
     font-size: 26px;
     font-weight: 700;
     line-height: 31.03px;
-}
+  }
 
+  
 
-
-.imageBox {
+  .imageBox { 
     position: absolute;
     top: 0px;
     left: 50%;
     transform: translateX(-50%);
     width: 1080px;
     height: 1080px;
-    mask-image: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, 0.4) 30.73%, rgba(217, 217, 217, 0.6) 51.04%, rgba(217, 217, 217, 0.4) 71.87%, rgba(217, 217, 217, 0) 100%);
-}
+    mask-image: linear-gradient(
+      90deg, 
+      rgba(217, 217, 217, 0) 0%, 
+      rgba(217, 217, 217, 0.4) 30.73%, 
+      rgba(217, 217, 217, 0.6) 51.04%, 
+      rgba(217, 217, 217, 0.4) 71.87%, 
+      rgba(217, 217, 217, 0) 100%
+    );
 
-.idol {
+    .idol {
+      position: absolute;
+      object-fit: contain;
+      opacity: 0.7;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .phoneImage {
     position: absolute;
-    object-fit: contain;
-    opacity: 0.7;
-    width: 100%;
-    height: 100%;
-}
-
-
-
-.container2, .container3, .container4 {
-    height: 1200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin: 0 auto;
-}
-
-.container1 {
-    height: 1080px;
-    position: relative;
-}
-
-.phoneImage {
-    position: absolute;
-    width: 300px;  /* 원하는 크기로 설정 */
+    width: 300px;
     height: auto;
     z-index: 4;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    object-fit: contain;  /* contain에서 none으로 변경 */
-    border-radius: 0;  /* 타원 모양 제거 */
-}
+    object-fit: contain;
+    border-radius: 0;
+  }
 
-.mainTitle, .donateIdol, .followIdol, .voteIdol {
-    position: absolute;  
+  .donateIntroText, 
+  .voteIntroText, 
+  .newsIntroText {
+    position: absolute;
+    height: 85px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+    top: 80px;
+    left: 0;
+    margin-top: 50px;
+  }
+
+  .navyStripe {
+    position: absolute;
+    width: 187px;
+    height: 2600px;
+    top: 2000px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(180deg, #030615 0%, #051D31 42.67%, #051E32 53.12%, #051C30 74.27%, #030B1C 100%);
+    z-index: 2; 
+  }
+
+  .mainTitle {
+    position: relative;
     width: 100%;
     color: white;
     text-align: center;
     z-index: 4;
-    top: 80px; 
-    left: 0;
-    margin-top: 0;  
-}
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
 
-
-.linearGradient {
+  .linearGradient {
     z-index: 1;
     position: absolute;
     top: 50%;
@@ -104,10 +122,17 @@ img {
     transform: translate(-50%, -50%);
     width: 1200px;
     height: 1200px;
-    mask-image: linear-gradient(90deg, rgba(217, 217, 217, 0) 0%, rgba(217, 217, 217, 0.4) 30.73%, rgba(217, 217, 217, 0.6) 51.04%, rgba(217, 217, 217, 0.4) 71.87%, rgba(217, 217, 217, 0) 100%);
-}
+    mask-image: linear-gradient(
+      90deg, 
+      rgba(217, 217, 217, 0) 0%, 
+      rgba(217, 217, 217, 0.4) 30.73%, 
+      rgba(217, 217, 217, 0.6) 51.04%, 
+      rgba(217, 217, 217, 0.4) 71.87%, 
+      rgba(217, 217, 217, 0) 100%
+    );
+  }
 
-.backgroundGradiExcept {
+  .backgroundGradiExcept {
     z-index: 1;
     position: absolute;
     top: 50%;
@@ -115,10 +140,9 @@ img {
     transform: translate(-50%, -50%);
     width: 1200px;
     height: 1200px;
-}
+  }
 
-
-.ra {
+  .ra {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -126,9 +150,9 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+  }
 
-.backgroundMask, .web02, .web03 {
+  .home1,.home2,.home3 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -136,14 +160,14 @@ img {
     width: 1200px;
     height: 1200px;
     z-index: 3;
-}
+  }
 
-.highlight {
+  .highlight {
     font-weight: 700;
     color: #FF3B3B;
-}
+  }
 
-.heading2 {
+  .heading2 {
     position: relative;
     font-size: 26px;
     font-weight: 700;
@@ -154,9 +178,9 @@ img {
     transform: none;
     top: 0;
     left: 0;
-}
+  }
 
-.nolang {
+  .nolang {
     display: block;
     font-size: 16px;
     font-weight: 500;
@@ -165,19 +189,19 @@ img {
     margin-bottom: 10px;
     z-index: 4;
     position: relative;
-}
+  }
 
-.logo {
+  .logo {
     position: relative;
     display: block;
     width: 509px;
     height: 97px;
     cursor: pointer;
     border-radius: 0;
-    margin-top: 50px;  /* 원하는 간격만큼 조정 */
-}
+    margin-top: 50px;
+  }
 
-.startText {
+  .startText {
     position: relative;
     display: block;
     width: 477px;
@@ -190,4 +214,5 @@ img {
     cursor: pointer;
     font-weight: 700;
     line-height: 26px;
+  }
 }
