@@ -7,11 +7,14 @@
   font-family: "Pretendard", sans-serif;
 }
 
-.divider {
-  width: 100%;
-  height: 1px;
-  background-color: #ffffff;
-  opacity: 10%;
+.AddFavoriteContainer {
+  .divider {
+    margin: 0 auto;
+    width: 1200px;
+    height: 1px;
+    background-color: #ffffff;
+    opacity: 10%;
+  }
 }
 
 /* 반응형 - Mobile */

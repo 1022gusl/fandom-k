@@ -70,11 +70,13 @@ const AddFavoriteIdol = () => {
     setFavoriteIdols(storedIdols);
   }, []);
 
+  // 브라우저 크기 변화에 따른 pageSize 업데이트
   useEffect(() => {
     const resize = updatePageSize(setCursor, setPageSize);
     return () => resize(); // 컴포넌트 언마운트 시 함수 호출
   }, []);
 
+  //페이지네이션 이전 버튼
   const handlePrevPage = () => {
     if (prevCursor.length > 0) {
       setCursor(prevCursor[prevCursor.length - 1]);
@@ -82,6 +84,7 @@ const AddFavoriteIdol = () => {
     }
   };
 
+  //페이지네이션 다음 버튼
   const handleNextPage = () => {
     if (nextCursor) {
       setPrevCursor((prev) => [...prev, cursor]);
@@ -89,8 +92,8 @@ const AddFavoriteIdol = () => {
     }
   };
 
+  //관심 아이돌 선택
   const handleSelectIdol = (idol) => {
-    // 선택 토글
     setSelectedIdols((prev) => {
       if (prev.includes(idol.id)) {
         return prev.filter((id) => id !== idol.id); // 이미 선택된 경우 선택 해제
@@ -101,13 +104,13 @@ const AddFavoriteIdol = () => {
   };
 
   return (
-    <>
+    <div className="AddFavoriteContainer">
       <FavoriteIdolList
         favoriteIdols={favoriteIdols}
         favoriteIdolDetails={favoriteIdolDetails}
         setFavoriteIdols={setFavoriteIdols}
       />
-      <br className="divider" />
+      <div className="divider" />
       <IdolList
         idolList={idolList}
         selectedIdols={selectedIdols}
@@ -123,7 +126,7 @@ const AddFavoriteIdol = () => {
       <Button onClick={handleSaveToLocalStorage} className="save-button">
         추가하기
       </Button>
-    </>
+    </div>
   );
 };
 

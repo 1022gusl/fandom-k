@@ -1,6 +1,7 @@
 @import "../../styles/color.scss";
 .addFavoriteContainer {
   .addTitle {
+    padding: 0 30px;
     font-size: 24px;
     font-weight: 700;
     line-height: 26px;
@@ -12,24 +13,7 @@
   .buttonWrapper {
     display: flex;
     align-items: center;
-    .paginationButtons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-      position: relative;
-
-      .left {
-        position: absolute;
-        left: -60px;
-        top: -90px;
-      }
-
-      .right {
-        position: absolute;
-        left: 30px;
-        top: -90px;
-      }
-    }
+    justify-content: center;
     .idolSection {
       display: grid;
       grid-template-columns: repeat(8, 1fr);
@@ -52,15 +36,6 @@
       margin-bottom: 57px;
     }
     .buttonWrapper {
-      .paginationButtons {
-        .left {
-          position: static;
-        }
-
-        .right {
-          position: static;
-        }
-      }
       .idolSection {
         grid-template-columns: repeat(4, 1fr);
         width: 100%;
@@ -79,17 +54,6 @@
     }
 
     .buttonWrapper {
-      .paginationButtons {
-        .left {
-          position: static;
-          display: none;
-        }
-
-        .right {
-          position: static;
-          display: none;
-        }
-      }
       .idolSection {
         grid-template-columns: repeat(3, 1fr);
         white-space: nowrap;
