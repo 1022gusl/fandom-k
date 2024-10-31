@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCredit } from "../../hooks/useCredit";
 import CommonModal from "./CommonModal";
-import AlertModal from "./AlertModal.jsx";
+
 import { FEMALE } from "../../constants/tabGenderTypes";
 import postVote from "../../apis/voteAPI";
 import { getCharts } from "../../apis/chartAPI";
