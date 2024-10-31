@@ -65,5 +65,15 @@
     width: 255px;
     border-radius: 24px;
     padding: 0;
+    margin: 40px auto 81px;
+    margin-bottom: 81px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+    @media (max-width: 744px) {
+      margin: 24px 0 34px;
+    }
   }
 }

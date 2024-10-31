@@ -126,8 +126,10 @@ const AddFavoriteIdol = () => {
       <GradientButton
         onClick={handleSaveToLocalStorage}
         className="save-button"
+        variant="addButton"
+        disabled={false}
       >
-        추가하기
+        + 추가하기
       </GradientButton>
     </div>
   );
