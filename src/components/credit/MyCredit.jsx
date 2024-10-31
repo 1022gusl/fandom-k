@@ -12,7 +12,7 @@ const MyCredit = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <section className="creditBoxWrapper">
+    <section className="creditWrapper">
       <div className="creditBox">
         <div className="creditInfo">
           <h2 className="creditTitle">내 크레딧</h2>

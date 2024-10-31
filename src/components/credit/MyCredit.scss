@@ -18,7 +18,7 @@
 //   border-radius: 8px;
 // }
 
-.creditBoxWrapper {
+.creditWrapper {
   border: none;
   max-width: 1200px;
   width: 100%;
@@ -65,16 +65,23 @@
   }
 }
 
-@media (max-width: 1199px) {
-  .creditWrapper {
-    margin: 0 24px 64px;
-    padding: 35px 64px 36px;
-  }
-}
+// @media (max-width: 1199px) {
+//   .creditWrapper {
+//     margin: 0 24px 64px;
+//     padding: 35px 64px 36px;
+//   }
+// }
 
-@media (max-width: 767px) {
+// @media (max-width: 767px) {
+//   .creditWrapper {
+//     margin: 16px 24px 40px;
+//     padding: 20px;
+//   }
+// }
+
+@media (max-width: 374px) {
   .creditWrapper {
-    margin: 16px 24px 40px;
-    padding: 20px;
+    // margin: 16px 24px 40px;
+    padding: 30px 20px;
   }
 }
