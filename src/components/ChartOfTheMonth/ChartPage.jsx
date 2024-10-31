@@ -57,10 +57,17 @@ const ChartPage = () => {
     fetchIdolData(selectedTab);
   }, [selectedTab, fetchIdolData]);
 
-  const handleTabChange = (tab) => {
+  const resetTabData = (tab) => {
     setSelectedTab(tab);
     setIdolList([]);
     setCursor(null);
+  };
+
+  const handleTabChange = (tab) => {
+    if (tab !== selectedTab) {
+      resetTabData(tab);
+      fetchIdolData(tab);
+    }
   };
 
   const handleLoadMore = () => {
@@ -101,7 +108,8 @@ const ChartPage = () => {
           <IdolList idols={idolList} />
         )}
       </div>
-      {idolList.length < MAX_IDOLS &&
+      {!fetchError &&
+        idolList.length < MAX_IDOLS &&
         (loadingType === "more" ? (
           <LoadingSpinner />
         ) : (
