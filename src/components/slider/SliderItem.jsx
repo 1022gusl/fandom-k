@@ -13,7 +13,7 @@ const SliderItem = ({ idol }) => (
         alt={idol.name}
       />
       <div className="tributeButtonContainer">
-        <GradientButton variant="tributeButton ">후원하기</GradientButton>
+        <GradientButton variant="tributeButton">후원하기</GradientButton>
       </div>
     </div>
     <AdInfo adLocation={idol.adLocation} name={idol.name} />

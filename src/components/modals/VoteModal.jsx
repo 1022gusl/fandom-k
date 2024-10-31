@@ -1,6 +1,7 @@
 /*import React, { useState, useEffect } from "react";
 import { useCredit } from "../../hooks/useCredit";
 import CommonModal from "./CommonModal";
+import AlertModal from "./AlertModal.jsx";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { mockIdolData } from "../ChartOfTheMonth/mockData";
 import VoteIdolList from "./VoteIdolList";
@@ -10,7 +11,16 @@ import "./VoteModal.scss";
 const VoteModal = ({ isOpen, onClose, selectedTab }) => {
   const [idolList, setIdolList] = useState([]);
   const [selectedIdol, setSelectedIdol] = useState(null);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
   const { totalCredits, dispatch } = useCredit();
+
+  const openAlert = () => {
+    setIsAlertOpen(true);
+  };
+
+  const closeAlert = () => {
+    setIsAlertOpen(false);
+  };
 
   const handleVoteIdol = () => {
     console.log("현재 크레딧:", totalCredits);
@@ -32,7 +42,9 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
         )
       );
       alert("투표가 완료되었습니다!");
-    } else alert("크레딧이 부족합니다");
+    } else {
+      openAlert();
+    }
   };
 
   useEffect(() => {
