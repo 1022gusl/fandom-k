@@ -1,4 +1,5 @@
-// TributeInfo.js
+import "./TributeInfo.scss";
+
 import React from "react";
 import gem from "../../assets/icons/gem.png";
 

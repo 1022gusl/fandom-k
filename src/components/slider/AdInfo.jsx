@@ -1,5 +1,6 @@
 // AdInfo.js
 import React from "react";
+import "./AdInfo.scss";
 
 const AdInfo = ({ adLocation, name }) => (
   <div className="adLayout">

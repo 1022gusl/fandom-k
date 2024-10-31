@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-
+import "./TributeSlider.scss";
+import "../../styles/global.scss";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
