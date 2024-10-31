@@ -1,4 +1,4 @@
-import IdolImage from "../../../common/IdolImage/IdolImage";
+import IdolImage from "../../../common/IdolImage";
 import "./IdolElement.scss";
 
 const IdolElement = ({ rank, idol }) => {
@@ -12,7 +12,7 @@ const IdolElement = ({ rank, idol }) => {
         </p>
       </div>
       <p className="voteInfo">
-        {idol.voteCount ? idol.totalVotes.toLocaleString() : "0"}표
+        {idol.totalVotes ? idol.totalVotes.toLocaleString() : "0"}표
       </p>
     </li>
   );

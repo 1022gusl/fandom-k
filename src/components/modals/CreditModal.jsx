@@ -55,7 +55,7 @@ function CreditModal({ isOpen, onClose }) {
       ))}
       <GradientButton variant="chargeButton" onClick={handleChargeCredit}>
         충전하기
-      </GradientButton>{" "}
+      </GradientButton>
       {/*충전 버튼*/}
     </CommonModal>
   );

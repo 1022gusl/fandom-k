@@ -14,7 +14,7 @@ const VoteIdolList = ({ idols, onIdolClick }) => {
   };
 
   return (
-    <ul className="idolListUl">
+    <ul className="modalIdolListUl">
       {sortedVoteIdols.map((idol, index) => (
         <li
           key={idol.id}

@@ -1,6 +1,6 @@
 @import "../../styles/color.scss";
 
-.idolListUl {
+.modalIdolListUl {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   list-style: none;
@@ -14,7 +14,7 @@
   align-items: center;
   width: 457px;
   border-bottom: 1px solid $color-gray-1;
-  padding-bottom: 15px;
+  padding: 10px 0;
   cursor: pointer;
 }
 
