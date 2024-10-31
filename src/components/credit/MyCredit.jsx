@@ -24,8 +24,10 @@ const MyCredit = () => {
         <button className="rechargeButton" onClick={openModal}>
           충전하기
         </button>
+        {isModalOpen && (
+          <CreditModal isOpen={isModalOpen} onClose={closeModal} />
+        )}
       </div>
-      {isModalOpen && <CreditModal isOpen={isModalOpen} onClose={closeModal} />}
     </section>
   );
 };
