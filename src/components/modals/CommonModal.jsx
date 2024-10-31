@@ -4,8 +4,12 @@ import deleteIcon from "../../assets/icons/delete.svg";
 const CommonModal = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) return null; // 모달창이 열려 있지 않으면 렌더링 중지
 
+  const handleOverlayClose = (e) => {
+    if (e.target === e.currentTarget) onClose();
+  };
+
   return (
-    <div className="modalOverlay">
+    <div className="modalOverlay" onClick={handleOverlayClose}>
       {" "}
       {/*오버레이 (화면 어둡게)*/}
       <div className="modal">
