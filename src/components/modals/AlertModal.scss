@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .alertModal {
   display: flex;
   flex-direction: column;
@@ -14,4 +16,8 @@
 .alertMsg {
   padding: 0 30px;
   margin-bottom: 10px;
+}
+
+.alertCreditMsg {
+  color: $color-brand-peach;
 }

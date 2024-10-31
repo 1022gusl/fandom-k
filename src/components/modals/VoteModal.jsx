@@ -95,7 +95,8 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
       </GradientButton>
       <AlertModal isOpen={isAlertOpen} onClose={closeAlert} />
       <div className="description">
-        투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
+        투표하는 데 <span className="creditMessage">1000 크레딧</span>이
+        소모됩니다.
       </div>
     </CommonModal>
   );

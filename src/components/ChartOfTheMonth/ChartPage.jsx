@@ -6,7 +6,6 @@ import { MAX_IDOLS } from "../../constants/maxIdol";
 import { FEMALE } from "../../constants/tabGenderTypes";
 import { getCharts } from "../../apis/chartAPI";
 import VoteModal from "../modals/VoteModal";
-import { CreditProvider } from "../../hooks/useCredit";
 import LoadingSpinner from "../../components/common/LoadingSpinner";
 import GradientButton from "../../components/common/GradientButton";
 import chartIcon from "../../assets/icons/chart.png";
