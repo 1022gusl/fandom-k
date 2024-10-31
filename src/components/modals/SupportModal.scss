@@ -61,5 +61,4 @@ input::-webkit-inner-spin-button {
 .errorMessage {
   @include font-style(400, 14px);
   color: red;
-  margin-bottom: 10px;
 }
