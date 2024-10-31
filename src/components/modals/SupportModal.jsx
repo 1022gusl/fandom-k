@@ -64,12 +64,12 @@ const SupportModal = ({ isOpen, onClose, idol }) => {
           <img src={CreditIcon} className="inputCreditIcon" alt="크레딧" />
         </div>
         {numericCreditValue > totalCredits && (
-          <p className="errorMessage">
+          <p className="inputErrorMessage">
             갖고있는 크레딧보다 더 많이 후원할 수 없어요
           </p>
         )}
         {isInvalid && creditValue.trim() !== "" && (
-          <p className="errorMessage">올바른 값을 입력해주세요</p>
+          <p className="inputErrorMessage">올바른 값을 입력해주세요</p>
         )}
         <GradientButton
           variant="supportButton"
