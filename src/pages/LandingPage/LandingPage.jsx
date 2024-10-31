@@ -58,12 +58,15 @@ function LandingPage() {
             <img src={web1} className="ra" alt="background gradient" />
           </div>
 
-          <div className="backgroundMask">
+          <div className="home1">
             <img
               src={home1}
               className="phoneImage"
               alt="phone screen 1"
             />
+          </div>
+
+          <div className="navyStripe">
           </div>
         </div>
       </section>
