@@ -8,17 +8,36 @@ import "./SupportModal.scss";
 
 const SupportModal = ({ isOpen, onClose, idol }) => {
   const [creditValue, setCreditValue] = useState("");
+  const [isInvalid, setIsInvalid] = useState(false);
   const { totalCredits, dispatch } = useCredit();
 
+  const numericCreditValue = Number(creditValue);
+  const isCreditZero = numericCreditValue === 0;
+  const isCreditInvalid = isInvalid || totalCredits < numericCreditValue;
+
   const handleCreditChange = (e) => {
-    setCreditValue(e.target.value);
+    const value = e.target.value;
+
+    if (value.trim() === "") {
+      setCreditValue(value);
+      setIsInvalid(false);
+      return;
+    }
+
+    if (!/^\d+$/.test(value) || numericCreditValue < 0) {
+      setIsInvalid(true);
+    } else {
+      setIsInvalid(false);
+    }
+
+    setCreditValue(value);
   };
 
   const handleSupport = () => {
-    if (creditValue === 0 || totalCredits < creditValue) {
+    if (isCreditInvalid) {
       alert("후원이 실패하였습니다!");
     } else {
-      dispatch({ type: "substractCredits", amount: creditValue });
+      dispatch({ type: "substractCredits", amount: numericCreditValue });
       alert("성공적으로 후원하였습니다!");
     }
   };
@@ -36,17 +55,25 @@ const SupportModal = ({ isOpen, onClose, idol }) => {
         </div>
         <div className="inputContainer">
           <input
-            type="number"
-            className="inputCredit"
+            type="text"
+            className={`inputCredit ${isCreditInvalid && creditValue.trim() !== "" ? "invalid" : ""}`}
             placeholder="크레딧 입력"
             value={creditValue}
             onChange={handleCreditChange}
           />
           <img src={CreditIcon} className="inputCreditIcon" alt="크레딧" />
         </div>
+        {numericCreditValue > totalCredits && (
+          <p className="errorMessage">
+            갖고있는 크레딧보다 더 많이 후원할 수 없어요
+          </p>
+        )}
+        {isInvalid && creditValue.trim() !== "" && (
+          <p className="errorMessage">올바른 값을 입력해주세요</p>
+        )}
         <GradientButton
           variant="supportButton"
-          className="supportBtn"
+          disabled={isCreditZero || isCreditInvalid}
           onClick={handleSupport}
         >
           후원하기
