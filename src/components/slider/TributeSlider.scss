@@ -45,9 +45,12 @@
   flex-direction: column; /* 수직 배치 */
   gap: 8px 0px;
 }
-@media (max-width: 1260px) {
+@media (max-width: 1290px) {
   .sliderContainer {
-    padding: 0 10px;
+    padding: 0 0px;
+  }
+  .tributeSupport {
+    padding: 20px 0px;
   }
 }
 @media (max-width: 744px) {
