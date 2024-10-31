@@ -33,13 +33,12 @@
 
 @media (max-width: 1199px) {
   .chartContainer {
-    max-width: 700px;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .chartContainer {
-    min-width: 327px;
     margin-bottom: 20px;
   }
 }
