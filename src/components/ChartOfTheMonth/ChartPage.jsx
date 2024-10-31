@@ -91,6 +91,7 @@ const ChartPage = () => {
           isOpen={isModalOpen}
           onClose={closeModal}
           selectedTab={selectedTab}
+          onVoteChange={() => fetchIdolData(selectedTab)}
         />
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
