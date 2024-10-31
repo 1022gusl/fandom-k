@@ -7,22 +7,28 @@
   align-items: $align;
 }
 
-.creditWrapper {
-  @include flex-style(column);
-  max-width: 1165px;
-  width: 100%;
-  margin: 50px auto 50px;
-  padding: 30px 78px 41px;
-  background-color: $color-black-1;
-  border: 1px solid rgba($color-white-3, 0.8);
-  border-radius: 8px;
-}
+// .creditWrapper {
+//   @include flex-style(column);
+//   max-width: 1165px;
+//   width: 100%;
+//   margin: 50px auto 50px;
+//   padding: 30px 78px 41px;
+//   background-color: $color-black-1;
+//   border: 1px solid rgba($color-white-3, 0.8);
+//   border-radius: 8px;
+// }
 
+.creditBoxWrapper {
+  border: none;
+  max-width: 1200px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid $color-white-3;
+  height: 131px;
+  padding: 30px 50px;
+}
 .creditBox {
   @include flex-style(row, space-between);
-  border: none;
-  width: 100%;
-  border-radius: 8px;
 }
 
 .creditInfo {

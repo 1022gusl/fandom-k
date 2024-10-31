@@ -12,7 +12,7 @@ const MyCredit = () => {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <section className="creditWrapper">
+    <section className="creditBoxWrapper">
       <div className="creditBox">
         <div className="creditInfo">
           <h2 className="creditTitle">내 크레딧</h2>
@@ -24,8 +24,10 @@ const MyCredit = () => {
         <button className="rechargeButton" onClick={openModal}>
           충전하기
         </button>
+        {isModalOpen && (
+          <CreditModal isOpen={isModalOpen} onClose={closeModal} />
+        )}
       </div>
-      {isModalOpen && <CreditModal isOpen={isModalOpen} onClose={closeModal} />}
     </section>
   );
 };
