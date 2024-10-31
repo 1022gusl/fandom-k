@@ -69,7 +69,7 @@ const TributeSlider = () => {
       try {
         const data = await getIdolList({
           cursor: null,
-          pageSize: 13,
+          pageSize: 10,
           keyword: "",
         });
         setIdolList(Array.isArray(data.list) ? data.list : []);
