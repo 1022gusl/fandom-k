@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# 💪 FE 11기 기초 프로젝트
+- **일정:** 24.10.24 ~ 24.11.08
+ 
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📋 프로젝트 소개
+- **프로젝트명:** Fandom-K
+- **프로젝트 설명:** 좋아하는 아이돌에게 후원, 투표할 수 있는 아이돌 팬덤 플랫폼
 
-## Available Scripts
 
-In the project directory, you can run:
+<br>
 
-### `npm start`
+## 🔗 배포 URL
+- [FANDOM-K](https://cute-horse-1ae8c6.netlify.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 👩‍💻 팀원 소개 👨‍💻
+<table>
+  <tr>
+    <td><strong>박연학</strong> (<a href="https://github.com/1022gusl">@1022gusl</a>)</td>
+    <td><strong>김태완</strong> (<a href="https://github.com/twtwkim">@twtwkim</a>)</td>
+    <td><strong>홍지윤</strong> (<a href="https://github.com/h-zhirun">@h-zhirun</a>)</td>
+  </tr>
+  <tr>
+    <td><strong>오진화</strong> (<a href="https://github.com/0hjinhwa">@0hjinhwa</a>)</td>
+    <td><strong>임광조</strong> (<a href="https://github.com/lkj1313">@lkj1313</a>)</td>
+    <td><strong>김예도</strong> (<a href="https://github.com/solprime">@solprime</a>)</td>
+  </tr>
+</table>
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 기술 스택
+- ![HTML/CSS](https://img.shields.io/badge/HTML/CSS-1572B6?style=flat-square&logo=html5)
+- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+- ![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+- ![Git & GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github)
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## ✨ **코드 컨벤션**
+- **🐫 Naming Convention**: `CamelCase` 사용
+- **🌟 Formatting**: `Prettier`를 사용하여 코드 형식을 자동 정리
+- **📏 Linting**: `ESLint`로 코드 스타일 일관성 유지 
+- **📏 Indentation**: 2칸 공백으로 통일

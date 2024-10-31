@@ -9,9 +9,10 @@ const AlertModal = ({ isOpen, onClose }) => {
       <div className="alertModal">
         <img src={CreditIcon} alt="크레딧 아이콘" className="alertCreditIcon" />
         <div className="alertMsg">
-          앗! 투표하기 위한 <span>크레딧</span>이 부족해요
+          앗! 투표하기 위한 <span className="alertCreditMsg">크레딧</span>이
+          부족해요
         </div>
-        <GradientButton varient="confirmButton" onClick={onClose}>
+        <GradientButton variant="confirmButton" onClick={onClose}>
           확인
         </GradientButton>
       </div>

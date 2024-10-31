@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .description {
   margin-top: 10px;
   text-align: center;
@@ -11,4 +13,8 @@
 
 .modalContent::-webkit-scrollbar {
   display: none;
+}
+
+.creditMessage {
+  color: $color-brand-peach;
 }
