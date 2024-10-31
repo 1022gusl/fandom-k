@@ -1,3 +1,4 @@
+import "./SliderNavigationButton.scss";
 import nextButton from "../../assets/icons/nextButton.png";
 import prevButton from "../../assets/icons/prevButton.png";
 const SlidernavigationButton = ({ onClick, direction, disabled }) => (

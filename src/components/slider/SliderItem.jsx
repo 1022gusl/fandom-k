@@ -3,6 +3,7 @@ import React from "react";
 import GradientButton from "../common/GradientButton";
 import AdInfo from "./AdInfo";
 import TributeInfo from "./TributeInfo";
+import "./SliderItem.scss";
 
 const SliderItem = ({ idol, openDonateModal }) => (
   <div className="sliderItem">
