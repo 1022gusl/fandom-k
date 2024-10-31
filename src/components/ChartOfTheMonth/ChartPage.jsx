@@ -18,6 +18,7 @@ const ChartPage = () => {
   const [cursor, setCursor] = useState(null);
   const [loadingType, setLoadingType] = useState(null); // initial or more로 구분
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fetchError, setFetchError] = useState(false);
 
   const pageSize = window.innerWidth > 1199 ? 10 : 5;
 
@@ -32,6 +33,7 @@ const ChartPage = () => {
   const fetchIdolData = useCallback(
     async (tab, currentCursor = null) => {
       setLoadingType(currentCursor ? "more" : "initial");
+      setFetchError(false);
 
       try {
         const { idols, nextCursor } = await getCharts({
@@ -43,6 +45,7 @@ const ChartPage = () => {
         setCursor(nextCursor || null);
       } catch (error) {
         console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
+        setFetchError(true);
       } finally {
         setLoadingType(null);
       }
@@ -64,6 +67,8 @@ const ChartPage = () => {
     if (!loadingType && cursor) fetchIdolData(selectedTab, cursor);
   };
 
+  const isLoading = loadingType === "initial" && idolList.length === 0;
+
   return (
     <section className="chartContainer">
       <div className="chartHeader">
@@ -84,13 +89,18 @@ const ChartPage = () => {
           />
         </CreditProvider>
       </div>
-
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
-      {loadingType === "initial" && idolList.length === 0 ? (
-        <LoadingSpinner />
-      ) : (
-        <IdolList idols={idolList} />
-      )}
+      <div className="idolListContainer">
+        {fetchError ? (
+          <p className="errorMessage">
+            데이터를 불러오지 못했습니다. 다시 시도해주세요!
+          </p>
+        ) : isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <IdolList idols={idolList} />
+        )}
+      </div>
       {idolList.length < MAX_IDOLS &&
         (loadingType === "more" ? (
           <LoadingSpinner />

@@ -4,8 +4,9 @@
   max-width: 1200px;
   width: 100%;
   margin: 80px 0;
-
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .chartHeader {
@@ -25,6 +26,10 @@
 .chartIcon {
   width: 24px;
   height: 24px;
+}
+
+.idolListContainer {
+  min-height: 400px;
 }
 
 @media (max-width: 1199px) {
