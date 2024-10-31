@@ -93,6 +93,7 @@ const VoteModal = ({ isOpen, onClose, selectedTab }) => {
       <GradientButton onClick={handleVoteIdol} variant="voteButton">
         투표하기
       </GradientButton>
+      <AlertModal isOpen={isAlertOpen} onClose={closeAlert} />
       <div className="description">
         투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
       </div>

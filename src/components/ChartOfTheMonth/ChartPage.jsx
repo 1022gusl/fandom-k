@@ -88,13 +88,11 @@ const ChartPage = () => {
           <img src={chartIcon} alt="차트" className="chartIcon" />
           차트 투표하기
         </GradientButton>
-        <CreditProvider>
-          <VoteModal
-            isOpen={isModalOpen}
-            onClose={closeModal}
-            selectedTab={selectedTab}
-          />
-        </CreditProvider>
+        <VoteModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          selectedTab={selectedTab}
+        />
       </div>
       <TabMenu selectedTab={selectedTab} onTabChange={handleTabChange} />
       <div className="idolListContainer">
