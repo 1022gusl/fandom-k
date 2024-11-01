@@ -18,6 +18,11 @@
   object-fit: cover;
 }
 
+.imgBorder .checkedIcon {
+  width: var(--check-icon-size);
+  height: var(--check-icon-size);
+}
+
 .idolOverlay {
   position: absolute;
   top: 0;
