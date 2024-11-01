@@ -9,13 +9,21 @@ import web1 from "../../assets/images/web_01.png";
 import web2 from "../../assets/images/web_02.png";
 import web3 from "../../assets/images/web_03.png";
 import { useNavigate } from "react-router-dom";
+import { useCredit } from "../../hooks/useCredit";
 
 function LandingPage() {
   const navigate = useNavigate();
 
+  const { dispatch} = useCredit();
+
   const moveToList = () => {
     localStorage.clear();
-    navigate("/list");
+    
+    dispatch({ type: "setCredits", amount: 0 });
+
+    setTimeout(() => {
+      navigate("/list");
+    }, 0);
   };
 
   return (
