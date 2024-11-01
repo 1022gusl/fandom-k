@@ -10,14 +10,16 @@ const IdolImage = ({
   checkIconSize = "30px",
 }) => {
   return (
-    <div
-      className="imgBorder"
-      style={{ "--size": size, "--check-icon-size": checkIconSize }}
-    >
+    <div className="imgBorder" style={{ "--size": size }}>
       <img src={src} alt={alt} className="idolImg" />
       {isActive && (
         <div className="idolOverlay">
-          <img src={checkIcon} alt="체크 표시" className="checkedIcon" />
+          <img
+            src={checkIcon}
+            alt="체크 표시"
+            className="checkedIcon"
+            style={{ width: checkIconSize, height: checkIconSize }}
+          />
         </div>
       )}
     </div>
