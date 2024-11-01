@@ -9,3 +9,9 @@
   width: 10px;
   height: 20px;
 }
+
+@media (max-width: 1290px) {
+  .arrowButton {
+    display: none;
+  }
+}

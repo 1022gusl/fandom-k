@@ -19,3 +19,12 @@
 .adTitle {
   font-size: 18px;
 }
+
+@media (max-width: 374px) {
+  .adHeading {
+    font-size: 12px;
+  }
+  .adTitle {
+    font-size: 14px;
+  }
+}
