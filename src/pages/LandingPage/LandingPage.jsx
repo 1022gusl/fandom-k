@@ -14,13 +14,14 @@ import { useCredit } from "../../hooks/useCredit";
 
 function LandingPage() {
   const [showIntro, setShowIntro] = useState(true); // 인트로 상태
+  const [fadeOut, setFadeOut] = useState(false); //페이드 아웃
   const navigate = useNavigate();
   const { dispatch } = useCredit();
 
   useEffect(() => {
-    //인트로를 2초간 보여줄 useEffect
     const timer = setTimeout(() => {
-      setShowIntro(false);
+      setFadeOut(true);
+      setTimeout(() => setShowIntro(false), 500);
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -33,10 +34,8 @@ function LandingPage() {
   };
 
   if (showIntro) {
-    // 인트로페이지
     return (
-      <div className="introPage">
-        <div className="backgroundImage" />
+      <div className={`introPage ${fadeOut ? "fade-out zoom-out" : ""}`}>
         <img src={introLogo} className="introLogo" alt="팬덤케이" />
       </div>
     );
