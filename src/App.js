@@ -11,7 +11,6 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/list" element={<ListPage />} />
-          {/* 마이페이지 추가 */}
         </Routes>
       </Router>
     </CreditProvider>
