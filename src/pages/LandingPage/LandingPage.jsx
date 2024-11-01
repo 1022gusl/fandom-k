@@ -19,9 +19,13 @@ function LandingPage() {
   const { dispatch } = useCredit();
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
     const timer = setTimeout(() => {
       setFadeOut(true);
-      setTimeout(() => setShowIntro(false), 500);
+      setTimeout(() => {
+        setShowIntro(false);
+        document.body.style.overflow = "auto";
+      }, 500);
     }, 2000);
 
     return () => clearTimeout(timer);
