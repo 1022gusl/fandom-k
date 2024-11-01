@@ -1,4 +1,13 @@
 @import "../../styles/color.scss";
+.left {
+  position: relative;
+  left: -34px;
+}
+
+.right {
+  position: relative;
+  right: -34px;
+}
 
 .paginationButton {
   background-color: $color-black-3;
@@ -18,20 +27,27 @@
     cursor: not-allowed;
   }
 }
-
-@media screen and (min-width: 1200px) {
+@media screen and (max-width: 1199px) {
   .left {
-    position: relative;
-    left: -32px;
+    position: static;
   }
 
   .right {
-    position: relative;
-    right: -32px;
+    position: static;
   }
 }
 
 @media screen and (max-width: 744px) {
+  .left {
+    position: static;
+  }
+
+  .right {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 374px) {
   .left {
     position: static;
     display: none;

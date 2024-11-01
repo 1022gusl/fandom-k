@@ -9,17 +9,31 @@
 }
 
 .AddFavoriteContainer {
+  padding-bottom: 81px;
   .divider {
     margin: 0 auto;
-    width: 1200px;
     height: 1px;
     background-color: $color-white-1;
     opacity: 10%;
   }
 }
 
-/* 반응형 - Mobile */
 @media screen and (max-width: 744px) {
+  .AddFavoriteContainer {
+    padding-bottom: 209px;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .idolCard {
+    .idolImageWrapper {
+      margin: 0 auto 8px;
+    }
+  }
+}
+
+/* 반응형 - Mobile */
+@media screen and (max-width: 374px) {
   .save-button {
     position: sticky;
     bottom: 0;

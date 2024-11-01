@@ -41,8 +41,9 @@
   }
 }
 
-@media screen and (max-width: 1199px) and (min-width: 745px) {
+@media screen and (max-width: 744px) {
   .favoriteContainer {
+    padding: 0;
     .favoriteTitle {
       font-size: 20px;
       margin-top: 14px;
@@ -54,7 +55,7 @@
   }
 }
 
-@media screen and (max-width: 744px) {
+@media screen and (max-width: 374px) {
   .favoriteContainer {
     .favoriteTitle {
       font-size: 16px;

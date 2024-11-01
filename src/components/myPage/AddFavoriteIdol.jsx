@@ -1,44 +1,40 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { getIdolList } from "../../apis/IdolList";
-import "./AddFavoriteIdol.scss";
+import React, { useEffect, useState } from "react";
 import IdolList from "./IdolList";
 import FavoriteIdolList from "./FavoriteIdolList";
-import { updatePageSize } from "../../util/UpdatePageSize";
+import useIdolList from "../../hooks/useIdolList";
 import GradientButton from "../common/GradientButton";
+import useSelectedIdol from "../../hooks/useSelectedIdol";
+import { updatePageSize } from "../../util/UpdatePageSize";
+import { getIdolList } from "../../apis/IdolList";
+import "./AddFavoriteIdol.scss";
 
 const AddFavoriteIdol = () => {
-  const [idolList, setIdolList] = useState([]); // "관심있는 아이돌 추가해보세요" 섹션 아이돌 리스트
-  const [cursor, setCursor] = useState(0); // 페이지네이션 위한 cursor 상태
-  const [nextCursor, setNextCursor] = useState(null); // 다음 cursor 상태
-  const [prevCursor, setPrevCursor] = useState([]); // 이전 cursor 상태
-  const [selectedIdols, setSelectedIdols] = useState([]); // 선택된 아이돌 상태
-  const [favoriteIdols, setFavoriteIdols] = useState([]); // 관심있는 아이돌 상태(id)
-  const [favoriteIdolDetails, setFavoriteIdolDetails] = useState([]); // cursor:null 인 favoriteIdol 데이터 관리
-  const [pageSize, setPageSize] = useState(16);
-  const [totalList, setTotalList] = useState(0);
+  const [favoriteIdols, setFavoriteIdols] = useState([]); //관심있는 아이돌(id) 목록
+  const [favoriteIdolDetails, setFavoriteIdolDetails] = useState([]); //관심있는 아이돌 상세정보(id 비교)
+  const [pageSize, setPageSize] = useState(16); // 리스트업 하는 아이돌 수
+  const [totalList, setTotalList] = useState(0); // 전체 아이돌 목록(페이지네이션 조건)
 
-  // 아이돌 리스트 가져오기
-  const fetchIdols = useCallback(
-    async (currentCursor) => {
-      try {
-        const result = await getIdolList({ cursor: currentCursor, pageSize });
-        setIdolList(result.list);
-        setNextCursor(result.nextCursor);
-      } catch (error) {
-        console.error("Error loading idols:", error);
-      }
-    },
-    [pageSize]
-  );
+  //useIdolList 훅을 사용해서 아이돌 목록 / 페이지 관련 함수, state
+  const {
+    idolList,
+    handlePrevPage,
+    handleNextPage,
+    nextCursor,
+    prevCursor,
+    setCursor,
+  } = useIdolList(pageSize);
 
-  // 로컬 스토리지에 저장된 favoriteIdols의 상세 정보 가져오기
+  //useSelectedIdol 훅을 사용하여 선택된 아이돌 관련 함수와 상태 가져오기
+  const { selectedIdols, handleSelectIdol, setSelectedIdols } =
+    useSelectedIdol();
+
+  //관심있는 아이돌 정보 가져오기
   const fetchFavoriteIdols = async () => {
-    if (favoriteIdols.length === 0) return;
     try {
-      const result = await getIdolList({ cursor: null, pageSize: 1000 });
+      const result = await getIdolList({ cursor: null, pageSize: 1000 }); //전체 아이돌 리스트 가져와
       const favoriteDetails = result.list.filter((idol) =>
         favoriteIdols.includes(idol.id)
-      );
+      ); //faviruteIdols의 아이돌 id에 해당하는 아이돌 필터링
       setFavoriteIdolDetails(favoriteDetails);
       setTotalList(result.list);
     } catch (err) {
@@ -46,62 +42,32 @@ const AddFavoriteIdol = () => {
     }
   };
 
-  // 로컬스토리지에 아이돌 저장하기
+  //선택한 아이돌을 로컬 스토리지에 저장
   const handleSaveToLocalStorage = () => {
-    const storedIdols = JSON.parse(localStorage.getItem("selectedIdols")) || [];
-    const updatedFavoriteIdols = [...storedIdols, ...selectedIdols]; // 기존 아이돌과 새로운 선택된 아이돌 누적
-    localStorage.setItem("selectedIdols", JSON.stringify(updatedFavoriteIdols));
+    const storedIdols = JSON.parse(localStorage.getItem("selectedIdols")) || []; // 로컬 스토리지에서 기존 아이돌 가져와
+    const updatedFavoriteIdols = [...storedIdols, ...selectedIdols]; //기존 저장에 선택 아이돌 합쳐
+    localStorage.setItem("selectedIdols", JSON.stringify(updatedFavoriteIdols)); // 합친 배열 저장
     alert("선택한 아이돌이 로컬 스토리지에 저장되었습니다!");
-    setFavoriteIdols(updatedFavoriteIdols); // 상태 업데이트
-    setSelectedIdols([]); // 선택된 아이돌 초기화
+    setFavoriteIdols(updatedFavoriteIdols);
+    setSelectedIdols([]);
   };
 
-  useEffect(() => {
-    fetchIdols(cursor);
-  }, [cursor, pageSize]);
-
+  //favoriteIdols 변경시 관심아이돌 정보 가져오는 함수 실행
   useEffect(() => {
     fetchFavoriteIdols();
   }, [favoriteIdols]);
 
-  // 로컬 스토리지에서 선택된 아이돌을 가져와 상태 업데이트
+  // 처음 마운트시 로컬 스토리지에서 관심아이돌 가져오기
   useEffect(() => {
     const storedIdols = JSON.parse(localStorage.getItem("selectedIdols")) || [];
     setFavoriteIdols(storedIdols);
   }, []);
 
-  // 브라우저 크기 변화에 따른 pageSize 업데이트
+  // 윈도우 크기 변경될때 페이지 크기 업뎃
   useEffect(() => {
     const resize = updatePageSize(setCursor, setPageSize);
-    return () => resize(); // 컴포넌트 언마운트 시 함수 호출
+    return () => resize();
   }, []);
-
-  //페이지네이션 이전 버튼
-  const handlePrevPage = () => {
-    if (prevCursor.length > 0) {
-      setCursor(prevCursor[prevCursor.length - 1]);
-      setPrevCursor((prev) => prev.slice(0, -1));
-    }
-  };
-
-  //페이지네이션 다음 버튼
-  const handleNextPage = () => {
-    if (nextCursor) {
-      setPrevCursor((prev) => [...prev, cursor]);
-      setCursor(nextCursor);
-    }
-  };
-
-  //관심 아이돌 선택
-  const handleSelectIdol = (idol) => {
-    setSelectedIdols((prev) => {
-      if (prev.includes(idol.id)) {
-        return prev.filter((id) => id !== idol.id); // 이미 선택된 경우 선택 해제
-      } else {
-        return [...prev, idol.id]; // 선택되지 않은 경우 선택
-      }
-    });
-  };
 
   return (
     <div className="AddFavoriteContainer">
@@ -120,8 +86,8 @@ const AddFavoriteIdol = () => {
         handleNextPage={handleNextPage}
         handleSelectIdol={handleSelectIdol}
         favoriteIdols={favoriteIdols}
-        pageSize={pageSize}
         totalList={totalList}
+        pageSize={pageSize}
       />
       <GradientButton
         onClick={handleSaveToLocalStorage}

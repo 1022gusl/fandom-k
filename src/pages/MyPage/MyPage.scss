@@ -12,6 +12,7 @@ body {
 
 .myPageContainer {
   width: 100%;
+  height: 100%;
 }
 
 .topImage {
@@ -28,14 +29,14 @@ body {
 }
 
 /* 반응형 - Tablet */
-@media screen and (max-width: 1199px) and (min-width: 745px) {
+@media screen and (max-width: 744px) {
   .pageContainer {
     padding: 0 24px;
   }
 }
 
 /* 반응형 - Mobile */
-@media screen and (max-width: 744px) {
+@media screen and (max-width: 374px) {
   .pageContainer {
     padding: 0 24px;
   }

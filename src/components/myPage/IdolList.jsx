@@ -1,7 +1,7 @@
 import React from "react";
 import IdolCard from "./IdolCard";
-import "./IdolList.scss";
 import PaginationButton from "./PaginationButton";
+import "./IdolList.scss";
 import rightBtn from "../../assets/images/Vector right.png";
 import leftBtn from "../../assets/images/Vector left.png";
 import checkImg from "../../assets/images/Check.png";
@@ -19,11 +19,12 @@ const IdolList = React.memo(
     handlePrevPage,
     handleNextPage,
   }) => {
-    // 전체 아이돌 id가 포함된 배열만들기
+    // 전체 아이돌 객체에서 키뽑아서 키별 id 배열만들기
     const totalListIds = Object.keys(totalList).map((key) => totalList[key].id);
-    // 리스트업 되는 아이돌 id가 포함된 배열만들기
+    // 리스트업 아이돌 키뽑아서 키별 id 배열만들기
     const idolListIds = Object.keys(idolList).map((key) => idolList[key].id);
-
+    console.log(totalListIds[totalListIds.length - 1]);
+    console.log(idolListIds[idolListIds.length - 1]);
     return (
       <div className="addFavoriteContainer">
         <p className="addTitle">관심 있는 아이돌을 추가해보세요.</p>
@@ -53,7 +54,7 @@ const IdolList = React.memo(
               !nextCursor ||
               (idolListIds.length > 0 &&
                 idolListIds[idolListIds.length - 1] ===
-                  totalListIds[totalListIds.length - 1])
+                  totalListIds[totalListIds.length - 1]) //마지막 아이돌 id가 전체 리스트의 마지막 id랑 같다면
             }
             direction="right"
             imgSrc={rightBtn}

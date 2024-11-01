@@ -59,7 +59,24 @@
   }
 }
 
-@media screen and (max-width: 1199px) and (min-width: 745px) {
+/* 반응형 - Tablet */
+@media screen and (max-width: 1199px) {
+  .idolCard {
+    .idolImageWrapper {
+      margin: 0 auto 8px;
+    }
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .idolCard {
+    .idolImageWrapper {
+      margin: 0 auto 8px;
+    }
+  }
+}
+
+@media screen and (max-width: 410px) {
   .idolCard {
     .idolImageWrapper {
       margin: 0 auto 8px;
@@ -68,7 +85,7 @@
 }
 
 /* 반응형 - Mobile */
-@media screen and (max-width: 744px) {
+@media screen and (max-width: 374px) {
   .idolCard {
     width: 100%;
     .idolImageWrapper {
