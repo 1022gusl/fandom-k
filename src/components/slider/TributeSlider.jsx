@@ -50,7 +50,7 @@ const TributeSlider = () => {
       {
         breakpoint: 768, // 768px 이하일 때 적용할 설정
         settings: {
-          slidesToShow: 1, // 한 번에 2개의 슬라이드 보여주기
+          slidesToShow: 1, // 한 번에 1개의 슬라이드 보여주기
           infinite: true,
         },
       },
@@ -100,7 +100,7 @@ const TributeSlider = () => {
       />
       <div className="sliderBox">
         {isLoading && <LoadingSpinner />}
-        <div className="tributeSupport">후원을 기다리는 조공</div>
+        <h2 className="tributeSupport">후원을 기다리는 조공</h2>
         <Slider ref={sliderRef} {...settings}>
           {idolDataList.map((idolData, index) => (
             <SliderItem
