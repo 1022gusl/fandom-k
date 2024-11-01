@@ -7,17 +7,6 @@
   align-items: $align;
 }
 
-// .creditWrapper {
-//   @include flex-style(column);
-//   max-width: 1165px;
-//   width: 100%;
-//   margin: 50px auto 50px;
-//   padding: 30px 78px 41px;
-//   background-color: $color-black-1;
-//   border: 1px solid rgba($color-white-3, 0.8);
-//   border-radius: 8px;
-// }
-
 .creditWrapper {
   border: none;
   max-width: 1200px;
@@ -65,23 +54,8 @@
   }
 }
 
-// @media (max-width: 1199px) {
-//   .creditWrapper {
-//     margin: 0 24px 64px;
-//     padding: 35px 64px 36px;
-//   }
-// }
-
-// @media (max-width: 767px) {
-//   .creditWrapper {
-//     margin: 16px 24px 40px;
-//     padding: 20px;
-//   }
-// }
-
 @media (max-width: 374px) {
   .creditWrapper {
-    // margin: 16px 24px 40px;
     padding: 30px 20px;
   }
 }
