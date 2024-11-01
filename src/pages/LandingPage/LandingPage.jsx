@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./LandingPage.scss";
 import fandomKLogo from "../../assets/images/Fandom-K.png";
+import introLogo from "../../assets/images/logo.png";
 import main from "../../assets/images/main.png";
 import home1 from "../../assets/images/Home-1.png";
 import home2 from "../../assets/images/Home-2.png";
@@ -12,14 +13,34 @@ import { useNavigate } from "react-router-dom";
 import { useCredit } from "../../hooks/useCredit";
 
 function LandingPage() {
+  const [showIntro, setShowIntro] = useState(true); // 인트로 상태
   const navigate = useNavigate();
   const { dispatch } = useCredit();
+
+  useEffect(() => {
+    //인트로를 2초간 보여줄 useEffect
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const moveToList = () => {
     localStorage.clear();
     dispatch({ type: "setCredits", amount: 0 });
     navigate("/list");
   };
+
+  if (showIntro) {
+    // 인트로페이지
+    return (
+      <div className="introPage">
+        <div className="backgroundImage" />
+        <img src={introLogo} className="introLogo" alt="팬덤케이" />
+      </div>
+    );
+  }
 
   return (
     <div className="all">
@@ -62,15 +83,10 @@ function LandingPage() {
           </div>
 
           <div className="home1">
-            <img
-              src={home1}
-              className="phoneImage"
-              alt="phone screen 1"
-            />
+            <img src={home1} className="phoneImage" alt="phone screen 1" />
           </div>
 
-          <div className="navyStripe">
-          </div>
+          <div className="navyStripe"></div>
         </div>
       </section>
 
@@ -89,11 +105,7 @@ function LandingPage() {
           </div>
 
           <div className="home2">
-            <img
-              src={home2}
-              className="phoneImage"
-              alt="phone screen 2"
-            />
+            <img src={home2} className="phoneImage" alt="phone screen 2" />
           </div>
         </div>
       </section>
@@ -113,11 +125,7 @@ function LandingPage() {
           </div>
 
           <div className="home3">
-            <img
-              src={home3}
-              className="phoneImage"
-              alt="phone screen 3"
-            />
+            <img src={home3} className="phoneImage" alt="phone screen 3" />
           </div>
         </div>
       </section>
