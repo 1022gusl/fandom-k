@@ -39,6 +39,7 @@ const SupportModal = ({ isOpen, onClose, idol }) => {
     } else {
       dispatch({ type: "substractCredits", amount: numericCreditValue });
       alert("성공적으로 후원하였습니다!");
+      onClose();
     }
   };
 
