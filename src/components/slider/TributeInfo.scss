@@ -6,16 +6,25 @@
   height: 26px;
   width: 100%;
   position: relative;
-  &::after {
-    content: "";
-
-    width: 33%; /* 1/3 너비 */
-    border-bottom: 1px solid rgba(249, 109, 105, 1);
-    position: absolute;
-    bottom: 0;
-    left: 0; /* 요소의 중앙에서 시작 */
-  }
 }
 .gemCount {
   display: flex;
+}
+.progressBarWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+.progressBarContainer {
+  width: 100%;
+  height: 1px; /* 높이를 적당히 설정 */
+  background-color: #e0e0e0; /* 배경색 (비어 있는 부분) */
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 1px;
+  background-color: rgba(249, 109, 105, 1); /* 채워지는 부분의 색상 */
+  width: 80%; /* 초기값 */
+  transition: width 0.5s ease; /* 채워질 때의 애니메이션 효과 */
 }

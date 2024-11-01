@@ -6,7 +6,7 @@ import GradientButton from "../common/GradientButton";
 import CreditIcon from "../../assets/icons/credit.svg";
 import "./SupportModal.scss";
 
-const SupportModal = ({ isOpen, onClose, idol }) => {
+const SupportModal = ({ isOpen, onClose, idolData }) => {
   const [creditValue, setCreditValue] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
   const { totalCredits, dispatch } = useCredit();
@@ -39,6 +39,7 @@ const SupportModal = ({ isOpen, onClose, idol }) => {
     } else {
       dispatch({ type: "substractCredits", amount: numericCreditValue });
       alert("성공적으로 후원하였습니다!");
+      onClose();
     }
   };
 
@@ -48,10 +49,10 @@ const SupportModal = ({ isOpen, onClose, idol }) => {
         <div className="supportIdol">
           <img
             className="supportModalImg"
-            src={idol.profilePicture || "defaultImage.jpg"}
-            alt={idol.name}
+            src={idolData.idol.profilePicture || "defaultImage.jpg"}
+            alt={idolData.idol.name}
           />
-          <AdInfo adLocation={idol.adLocation} name={idol.name} />
+          <AdInfo subtitle={idolData.subtitle} title={idolData.title} />
         </div>
         <div className="inputContainer">
           <input
