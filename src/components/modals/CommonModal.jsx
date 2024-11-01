@@ -9,8 +9,7 @@ const CommonModal = ({ isOpen, onClose, title, children }) => {
   };
 
   return (
-    <div className="modalOverlay" onClick={handleOverlayClose}>
-      {" "}
+    <div className="modalOverlay" onMouseDown={handleOverlayClose}>
       {/*오버레이 (화면 어둡게)*/}
       <div className="modal">
         <div className="title">
@@ -20,7 +19,7 @@ const CommonModal = ({ isOpen, onClose, title, children }) => {
             onClick={onClose}
             className="modalClose"
             alt="닫기버튼"
-          />{" "}
+          />
           {/*모달창 닫기버튼*/}
         </div>
         {children} {/*모달의 창의 내용*/}
