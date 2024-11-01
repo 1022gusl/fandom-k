@@ -20,7 +20,6 @@ const TributeSlider = () => {
   const [selectedIdol, setSelectedIdol] = useState(null);
   const [idolDataList, setIdolDataList] = useState([]);
 
-  console.log(idolDataList);
   const openDonateModal = (idol) => {
     setSelectedIdol(idol);
   };
