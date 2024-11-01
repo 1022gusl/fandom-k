@@ -17,7 +17,6 @@
 }
 .slick-track {
   display: flex !important;
-  gap: 20px;
 }
 .slick-list {
   display: flex;
@@ -29,6 +28,8 @@
   justify-content: center; /* 슬라이드를 중앙 정렬 */
   align-items: center;
   color: $color-white-1;
+
+  margin-right: 10px; /* 오른쪽 간격만 설정 */
 }
 
 .tributeSupport {
