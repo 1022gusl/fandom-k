@@ -29,7 +29,7 @@
   align-items: center;
   color: $color-white-1;
 
-  margin-right: 10px; /* 오른쪽 간격만 설정 */
+  margin-right: 18px; /* 오른쪽 간격만 설정 */
 }
 
 .tributeSupport {
@@ -47,9 +47,6 @@
   gap: 8px 0px;
 }
 @media (max-width: 1290px) {
-  .tributeSupport {
-    padding: 20px 0px;
-  }
 }
 @media (max-width: 744px) {
   .sliderContainer {
@@ -70,7 +67,6 @@
   .sliderContainer {
     height: 303px !important;
     max-width: 100vw;
-    padding: 0 30px;
   }
   .sliderBox {
     height: 303px;
