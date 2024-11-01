@@ -13,17 +13,12 @@ import { useCredit } from "../../hooks/useCredit";
 
 function LandingPage() {
   const navigate = useNavigate();
-
-  const { dispatch} = useCredit();
+  const { dispatch } = useCredit();
 
   const moveToList = () => {
     localStorage.clear();
-    
     dispatch({ type: "setCredits", amount: 0 });
-
-    setTimeout(() => {
-      navigate("/list");
-    }, 0);
+    navigate("/list");
   };
 
   return (
