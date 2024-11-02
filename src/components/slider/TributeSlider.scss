@@ -2,7 +2,7 @@
 .sliderContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
   // position: relative;
   height: 470.57px;
 
@@ -36,6 +36,7 @@
 .tributeSupport {
   padding: 20px 0;
   font-size: 24px;
+  width: 100%;
 }
 
 .sliderItem {
