@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useCredit } from "../../hooks/useCredit";
 import CommonModal from "./CommonModal";
-import AlertModal from "./AlertModal.jsx";
+
 import { FEMALE } from "../../constants/tabGenderTypes";
 import postVote from "../../apis/voteAPI";
 import { getCharts } from "../../apis/chartAPI";
 import VoteIdolList from "./VoteIdolList";
 import GradientButton from "../common/GradientButton.jsx";
 import "./VoteModal.scss";
+import AlertModal from "./AlertModal.jsx";
 
 const VoteModal = ({ isOpen, onClose, selectedTab, onVoteChange }) => {
   const [idolList, setIdolList] = useState([]);
@@ -89,6 +90,7 @@ const VoteModal = ({ isOpen, onClose, selectedTab, onVoteChange }) => {
       title={
         selectedTab === FEMALE ? "이달의 여자 아이돌" : "이달의 남자 아이돌"
       }
+      isVote={true}
     >
       <div className="modalContent">
         <VoteIdolList idols={idolList} onIdolClick={handleIdolClick} />

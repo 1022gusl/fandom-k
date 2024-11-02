@@ -1,3 +1,31 @@
+@import "../../styles/global.scss";
+
+// 인트로 스타일
+.introPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $color-black-1;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+
+  &.fade-out {
+    opacity: 0;
+  }
+
+  &.zoom-out {
+    transform: scale(1.2);
+  }
+}
+
+.introLogo {
+  width: 300px;
+  height: auto;
+}
+
+//여기부터 랜딩페이지 스타일
 .all {
   height: 100%;
   width: 100%;
@@ -14,8 +42,8 @@
     position: relative;
   }
 
-  .donateIntro, 
-  .artistNewsIntro, 
+  .donateIntro,
+  .artistNewsIntro,
   .monthlyArtistIntro {
     height: 1200px;
     display: flex;
@@ -38,9 +66,7 @@
     line-height: 31.03px;
   }
 
-  
-
-  .imageBox { 
+  .imageBox {
     position: absolute;
     top: 0px;
     left: 50%;
@@ -48,11 +74,11 @@
     width: 1080px;
     height: 1080px;
     mask-image: linear-gradient(
-      90deg, 
-      rgba(217, 217, 217, 0) 0%, 
-      rgba(217, 217, 217, 0.4) 30.73%, 
-      rgba(217, 217, 217, 0.6) 51.04%, 
-      rgba(217, 217, 217, 0.4) 71.87%, 
+      90deg,
+      rgba(217, 217, 217, 0) 0%,
+      rgba(217, 217, 217, 0.4) 30.73%,
+      rgba(217, 217, 217, 0.6) 51.04%,
+      rgba(217, 217, 217, 0.4) 71.87%,
       rgba(217, 217, 217, 0) 100%
     );
 
@@ -77,8 +103,8 @@
     border-radius: 0;
   }
 
-  .donateIntroText, 
-  .voteIntroText, 
+  .donateIntroText,
+  .voteIntroText,
   .newsIntroText {
     position: absolute;
     height: 85px;
@@ -97,8 +123,15 @@
     top: 2000px;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: linear-gradient(180deg, #030615 0%, #051D31 42.67%, #051E32 53.12%, #051C30 74.27%, #030B1C 100%);
-    z-index: 2; 
+    background: linear-gradient(
+      180deg,
+      #030615 0%,
+      #051d31 42.67%,
+      #051e32 53.12%,
+      #051c30 74.27%,
+      #030b1c 100%
+    );
+    z-index: 2;
   }
 
   .mainTitle {
@@ -123,11 +156,11 @@
     width: 1200px;
     height: 1200px;
     mask-image: linear-gradient(
-      90deg, 
-      rgba(217, 217, 217, 0) 0%, 
-      rgba(217, 217, 217, 0.4) 30.73%, 
-      rgba(217, 217, 217, 0.6) 51.04%, 
-      rgba(217, 217, 217, 0.4) 71.87%, 
+      90deg,
+      rgba(217, 217, 217, 0) 0%,
+      rgba(217, 217, 217, 0.4) 30.73%,
+      rgba(217, 217, 217, 0.6) 51.04%,
+      rgba(217, 217, 217, 0.4) 71.87%,
       rgba(217, 217, 217, 0) 100%
     );
   }
@@ -152,7 +185,9 @@
     object-fit: cover;
   }
 
-  .home1,.home2,.home3 {
+  .home1,
+  .home2,
+  .home3 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -164,7 +199,7 @@
 
   .highlight {
     font-weight: 700;
-    color: #FF3B3B;
+    color: #ff3b3b;
   }
 
   .heading2 {
@@ -207,7 +242,7 @@
     width: 477px;
     top: 670px;
     height: 48px;
-    background: linear-gradient(90deg, #F86F65 0%, #FE5493 100%);
+    background: linear-gradient(90deg, #f86f65 0%, #fe5493 100%);
     border: none;
     color: white;
     font-size: 14px;
@@ -218,7 +253,7 @@
 
   @media (max-width: 744px) {
     .heroSection {
-      height: 1200px;  // 예시: 태블릿에서는 높이를 줄임
+      height: 1200px;
     }
 
     .imageBox {
@@ -258,7 +293,8 @@
       top: 400px;
     }
 
-    .heading, .heading2 {
+    .heading,
+    .heading2 {
       font-size: 20px;
       width: 250px;
     }
