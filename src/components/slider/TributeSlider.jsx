@@ -56,7 +56,7 @@ const TributeSlider = () => {
         },
       },
       {
-        breakpoint: 374, // 474px 이하일 때 적용할 설정
+        breakpoint: 374, // 374px 이하일 때 적용할 설정
         settings: {
           slidesToShow: 1, // 한 번에 1개의 슬라이드 보여주기
           infinite: true,
@@ -74,9 +74,8 @@ const TributeSlider = () => {
         try {
           const data = await getDonations(null, 10);
           setIdolDataList(Array.isArray(data.list) ? data.list : []);
-          console.log("시도");
         } catch (error) {
-          setError("아이돌 데이터를 불러오는 중 오류가 발생했습니다."); // 오류 메시지 설정
+          setError("데이터를 불러오지 못했습니다. 다시 시도해주세요!"); // 오류 메시지 설정
           console.error(
             "아이돌 데이터를 불러오는 중 오류가 발생했습니다:",
             error
