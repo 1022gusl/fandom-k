@@ -1,17 +1,18 @@
 @import "../../styles/global.scss";
 .sliderContainer {
   display: flex;
-  align-items: center;
-  gap: 0 30px; //화살표와 sliderbox의 gap
-  padding: 0 33px;
+
+  justify-content: center;
   position: relative;
   height: 470.57px;
 
-  width: 100vw;
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1200px;
+
+  overflow: hidden;
 }
 .sliderBox {
-  width: 100vw;
+  width: 100%;
   max-width: 1200px;
   height: 470.57px;
 }
@@ -28,12 +29,12 @@
   justify-content: center; /* 슬라이드를 중앙 정렬 */
   align-items: center;
   color: $color-white-1;
-
-  margin-right: 19px; /* 오른쪽 간격만 설정 */
+  margin-right: 20px;
+  /* 오른쪽 간격만 설정 */
 }
 
 .tributeSupport {
-  padding: 20px 0px;
+  padding: 20px 0;
   font-size: 24px;
 }
 
@@ -46,26 +47,22 @@
   flex-direction: column; /* 수직 배치 */
   gap: 8px 0px;
 }
-@media (max-width: 1290px) {
-}
+
 @media (max-width: 744px) {
   .sliderContainer {
-    height: 430px !important;
-    width: 100vw !important;
+    height: 500px !important;
+    max-width: 100vw;
     max-width: 744px;
   }
   .sliderBox {
     height: 430px;
     max-width: 100vw;
   }
-  .tributeSupport {
-    padding: 20px 0px;
-  }
 }
 
 @media (max-width: 374px) {
   .sliderContainer {
-    height: 303px !important;
+    height: 400px !important;
   }
   .sliderBox {
     height: 303px;
@@ -76,7 +73,6 @@
     width: 158px !important;
   }
   .tributeSupport {
-    padding: 20px 0px;
     font-size: 16px;
   }
   .sliderItem {
