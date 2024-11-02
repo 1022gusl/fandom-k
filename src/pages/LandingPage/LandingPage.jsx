@@ -19,6 +19,16 @@ function LandingPage() {
   const { dispatch } = useCredit();
 
   useEffect(() => {
+    const setViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+    setViewportHeight();
+    window.addEventListener("resize", setViewportHeight);
+    return () => window.removeEventListener("resize", setViewportHeight);
+  }, []);
+
+  useEffect(() => {
     document.body.style.overflow = "hidden";
 
     const timer = setTimeout(() => {
@@ -27,9 +37,9 @@ function LandingPage() {
         setShowIntro(false);
         setTimeout(() => {
           document.body.style.overflow = "auto";
-        }, 100); // 스크롤 문제를 해결하기 위해 100ms 추가 지연을 뒀습니다
-      }, 500);
-    }, 2000);
+        }, 50); // 스크롤 문제를 해결하기 위해 50ms 추가 지연을 뒀습니다
+      }, 300);
+    }, 1000);
 
     return () => {
       clearTimeout(timer);
