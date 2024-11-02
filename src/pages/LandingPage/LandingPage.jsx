@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./LandingPage.scss";
-import fandomKLogo from "../../assets/images/Fandom-K.png";
-import introLogo from "../../assets/images/logo.png";
+import fandomKLogo from "../../assets/images/Fandom-K.svg";
 import main from "../../assets/images/main.png";
 import home1 from "../../assets/images/Home-1.png";
 import home2 from "../../assets/images/Home-2.png";
@@ -56,7 +55,7 @@ function LandingPage() {
   if (showIntro) {
     return (
       <div className={`introPage ${fadeOut ? "fade-out zoom-out" : ""}`}>
-        <img src={introLogo} className="introLogo" alt="팬덤케이" />
+        <img src={fandomKLogo} className="introLogo" alt="팬덤케이" />
       </div>
     );
   }
