@@ -28,6 +28,7 @@
     .overlay {
       position: absolute;
       top: 6px;
+      left: 6px;
       width: 115px;
       height: 115px;
       background-color: rgba(255, 105, 180, 0.5);
@@ -36,6 +37,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
       img {
         width: 35px;
         height: 25px;
@@ -99,7 +101,8 @@
       }
 
       .overlay {
-        top: 6px;
+        top: 4px;
+        left: 4px;
         width: 88px;
         height: 88px;
         img {
