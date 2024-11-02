@@ -20,15 +20,21 @@ function LandingPage() {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
+
     const timer = setTimeout(() => {
       setFadeOut(true);
       setTimeout(() => {
         setShowIntro(false);
-        document.body.style.overflow = "auto";
+        setTimeout(() => {
+          document.body.style.overflow = "auto";
+        }, 100); // 스크롤 문제를 해결하기 위해 100ms 추가 지연을 뒀습니다
       }, 500);
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "auto"; // 예외 대비용
+    };
   }, []);
 
   const moveToList = () => {
