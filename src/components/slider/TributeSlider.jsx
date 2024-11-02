@@ -87,19 +87,20 @@ const TributeSlider = () => {
     };
 
     fetchIdolData();
-  }, [idolDataList.length]);
+  }, []);
 
   return (
     <section className="sliderContainer">
+      <h2 className="tributeSupport">후원을 기다리는 조공</h2>
+
       {isLoading && <LoadingSpinner />}
+
       <SlidernavigationButton
         onClick={prevSlide}
         direction="prevButton"
         disabled={currentIndex === 0}
       />
       <div className="sliderBox">
-        {isLoading && <LoadingSpinner />}
-        <h2 className="tributeSupport">후원을 기다리는 조공</h2>
         <Slider ref={sliderRef} {...settings}>
           {idolDataList.map((idolData, index) => (
             <SliderItem
@@ -110,13 +111,11 @@ const TributeSlider = () => {
           ))}
         </Slider>
       </div>
-
       <SlidernavigationButton
         onClick={nextSlide}
         direction="nextButton"
         disabled={currentIndex >= maxIndex}
       />
-
       {selectedIdol && (
         <SupportModal
           isOpen={!!selectedIdol}
