@@ -6,16 +6,20 @@ const useIdolList = (pageSize) => {
   const [cursor, setCursor] = useState(0); //현재 커서
   const [nextCursor, setNextCursor] = useState(null); // 다음 페이지 커서
   const [prevCursor, setPrevCursor] = useState([]); // 이전 페이지 커서 배열
+  const [loading, setLoading] = useState(false); // 로딩 상태 추가
 
   // 아이돌 리스트 가져오는 함수
   const fetchIdols = useCallback(
     async (currentCursor) => {
+      setLoading(true); // 로딩 시작
       try {
         const result = await getIdolList({ cursor: currentCursor, pageSize });
         setIdolList(result.list);
         setNextCursor(result.nextCursor);
       } catch (error) {
         console.error("Error loading idols:", error);
+      } finally {
+        setLoading(false); // 로딩 종료
       }
     },
     [pageSize]
@@ -49,6 +53,7 @@ const useIdolList = (pageSize) => {
     nextCursor,
     prevCursor,
     setCursor,
+    loading,
   };
 };
 

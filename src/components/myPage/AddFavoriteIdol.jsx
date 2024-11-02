@@ -22,6 +22,7 @@ const AddFavoriteIdol = () => {
     nextCursor,
     prevCursor,
     setCursor,
+    loading,
   } = useIdolList(pageSize);
 
   //useSelectedIdol 훅을 사용하여 선택된 아이돌 관련 함수와 상태 가져오기
@@ -88,6 +89,7 @@ const AddFavoriteIdol = () => {
         favoriteIdols={favoriteIdols}
         totalList={totalList}
         pageSize={pageSize}
+        loading={loading}
       />
       <GradientButton
         onClick={handleSaveToLocalStorage}

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import IdolCard from "./IdolCard";
 import PaginationButton from "./PaginationButton";
 import "./IdolList.scss";
 import rightBtn from "../../assets/images/Vector right.png";
 import leftBtn from "../../assets/images/Vector left.png";
 import checkImg from "../../assets/images/Check.png";
+import LoadingSpinner from "../common/LoadingSpinner";
 
 const IdolList = ({
   idolList,
@@ -17,37 +18,48 @@ const IdolList = ({
   nextCursor,
   handlePrevPage,
   handleNextPage,
+  loading,
 }) => {
-  // 전체 아이돌 객체에서 키뽑아서 키별 id 배열만들기
+  const [animationClass, setAnimationClass] = useState("");
+
   const totalListIds = Object.keys(totalList).map((key) => totalList[key].id);
-  // 리스트업 아이돌 키뽑아서 키별 id 배열만들기
   const idolListIds = Object.keys(idolList).map((key) => idolList[key].id);
+
+  useEffect(() => {
+    if (loading) {
+      setAnimationClass("fadeOut");
+    } else {
+      setAnimationClass("fadeIn");
+    }
+  }, [loading]);
 
   return (
     <div className="addFavoriteContainer">
       <p className="addTitle">관심 있는 아이돌을 추가해보세요.</p>
-      <div className="buttonWrapper">
+      <div className={`buttonWrapper ${loading ? "loading" : ""}`}>
         <PaginationButton
-          onClick={handlePrevPage}
+          onClick={() => handlePrevPage()}
           disabled={prevCursor.length === 0}
           direction="left"
           imgSrc={leftBtn}
           altText="아이돌 리스트 이전 버튼"
         />
-        <section className="idolSection">
-          {idolList.map((idol) => (
-            <IdolCard
-              key={idol.id}
-              idol={idol}
-              isSelected={selectedIdols.includes(idol.id)}
-              onSelect={() => handleSelectIdol(idol)}
-              isFavorite={favoriteIdols.includes(idol.id)}
-              checkImage={checkImg}
-            />
-          ))}
+        <section className={`idolSection ${animationClass}`}>
+          {loading && <LoadingSpinner />}
+          {!loading &&
+            idolList.map((idol) => (
+              <IdolCard
+                key={idol.id}
+                idol={idol}
+                isSelected={selectedIdols.includes(idol.id)}
+                onSelect={() => handleSelectIdol(idol)}
+                isFavorite={favoriteIdols.includes(idol.id)}
+                checkImage={checkImg}
+              />
+            ))}
         </section>
         <PaginationButton
-          onClick={handleNextPage}
+          onClick={() => handleNextPage()}
           disabled={
             !nextCursor ||
             (idolListIds.length > 0 &&
