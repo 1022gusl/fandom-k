@@ -92,7 +92,6 @@ const TributeSlider = () => {
   return (
     <section className="sliderContainer">
       {isLoading && <LoadingSpinner />}
-
       <SlidernavigationButton
         onClick={prevSlide}
         direction="prevButton"
