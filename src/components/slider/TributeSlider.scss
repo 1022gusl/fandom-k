@@ -3,18 +3,19 @@
   display: flex;
 
   justify-content: center;
-  position: relative;
+  // position: relative;
   height: 470.57px;
 
   width: 100%;
   max-width: 1200px;
-
-  overflow: hidden;
+  position: relative;
 }
 .sliderBox {
   width: 100%;
   max-width: 1200px;
   height: 470.57px;
+
+  overflow: hidden;
 }
 .slick-track {
   display: flex !important;
