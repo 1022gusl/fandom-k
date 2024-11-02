@@ -87,7 +87,7 @@ const TributeSlider = () => {
     };
 
     fetchIdolData();
-  }, []);
+  }, [idolDataList]);
 
   return (
     <section className="sliderContainer">
