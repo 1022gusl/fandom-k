@@ -90,6 +90,7 @@ const VoteModal = ({ isOpen, onClose, selectedTab, onVoteChange }) => {
       title={
         selectedTab === FEMALE ? "이달의 여자 아이돌" : "이달의 남자 아이돌"
       }
+      isVote={true}
     >
       <div className="modalContent">
         <VoteIdolList idols={idolList} onIdolClick={handleIdolClick} />
