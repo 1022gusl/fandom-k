@@ -7,7 +7,19 @@
   color: $color-white-1;
   border: none;
   cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
+  &:not(:disabled):hover {
+    transform: scale(1.1); // scale 추가
+    box-shadow: 0 4px 10px rgba(248, 111, 101, 0.3); // 그림자 추가
+    background: linear-gradient(
+      90deg,
+      $color-brand-pink 0%,
+      #f86f65 100%
+    ); // 색상반전
+  }
   &.tributeButton {
     height: 40px;
     width: 234px;
