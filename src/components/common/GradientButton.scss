@@ -12,7 +12,7 @@
     box-shadow 0.3s ease;
 
   &:not(:disabled):hover {
-    transform: scale(1.1); // scale 추가
+    transform: scale(1.05); // scale 추가
     box-shadow: 0 4px 10px rgba(248, 111, 101, 0.3); // 그림자 추가
     background: linear-gradient(
       90deg,
