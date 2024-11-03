@@ -27,22 +27,28 @@ function LandingPage() {
     return () => window.removeEventListener("resize", setViewportHeight);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  const toggleOverflow = (hide) => {
+    document.body.style.overflow = hide ? "hidden" : "auto";
+  };
 
-    const timer = setTimeout(() => {
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  useEffect(() => {
+    const runIntroAnimation = async () => {
+      toggleOverflow(true);
+      await wait(1000);
+
       setFadeOut(true);
-      setTimeout(() => {
-        setShowIntro(false);
-        setTimeout(() => {
-          document.body.style.overflow = "auto";
-        }, 50); // 스크롤 문제를 해결하기 위해 50ms 추가 지연을 뒀습니다
-      }, 300);
-    }, 1000);
+      await wait(300);
+
+      setShowIntro(false);
+      toggleOverflow(false);
+    };
+
+    runIntroAnimation();
 
     return () => {
-      clearTimeout(timer);
-      document.body.style.overflow = "auto"; // 예외 대비용
+      toggleOverflow(false);
     };
   }, []);
 
