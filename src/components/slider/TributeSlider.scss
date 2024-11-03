@@ -1,8 +1,8 @@
 @import "../../styles/global.scss";
 .sliderContainer {
   display: flex;
+  flex-direction: column;
 
-  justify-content: center;
   // position: relative;
   height: 470.57px;
 
@@ -14,7 +14,10 @@
   width: 100%;
   max-width: 1200px;
   height: 100%;
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9b572c8910288fc73b36da874a59c0e5443021a
   overflow: hidden;
 }
 .slick-track {
@@ -37,6 +40,7 @@
 .tributeSupport {
   padding: 20px 0;
   font-size: 24px;
+  width: 100%;
 }
 
 .sliderItem {

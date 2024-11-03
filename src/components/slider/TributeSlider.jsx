@@ -19,6 +19,7 @@ const TributeSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0); // 현재 인덱스 상태 추가
   const [selectedIdol, setSelectedIdol] = useState(null);
   const [idolDataList, setIdolDataList] = useState([]);
+  const [error, setError] = useState(null); // 오류 메시지 상태 추가
 
   const openDonateModal = (idol) => {
     setSelectedIdol(idol);
@@ -55,7 +56,7 @@ const TributeSlider = () => {
         },
       },
       {
-        breakpoint: 374, // 474px 이하일 때 적용할 설정
+        breakpoint: 374, // 374px 이하일 때 적용할 설정
         settings: {
           slidesToShow: 1, // 한 번에 1개의 슬라이드 보여주기
           infinite: true,
@@ -68,63 +69,67 @@ const TributeSlider = () => {
   const maxIndex = idolDataList.length - slidesToShow;
   useEffect(() => {
     const fetchIdolData = async () => {
-      // idolDataList가 비어 있는 경우에만 데이터 요청
       if (idolDataList.length === 0) {
+        setIsLoading(true); // 로딩 시작
         try {
           const data = await getDonations(null, 10);
           setIdolDataList(Array.isArray(data.list) ? data.list : []);
         } catch (error) {
+          setError("데이터를 불러오지 못했습니다. 다시 시도해주세요!"); // 오류 메시지 설정
           console.error(
             "아이돌 데이터를 불러오는 중 오류가 발생했습니다:",
             error
           );
         } finally {
-          setIsLoading(false);
+          setIsLoading(false); // 로딩 종료
         }
-      } else {
-        setIsLoading(false); // 이미 데이터가 로드된 경우 로딩 상태를 false로 설정
       }
     };
 
     fetchIdolData();
-  }, [idolDataList.length]);
+  }, []); // 빈 배열로 설정하여 첫 렌더링에서만 실행
 
   return (
-    <section className="sliderContainer">
-      {isLoading && <LoadingSpinner />}
-      <SlidernavigationButton
-        onClick={prevSlide}
-        direction="prevButton"
-        disabled={currentIndex === 0}
-      />
-      <div className="sliderBox">
-        {isLoading && <LoadingSpinner />}
+    <>
+      <section className="sliderContainer">
         <h2 className="tributeSupport">후원을 기다리는 조공</h2>
-        <Slider ref={sliderRef} {...settings}>
-          {idolDataList.map((idolData, index) => (
-            <SliderItem
-              key={idolData.id || index}
-              idolData={idolData}
-              openDonateModal={() => openDonateModal(idolData)}
+        {isLoading && <LoadingSpinner />}
+        {error && <div className="errorMessage">{error}</div>}{" "}
+        {/* 오류 메시지 표시 */}
+        {!isLoading && !error && idolDataList.length > 0 && (
+          <>
+            <SlidernavigationButton
+              onClick={prevSlide}
+              direction="prevButton"
+              disabled={currentIndex === 0}
             />
-          ))}
-        </Slider>
-      </div>
-
-      <SlidernavigationButton
-        onClick={nextSlide}
-        direction="nextButton"
-        disabled={currentIndex >= maxIndex}
-      />
-
-      {selectedIdol && (
-        <SupportModal
-          isOpen={!!selectedIdol}
-          onClose={closeDonateModal}
-          idolData={selectedIdol}
-        />
-      )}
-    </section>
+            <div className="sliderBox">
+              <Slider ref={sliderRef} {...settings}>
+                {idolDataList.map((idolData, index) => (
+                  <SliderItem
+                    key={idolData.id || index}
+                    idolData={idolData}
+                    openDonateModal={() => openDonateModal(idolData)}
+                  />
+                ))}
+              </Slider>
+            </div>
+            <SlidernavigationButton
+              onClick={nextSlide}
+              direction="nextButton"
+              disabled={currentIndex >= maxIndex}
+            />
+          </>
+        )}
+        {selectedIdol && (
+          <SupportModal
+            isOpen={!!selectedIdol}
+            onClose={closeDonateModal}
+            idolData={selectedIdol}
+          />
+        )}
+      </section>
+    </>
   );
 };
 
