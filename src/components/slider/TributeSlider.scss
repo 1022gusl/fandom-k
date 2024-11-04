@@ -51,8 +51,6 @@
 
 @media (max-width: 744px) {
   .sliderContainer {
-    height: 500px !important;
-    max-width: 100vw;
     max-width: 744px;
   }
   .sliderBox {
@@ -65,6 +63,7 @@
     height: 390px !important;
   }
   .sliderBox {
+    height: 303px;
     max-width: 100vw;
   }
   .slick-slide {
