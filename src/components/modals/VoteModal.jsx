@@ -24,7 +24,7 @@ const VoteModal = ({ isOpen, onClose, selectedTab, onVoteChange }) => {
     setIsAlertOpen(false);
   };
 
-  const handleVoteIdol = async () => {
+  const handleSupportIdol = async () => {
     console.log("현재 크레딧:", totalCredits);
 
     if (!selectedIdol) {
@@ -95,7 +95,7 @@ const VoteModal = ({ isOpen, onClose, selectedTab, onVoteChange }) => {
       <div className="modalContent">
         <VoteIdolList idols={idolList} onIdolClick={handleIdolClick} />
       </div>
-      <GradientButton onClick={handleVoteIdol} variant="voteButton">
+      <GradientButton onClick={handleSupportIdol} variant="voteButton">
         투표하기
       </GradientButton>
       <AlertModal isOpen={isAlertOpen} onClose={closeAlert} />
