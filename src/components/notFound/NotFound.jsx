@@ -13,7 +13,7 @@ const NotFound = () => {
       <p className="notFoundSmallMessage">
         입력하신 주소가 맞는지 다시 확인해주세요!
       </p>
-      <Link to="/">
+      <Link to="/" className="notFoundLinkBox">
         <GradientButton variant="addButton">
           <p className="notFoundLink">Fandom-K 홈으로 {">"}</p>
         </GradientButton>
