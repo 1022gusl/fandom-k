@@ -1,3 +1,4 @@
+@import "../../styles/global.scss";
 .adLayout {
   width: 100%;
   display: flex;
@@ -26,5 +27,8 @@
   }
   .adTitle {
     font-size: 14px;
+    white-space: nowrap; ///줄 넘어감 방지
+    overflow: hidden; ///줄 넘어감 방지
+    text-overflow: ellipsis;
   }
 }
