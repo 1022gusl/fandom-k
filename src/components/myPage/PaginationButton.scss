@@ -1,0 +1,60 @@
+@import "../../styles/color.scss";
+.left {
+  position: relative;
+  left: -34px;
+}
+
+.right {
+  position: relative;
+  right: -34px;
+}
+
+.paginationButton {
+  background-color: $color-black-3;
+  border: none;
+  width: 29px;
+  height: 135px;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 80%;
+  }
+
+  &:disabled {
+    background-color: $color-gray-5;
+    opacity: 20%;
+    cursor: not-allowed;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .left {
+    position: static;
+  }
+
+  .right {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 744px) {
+  .left {
+    position: static;
+  }
+
+  .right {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 374px) {
+  .left {
+    position: static;
+    display: none;
+  }
+
+  .right {
+    position: static;
+    display: none;
+  }
+}

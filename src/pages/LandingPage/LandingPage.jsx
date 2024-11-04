@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./LandingPage.scss";
-import introLogo from "../../assets/images/logo.png";
+import fandomKLogo from "../../assets/images/Fandom-K.svg";
 import home1 from "../../assets/images/Home-1.png";
 import home2 from "../../assets/images/Home-2.png";
 import home3 from "../../assets/images/Home-3.png";
@@ -19,16 +19,38 @@ function LandingPage() {
   const { dispatch } = useCredit();
 
   useEffect(() => {
-    document.body.style.overflow = "hidden";
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-      setTimeout(() => {
-        setShowIntro(false);
-        document.body.style.overflow = "auto";
-      }, 500);
-    }, 2000);
+    const setViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+    setViewportHeight();
+    window.addEventListener("resize", setViewportHeight);
+    return () => window.removeEventListener("resize", setViewportHeight);
+  }, []);
 
-    return () => clearTimeout(timer);
+  const toggleOverflow = (hide) => {
+    document.body.style.overflow = hide ? "hidden" : "auto";
+  };
+
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  useEffect(() => {
+    const runIntroAnimation = async () => {
+      toggleOverflow(true);
+      await wait(1000);
+
+      setFadeOut(true);
+      await wait(300);
+
+      setShowIntro(false);
+      toggleOverflow(false);
+    };
+
+    runIntroAnimation();
+
+    return () => {
+      toggleOverflow(false);
+    };
   }, []);
 
   const moveToList = () => {
@@ -40,7 +62,7 @@ function LandingPage() {
   if (showIntro) {
     return (
       <div className={`introPage ${fadeOut ? "fade-out zoom-out" : ""}`}>
-        <img src={introLogo} className="introLogo" alt="팬덤케이" />
+        <img src={fandomKLogo} className="introLogo" alt="팬덤케이" />
       </div>
     );
   }
