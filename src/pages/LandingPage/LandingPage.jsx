@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useCredit } from "../../hooks/useCredit";
 import HeroSection from './HeroSection.jsx';
 import FeatureSection from './FeatureSection.jsx';
+import "../../styles/global.scss";
 
 function LandingPage() {
   const [showIntro, setShowIntro] = useState(true); // 인트로 상태

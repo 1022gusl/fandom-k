@@ -1,5 +1,5 @@
 import React from 'react';
-import fandomKLogo from "../../assets/images/Fandom-K.png";
+import fandomKLogo from "../../assets/images/Fandom-K.svg";
 import main from "../../assets/images/main.png";
 import './HeroSection.scss';
 
