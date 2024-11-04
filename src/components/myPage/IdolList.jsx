@@ -38,7 +38,7 @@ const IdolList = ({
       <p className="addTitle">관심 있는 아이돌을 추가해보세요.</p>
       <div className={`buttonWrapper ${loading ? "loading" : ""}`}>
         <PaginationButton
-          onClick={() => handlePrevPage()}
+          onClick={handlePrevPage}
           disabled={prevCursor.length === 0}
           direction="left"
           imgSrc={leftBtn}
@@ -59,7 +59,7 @@ const IdolList = ({
             ))}
         </section>
         <PaginationButton
-          onClick={() => handleNextPage()}
+          onClick={handleNextPage}
           disabled={
             !nextCursor ||
             (idolListIds.length > 0 &&
