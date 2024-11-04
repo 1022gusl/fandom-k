@@ -62,7 +62,7 @@
 
 @media (max-width: 374px) {
   .sliderContainer {
-    height: 400px !important;
+    height: 390px !important;
   }
   .sliderBox {
     max-width: 100vw;
@@ -78,5 +78,11 @@
     width: 158px !important;
     height: 303px !important;
     gap: 10px 0px;
+  }
+}
+@media (max-width: 195px) {
+  .tributeSupport {
+    font-size: 12px;
+    padding: 10px 0;
   }
 }

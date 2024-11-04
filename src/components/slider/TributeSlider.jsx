@@ -49,14 +49,7 @@ const TributeSlider = () => {
     afterChange: (index) => setCurrentIndex(index), // 슬라이드 변경 후 현재 인덱스 업데이트
     responsive: [
       {
-        breakpoint: 768, // 768px 이하일 때 적용할 설정
-        settings: {
-          slidesToShow: 1, // 한 번에 1개의 슬라이드 보여주기
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 374, // 374px 이하일 때 적용할 설정
+        breakpoint: 1340, // 768px 이하일 때 적용할 설정
         settings: {
           slidesToShow: 1, // 한 번에 1개의 슬라이드 보여주기
           infinite: true,
