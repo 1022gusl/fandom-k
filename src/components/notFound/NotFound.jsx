@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./NotFound.scss";
 import GradientButton from "../common/GradientButton";
 import { TfiFaceSad } from "react-icons/tfi";
+import "./NotFound.scss";
 
 const NotFound = () => {
   return (
@@ -15,7 +15,7 @@ const NotFound = () => {
       </p>
       <Link to="/">
         <GradientButton variant="addButton">
-          <p className="notFoundLink">Fandom-K 홈으로 ></p>
+          <p className="notFoundLink">Fandom-K 홈으로 {">"}</p>
         </GradientButton>
       </Link>
     </div>
