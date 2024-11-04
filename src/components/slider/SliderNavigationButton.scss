@@ -5,7 +5,7 @@
   background-color: rgba(27, 27, 27, 0.8);
 
   cursor: pointer;
-  position: absolute; /* absolute 위치 설정 */
+  position: absolute;
   top: 50%; /* 슬라이더의 가운데 정렬 */
   transform: translateY(-50%); /* 세로 중앙으로 이동 */
   transition: opacity 0.3s ease;
@@ -15,7 +15,7 @@
   }
 
   &.nextButton {
-    right: -50px; /* 오른쪽 위치 */
+    right: -50px; /* slickslide 마진20에 의해서 left보다 적게 적용  */
   }
 }
 
