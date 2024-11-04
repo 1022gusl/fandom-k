@@ -1,5 +1,5 @@
 import "./Header.scss";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/Fandom-K.svg";
 import ProfileIcon from "../../assets/icons/profileIcon.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 const Header = () => {
