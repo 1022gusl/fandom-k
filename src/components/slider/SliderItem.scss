@@ -5,10 +5,12 @@
   flex-shrink: 0;
   position: relative;
 }
+
 .cardImg {
   height: 293px;
   width: 282px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .tributeButtonContainer {
@@ -23,5 +25,15 @@
     height: 31px;
     width: 142px;
     top: 167px;
+  }
+
+  .imgBox {
+    width: 158px !important;
+    height: 206px !important;
+  }
+  .cardImg {
+    width: 158px;
+    height: 206px !important;
+    border-radius: 8px;
   }
 }

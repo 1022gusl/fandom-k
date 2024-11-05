@@ -1,3 +1,5 @@
+@import "../../styles/global.scss";
+
 .gradientButton {
   padding: 2px 16px 3px 16px;
   border-radius: 3px;
@@ -5,7 +7,19 @@
   color: $color-white-1;
   border: none;
   cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
+  &:not(:disabled):hover {
+    transform: scale(1.05); // scale 추가
+    box-shadow: 0 4px 10px rgba(248, 111, 101, 0.3); // 그림자 추가
+    background: linear-gradient(
+      90deg,
+      $color-brand-pink 0%,
+      #f86f65 100%
+    ); // 색상반전
+  }
   &.tributeButton {
     height: 40px;
     width: 234px;
@@ -33,8 +47,9 @@
   &.confirmButton {
     // 확인하기
     height: 42px;
-    width: 295px;
+    width: 100%;
     padding: 0;
+    margin-top: 10px;
   }
   &.supportButton {
     &:disabled {
@@ -47,12 +62,9 @@
   &.voteButton {
     // 투표하기
     height: 42px;
-    width: 477px;
+    width: 100%;
+    margin-top: 20px;
     padding: 0;
-
-    @media (max-width: 374px) {
-      width: 327px;
-    }
   }
 
   &.addButton {
@@ -61,5 +73,28 @@
     width: 255px;
     border-radius: 24px;
     padding: 0;
+    margin: 40px auto 81px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+
+    @media (max-width: 744px) {
+      margin: 0 auto;
+    }
+  }
+
+  &.favoriteInList {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
   }
 }

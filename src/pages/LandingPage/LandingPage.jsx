@@ -1,120 +1,74 @@
-import React from "react";
-import styles from "./LandingPage.module.css";
-import web01 from "../../assets/images/web_01.png";
-import fandomKLogo from "../../assets/images/Fandom-K.png";
-import main from "../../assets/images/main.png";
-import home1 from "../../assets/images/Home-1.png";
-import home2 from "../../assets/images/Home-2.png";
-import home3 from "../../assets/images/Home-3.png";
-import web02 from "../../assets/images/web_02.png";
-import web03 from "../../assets/images/web_03.png";
+import React, { useEffect, useState } from "react";
+import "./LandingPage.scss";
+import fandomKLogo from "../../assets/images/Fandom-K.svg";
 import { useNavigate } from "react-router-dom";
+import { useCredit } from "../../hooks/useCredit";
+import HeroSection from './HeroSection.jsx';
+import FeatureSection from './FeatureSection.jsx';
+import { features } from '../../constants/Features';
 
 function LandingPage() {
+  const [showIntro, setShowIntro] = useState(true); // 인트로 상태
+  const [fadeOut, setFadeOut] = useState(false); //페이드 아웃
   const navigate = useNavigate();
+  const { dispatch } = useCredit();
+
+  useEffect(() => {
+    const setViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
+    };
+    setViewportHeight();
+    window.addEventListener("resize", setViewportHeight);
+    return () => window.removeEventListener("resize", setViewportHeight);
+  }, []);
+
+  const toggleOverflow = (hide) => {
+    document.body.style.overflow = hide ? "hidden" : "auto";
+  };
+
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+  useEffect(() => {
+    const runIntroAnimation = async () => {
+      toggleOverflow(true);
+      await wait(1000);
+
+      setFadeOut(true);
+      await wait(300);
+
+      setShowIntro(false);
+      toggleOverflow(false);
+    };
+
+    runIntroAnimation();
+
+    return () => {
+      toggleOverflow(false);
+    };
+  }, []);
 
   const moveToList = () => {
     localStorage.clear();
+    dispatch({ type: "setCredits", amount: 0 });
     navigate("/list");
   };
 
+  if (showIntro) {
+    return (
+      <div className={`introPage ${fadeOut ? "fade-out zoom-out" : ""}`}>
+        <img src={fandomKLogo} className="introLogo" alt="팬덤케이" />
+      </div>
+    );
+  }
+
+  
   return (
-    <div className={styles.all}>
-      <div className={styles.container1}>
-        <div className={styles.imageBox}>
-          <img src={main} className={styles.idol} alt="idol background" />
-        </div>
-
-        <div className={styles.mainTitle}>
-          <h2 className={styles.heading}>
-            내가 좋아하는 아이돌을
-            <br />
-            가장 <span className={styles.highlight}>쉽게 덕질 </span>하는 방법
-          </h2>
-          <img
-            src={fandomKLogo}
-            className={styles.logo}
-            alt="Fandom-K logo"
-            onClick={moveToList}
-          />
-          <button className={styles.startText} onClick={moveToList}>
-            지금 시작하기
-          </button>
-        </div>
-      </div>
-
-      <div className={styles.container2}>
-        <div className={styles.background}>
-          <div className={styles.donateIdol}>
-            <span className={styles.nolang}>후원하기</span>
-            <h2 className={styles.heading2}>
-              좋아하는 아이돌에게
-              <br />
-              쉽게 조공해 보세요
-            </h2>
-          </div>
-
-          <div className={styles.linearGradient}>
-            <img src={web01} className={styles.ra} alt="background gradient" />
-          </div>
-
-          <div className={styles.backgroundMask}>
-            <img
-              src={home1}
-              className={styles.phoneImage}
-              alt="phone screen 1"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.container3}>
-        <div className={styles.background}>
-          <div className={styles.followIdol}>
-            <span className={styles.nolang}>이달의 아티스트</span>
-            <h2 className={styles.heading2}>
-              내 아티스트에게 1등의 <br />
-              영예를 선물하세요
-            </h2>
-          </div>
-
-          <div className={styles.backgroundGradiExcept}>
-            <img src={web02} className={styles.ra} alt="background gradient" />
-          </div>
-
-          <div className={styles.web02}>
-            <img
-              src={home2}
-              className={styles.phoneImage}
-              alt="phone screen 2"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.container4}>
-        <div className={styles.background}>
-          <div className={styles.voteIdol}>
-            <span className={styles.nolang}>나만의 아티스트</span>
-            <h2 className={styles.heading2}>
-              좋아하는 아티스트들의 <br />
-              소식을 모아보세요
-            </h2>
-          </div>
-
-          <div className={styles.linearGradient}>
-            <img src={web03} className={styles.ra} alt="background gradient" />
-          </div>
-
-          <div className={styles.web03}>
-            <img
-              src={home3}
-              className={styles.phoneImage}
-              alt="phone screen 3"
-            />
-          </div>
-        </div>
-      </div>
+    <div className="all">
+      <HeroSection onStartClick={moveToList} />
+      {features.map((feature, index) => (
+        <FeatureSection key={index} {...feature} />
+      ))}
     </div>
   );
 }

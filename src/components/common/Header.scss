@@ -10,6 +10,9 @@
   display: flex;
   align-items: center;
   background-color: $color-black-1;
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
 }
 
 .header-contents {
@@ -23,6 +26,8 @@
 }
 
 .logo {
+  width: 170px;
+  height: 32px;
   grid-column: 2;
   justify-self: center;
   cursor: pointer;
@@ -31,6 +36,7 @@
 .profile {
   grid-column: 3;
   justify-self: end;
+  cursor: pointer;
 }
 
 @media (max-width: 1199px) {

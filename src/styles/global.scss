@@ -1,19 +1,6 @@
 @import "./font";
 @import "./color";
 
-/// slider
-@import "../components/slider/AdInfo.scss";
-@import "../components/slider/SliderItem.scss";
-@import "../components/slider/SliderNavigationButton.scss";
-@import "../components/slider/TributeInfo.scss";
-@import "../components/slider/TributeSlider.scss";
-
-/// GradientButton
-@import "../components/common/GradientButton.scss";
-
-/// LoadingSpinner
-@import "../components/common/LoadingSpinner.scss";
-
 *,
 *::before,
 *::after {

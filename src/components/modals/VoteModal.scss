@@ -1,6 +1,4 @@
-.voteBtn {
-  margin-top: 10px;
-}
+@import "../../styles/global.scss";
 
 .description {
   margin-top: 10px;
@@ -10,6 +8,18 @@
 .modalContent {
   max-height: 40vh;
   overflow-y: auto;
-  scrollbar-width: none;
   padding: 20px;
+
+  @media (max-width: 374px) {
+    max-height: 75vh;
+    width: 100%;
+  }
+}
+
+.modalContent::-webkit-scrollbar {
+  display: none;
+}
+
+.creditMessage {
+  color: $color-brand-peach;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import "./GradientButton.scss";
 
 const GradientButton = ({ variant, disabled = false, onClick, children }) => {
   return (

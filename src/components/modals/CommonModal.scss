@@ -1,4 +1,4 @@
-@import "../../styles/color.scss";
+@import "../../styles/global.scss";
 
 .modalOverlay {
   position: fixed;
@@ -10,26 +10,66 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2000;
 }
 
-.modal {
+.modal,
+.voteModalStyle {
   background: $color-black-2;
   border-radius: 8px;
   padding: 20px;
   position: relative;
   color: $color-white-2;
+  z-index: 2001;
 }
 
-.title {
+.voteModalStyle {
+  @media (max-width: 374px) {
+    width: 100%;
+    height: 100%;
+    background: $color-black-1;
+    z-index: 2001;
+  }
+}
+
+.title,
+.voteModalTitle {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.modalClose {
+.voteModalTitle {
+  @media (max-width: 374px) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+  }
+}
+
+.modalClose,
+.voteModalBack {
+  cursor: pointer;
   width: 30px;
   height: 30px;
-  cursor: pointer;
+
+  &:hover {
+    filter: brightness(130%);
+  }
+
+  &:active {
+    filter: opacity(50%);
+  }
+}
+
+.voteModalBack {
+  @media (max-width: 374px) {
+    position: absolute;
+    width: 15px;
+    height: 28px;
+    left: 0;
+  }
 }
 
 h2 {

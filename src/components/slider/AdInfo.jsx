@@ -1,11 +1,12 @@
 // AdInfo.js
 import React from "react";
+import "./AdInfo.scss";
 
-const AdInfo = ({ adLocation, name }) => (
+const AdInfo = ({ subtitle, title }) => (
   <div className="adLayout">
     <div className="addContainer">
-      <div className="adHeading">{adLocation || "강남역 광고"}</div>
-      <div className="adTitle">{`${name} 지하철 광고`}</div>
+      <div className="adHeading">{subtitle}</div>
+      <div className="adTitle">{title}</div>
     </div>
   </div>
 );

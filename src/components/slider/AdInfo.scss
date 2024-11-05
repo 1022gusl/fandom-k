@@ -1,13 +1,14 @@
+@import "../../styles/global.scss";
 .adLayout {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
 
   position: relative;
 }
 .addContainer {
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px 0px;
@@ -17,4 +18,16 @@
 }
 .adTitle {
   font-size: 18px;
+}
+
+@media (max-width: 374px) {
+  .adHeading {
+    font-size: 12px;
+  }
+  .adTitle {
+    font-size: 14px;
+    white-space: nowrap; ///줄 넘어감 방지
+    overflow: hidden; ///줄 넘어감 방지
+    text-overflow: ellipsis;
+  }
 }
