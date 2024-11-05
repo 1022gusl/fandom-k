@@ -91,6 +91,9 @@
         border: 2px solid $color-black-1;
         border-radius: 100%;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         img {
           width: 14px;
