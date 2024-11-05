@@ -22,21 +22,21 @@
 <table>
   <tr>
     <td>
-     <strong>박연학</strong> (<a href="https://github.com/1022gusl">@1022gusl</a>)<br>
+     <strong>박연학</strong>(<a href="https://github.com/1022gusl">@1022gusl</a>)<br>
      - 초기 세팅<br> 
      - 전역 스타일<br> 
      - 이달의 차트<br> 
      - 인트로<br>
     </td>
     <td>
-     <strong>김태완</strong> (<a href="https://github.com/twtwkim">@twtwkim</a>)<br>
+     <strong>김태완</strong>(<a href="https://github.com/twtwkim">@twtwkim</a>)<br>
      - 마이페이지<br> 
      - 404 페이지<br> 
      - 발표<br> 
      <br>
     </td>
     <td>
-     <strong>홍지윤</strong> (<a href="https://github.com/h-zhirun">@h-zhirun</a>)<br>
+     <strong>홍지윤</strong>(<a href="https://github.com/h-zhirun">@h-zhirun</a>)<br>
      - API<br> 
      - 공통 헤더<br> 
      - 내 크레딧<br> 
@@ -45,19 +45,19 @@
   </tr>
   <tr>
     <td>
-     <strong>오진화</strong> (<a href="https://github.com/0hjinhwa">@0hjinhwa</a>)<br>
+     <strong>오진화</strong>(<a href="https://github.com/0hjinhwa">@0hjinhwa</a>)<br>
      - 랜딩 페이지<br>
      <br>
      <br>
     </td>
     <td>
-     <strong>임광조</strong> (<a href="https://github.com/lkj1313">@lkj1313</a>)<br>
+     <strong>임광조</strong>(<a href="https://github.com/lkj1313">@lkj1313</a>)<br>
      - 공통 버튼<br>
      - 조공 슬라이더<br>
      - 로딩 스피너<br>
     </td>
     <td>
-    <strong>김예도</strong> (<a href="https://github.com/solprime">@solprime</a>)<br>
+    <strong>김예도</strong>(<a href="https://github.com/solprime">@solprime</a>)<br>
      - 모달<br>
      - 크레딧 관리<br>
      <br>
