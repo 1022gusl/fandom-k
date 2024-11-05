@@ -54,24 +54,26 @@ const SupportModal = ({ isOpen, onClose, idolData }) => {
           />
           <AdInfo subtitle={idolData.subtitle} title={idolData.title} />
         </div>
-        <div className="inputContainer">
-          <input
-            type="text"
-            className={`inputCredit ${isCreditInvalid && creditValue.trim() !== "" ? "invalid" : ""}`}
-            placeholder="크레딧 입력"
-            value={creditValue}
-            onChange={handleCreditChange}
-          />
-          <img src={CreditIcon} className="inputCreditIcon" alt="크레딧" />
+        <div>
+          <div className="inputContainer">
+            <input
+              type="text"
+              className={`inputCredit ${isCreditInvalid && creditValue.trim() !== "" ? "invalid" : ""}`}
+              placeholder="크레딧 입력"
+              value={creditValue}
+              onChange={handleCreditChange}
+            />
+            <img src={CreditIcon} className="inputCreditIcon" alt="크레딧" />
+          </div>
+          {numericCreditValue > totalCredits && (
+            <p className="inputErrorMessage">
+              갖고있는 크레딧보다 더 많이 후원할 수 없어요
+            </p>
+          )}
+          {isInvalid && creditValue.trim() !== "" && (
+            <p className="inputErrorMessage">올바른 값을 입력해주세요</p>
+          )}
         </div>
-        {numericCreditValue > totalCredits && (
-          <p className="inputErrorMessage">
-            갖고있는 크레딧보다 더 많이 후원할 수 없어요
-          </p>
-        )}
-        {isInvalid && creditValue.trim() !== "" && (
-          <p className="inputErrorMessage">올바른 값을 입력해주세요</p>
-        )}
         <GradientButton
           variant="supportButton"
           disabled={isCreditZero || isCreditInvalid}
