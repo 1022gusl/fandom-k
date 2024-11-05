@@ -2,7 +2,6 @@ import React from "react";
 import "./IdolCard.scss";
 
 const IdolCard = ({ idol, isSelected, onSelect, isFavorite, checkImage }) => {
-  console.log(`Idol ID: ${idol.id}, Is Favorite: ${isFavorite}`); // 디버깅용 콘솔 로그
   return (
     <div
       className={`idolCard ${isFavorite ? "lowOpacity" : ""}`} //이미 추가한 아이돌은 어둡게
