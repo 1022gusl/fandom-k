@@ -84,4 +84,17 @@
       margin: 0 auto;
     }
   }
+
+  &.favoriteInList {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+  }
 }
