@@ -1,7 +1,7 @@
 # 💪 FE 11기 기초 프로젝트: Fandom-K
 - **일정:** 2024.10.24 ~ 2024.11.08
 - **팀명:** FE 11기 Part2 1팀
-- **배포 URL**: [FANDOM-K](https://cute-horse-1ae8c6.netlify.app/)
+- **배포 URL**: [FANDOM-K](https://fandom-k-oneteam.netlify.app/)
   
 <br>
 
