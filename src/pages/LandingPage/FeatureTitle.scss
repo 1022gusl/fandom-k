@@ -1,0 +1,45 @@
+.donateIntroText, 
+.monthlyArtistIntroText, 
+.artistNewsIntroText {
+  position: absolute;
+  height: 85px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  top: 80px;
+  left: 0;
+  margin-top: 40px;
+}
+  .nolang {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.09px;
+    color: rgba(210, 192, 48, 1);
+    margin-bottom: 10px;
+    z-index: 4;
+    position: relative;
+    text-align: center;
+  }
+
+  .heading2 {
+    position: relative;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 31px;
+    width: 311px;
+    margin: 0 auto;
+    transform: none;
+    text-align: center;
+    top: 5px;
+    left: 0;
+    z-index: 4;
+  }
+
+
+@media (max-width: 375px) {
+  .heading2 {
+    font-size: 20px;
+    width: 250px;
+  }
+}

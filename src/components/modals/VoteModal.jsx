@@ -25,8 +25,6 @@ const VoteModal = ({ isOpen, onClose, selectedTab, onVoteChange }) => {
   };
 
   const handleVoteIdol = async () => {
-    console.log("현재 크레딧:", totalCredits);
-
     if (!selectedIdol) {
       alert("아이돌을 선택해 주세요.");
       return;
