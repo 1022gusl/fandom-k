@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useCredit } from "../../hooks/useCredit";
+import { putDonations } from "../../apis/donationAPI";
 import CommonModal from "./CommonModal";
 import AdInfo from "../slider/AdInfo";
 import GradientButton from "../common/GradientButton";
 import CreditIcon from "../../assets/icons/credit.svg";
 import "./SupportModal.scss";
 
-const SupportModal = ({ isOpen, onClose, idolData }) => {
+const SupportModal = ({ isOpen, onClose, idolData, updateIdolData }) => {
   const [creditValue, setCreditValue] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
   const { totalCredits, dispatch } = useCredit();
@@ -33,13 +34,22 @@ const SupportModal = ({ isOpen, onClose, idolData }) => {
     setCreditValue(value);
   };
 
-  const handleSupport = () => {
+  const handleSupport = async () => {
     if (isCreditInvalid) {
       alert("후원이 실패하였습니다!");
     } else {
-      dispatch({ type: "substractCredits", amount: numericCreditValue });
-      alert("성공적으로 후원하였습니다!");
-      onClose();
+      try {
+        await putDonations(idolData.id, numericCreditValue);
+        dispatch({ type: "substractCredits", amount: numericCreditValue });
+        updateIdolData((prevData) => ({
+          ...prevData,
+          targetDonations: numericCreditValue,
+        }));
+        alert("성공적으로 후원하였습니다!");
+        onClose();
+      } catch (error) {
+        alert("후원이 실패하였습니다!");
+      }
     }
   };
 
