@@ -38,14 +38,18 @@ const SupportModal = ({ isOpen, onClose, idolData, updateIdolData }) => {
     if (isCreditInvalid) {
       alert("후원이 실패하였습니다!");
     } else {
-      await putDonations(idolData.id, numericCreditValue);
-      dispatch({ type: "substractCredits", amount: numericCreditValue });
-      updateIdolData((prevData) => ({
-        ...prevData,
-        targetDonations: numericCreditValue,
-      }));
-      alert("성공적으로 후원하였습니다!");
-      onClose();
+      try {
+        await putDonations(idolData.id, numericCreditValue);
+        dispatch({ type: "substractCredits", amount: numericCreditValue });
+        updateIdolData((prevData) => ({
+          ...prevData,
+          targetDonations: numericCreditValue,
+        }));
+        alert("성공적으로 후원하였습니다!");
+        onClose();
+      } catch (error) {
+        alert("후원이 실패하였습니다!");
+      }
     }
   };
 
