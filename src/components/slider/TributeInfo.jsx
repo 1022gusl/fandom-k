@@ -1,6 +1,6 @@
 import "./TributeInfo.scss";
 import React from "react";
-import gemImg from "../../assets/icons/gem.png";
+import gemImg from "../../assets/icons/credit.svg";
 
 const TributeInfo = ({ daysRemaining, gem }) => {
   const totalGemGoal = 1000000;
@@ -11,7 +11,7 @@ const TributeInfo = ({ daysRemaining, gem }) => {
       <div className="tributeInfo">
         <div className="gemCount">
           <div>
-            <img src={gemImg} alt="Gem" />
+            <img src={gemImg} alt="Gem" className="gemImg" />
           </div>
           <div>{gem.toLocaleString()}</div>
         </div>
