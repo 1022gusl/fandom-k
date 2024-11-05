@@ -41,7 +41,7 @@ const SliderItem = ({ idolData, openDonateModal }) => {
       <AdInfo subtitle={idolData.subtitle} title={idolData.title} />
       <TributeInfo
         daysRemaining={daysRemaining}
-        gem={idolData.targetDonation}
+        gem={idolData.targetDonation + idolData.receivedDonations}
       />
     </div>
   );

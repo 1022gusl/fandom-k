@@ -60,27 +60,25 @@ const TributeSlider = () => {
 
   // 마지막 인덱스 계산: (전체 슬라이드 길이 - 보여줄 슬라이드 수)
   const maxIndex = idolDataList.length - slidesToShow;
-  useEffect(() => {
-    const fetchIdolData = async () => {
-      if (idolDataList.length === 0) {
-        setIsLoading(true); // 로딩 시작
-        try {
-          const data = await getDonations(null, 10);
-          setIdolDataList(Array.isArray(data.list) ? data.list : []);
-        } catch (error) {
-          setError("데이터를 불러오지 못했습니다. 다시 시도해주세요!"); // 오류 메시지 설정
-          console.error(
-            "아이돌 데이터를 불러오는 중 오류가 발생했습니다:",
-            error
-          );
-        } finally {
-          setIsLoading(false); // 로딩 종료
-        }
-      }
-    };
 
-    fetchIdolData();
-  }, []); // 빈 배열로 설정하여 첫 렌더링에서만 실행
+  const fetchIdolData = async () => {
+    setIsLoading(true);
+    try {
+      const data = await getDonations(null, 10);
+      setIdolDataList(Array.isArray(data.list) ? data.list : []);
+    } catch (error) {
+      setError("데이터를 불러오지 못했습니다. 다시 시도해주세요!");
+      console.error("아이돌 데이터를 불러오는 중 오류가 발생했습니다:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (idolDataList.length === 0) {
+      fetchIdolData();
+    }
+  }, []);
 
   return (
     <>
@@ -119,6 +117,9 @@ const TributeSlider = () => {
             isOpen={!!selectedIdol}
             onClose={closeDonateModal}
             idolData={selectedIdol}
+            updateIdolData={() => {
+              fetchIdolData();
+            }}
           />
         )}
       </section>
