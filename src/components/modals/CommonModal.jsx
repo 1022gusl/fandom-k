@@ -1,6 +1,6 @@
 import "./CommonModal.scss";
 import deleteIcon from "../../assets/icons/delete.svg";
-import BackIcon from "../../assets/icons/arrow_left.svg";
+import BackIcon from "../../assets/icons/prevButton.png";
 
 const CommonModal = ({ isOpen, onClose, title, children, isVote = false }) => {
   if (!isOpen) return null; // 모달창이 열려 있지 않으면 렌더링 중지
