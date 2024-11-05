@@ -48,7 +48,7 @@ const AddFavoriteIdol = () => {
     const storedIdols = JSON.parse(localStorage.getItem("selectedIdols")) || []; // 로컬 스토리지에서 기존 아이돌 가져와
     const updatedFavoriteIdols = [...storedIdols, ...selectedIdols]; //기존 저장에 선택 아이돌 합쳐
     localStorage.setItem("selectedIdols", JSON.stringify(updatedFavoriteIdols)); // 합친 배열 저장
-    alert("선택한 아이돌이 로컬 스토리지에 저장되었습니다!");
+    alert("선택한 아이돌이 목록에 추가되었습니다!");
     setFavoriteIdols(updatedFavoriteIdols);
     setSelectedIdols([]);
   };

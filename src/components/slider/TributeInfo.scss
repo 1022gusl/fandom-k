@@ -24,14 +24,14 @@
 }
 .progressBarContainer {
   width: 100%;
-  height: 1px; /* 높이를 적당히 설정 */
-  background-color: #e0e0e0; /* 배경색 (비어 있는 부분) */
+  height: 1px;
+  background-color: #e0e0e0;
   overflow: hidden;
 }
 
 .progressBar {
   height: 1px;
   background-color: rgba(249, 109, 105, 1); /* 채워지는 부분의 색상 */
-  width: 80%; /* 초기값 */
-  transition: width 0.5s ease; /* 채워질 때의 애니메이션 효과 */
+  width: 0%; /* 초기값 */
+  transition: width 0.5s ease;
 }
