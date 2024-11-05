@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import IdolCard from "./IdolCard";
 import PaginationButton from "./PaginationButton";
 import "./IdolList.scss";
-import rightBtn from "../../assets/images/Vector right.png";
-import leftBtn from "../../assets/images/Vector left.png";
-import checkImg from "../../assets/images/Check.png";
+import rightBtn from "../../assets/icons/nextButton.png";
+import leftBtn from "../../assets/icons/prevButton.png";
+import checkImg from "../../assets/icons/check.svg";
 import LoadingSpinner from "../common/LoadingSpinner";
 
 const IdolList = ({

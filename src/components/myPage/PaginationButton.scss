@@ -17,6 +17,11 @@
   cursor: pointer;
   white-space: nowrap;
 
+  .favortieIdolListBtn {
+    width: 8px;
+    height: 14px;
+  }
+
   &:hover {
     opacity: 80%;
   }

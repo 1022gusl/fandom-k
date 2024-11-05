@@ -14,7 +14,7 @@ const PaginationButton = ({
       disabled={disabled}
       className={`paginationButton ${direction}`}
     >
-      <img src={imgSrc} alt={altText} />
+      <img src={imgSrc} className="favortieIdolListBtn" alt={altText} />
     </button>
   );
 };
